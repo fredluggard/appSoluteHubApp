@@ -1,0 +1,35 @@
+.body {
+  background-color: #37459c;
+  color: #ffffff;
+  padding: 12px 70px;
+}
+
+.navLinks {
+  display: flex;
+  gap: 1.25rem;
+  color: #ffffff;
+  list-style-type: none;
+}
+
+.links:hover {
+  color: #e98629;
+  scale: 1.1;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 50px;
+  background-color: #ffffff;
+  color: #37459c;
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  text-decoration: none;
+}
+.login:hover {
+  scale: 1.05;
+}

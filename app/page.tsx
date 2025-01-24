@@ -1,10 +1,10 @@
-import { Stack, Text } from "@mantine/core";
-import Image from "next/image";
+import { Stack } from "@mantine/core";
+import Navbar from "../components/navbar";
 
 export default function Home() {
   return (
     <Stack>
-      <Text>AppSolute</Text>
+      <Navbar />
     </Stack>
   );
 }
