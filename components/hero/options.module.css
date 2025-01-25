@@ -1,0 +1,13 @@
+.indicator {
+  background-color: #dad6d6;
+  width: 0.9375rem;
+  height: 0.9375rem;
+  border-radius: 50%;
+  transition: width 250ms ease;
+
+  &[data-active] {
+    background-color: #ffffff;
+    width: 1rem;
+    height: 1rem;
+  }
+}

@@ -3,8 +3,12 @@
 import { Stack, Text, Title } from "@mantine/core";
 import "@mantine/carousel/styles.css";
 import { Carousel } from "@mantine/carousel";
-import React from "react";
+import { useInterval } from "@mantine/hooks";
+import React, { useEffect, useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
 import styles from "./heroCarousel.module.css";
+import classes from "./options.module.css";
+import Link from "next/link";
 
 const HeroCarousel = () => {
   const heroDetails = [
@@ -34,13 +38,19 @@ const HeroCarousel = () => {
     },
   ];
 
+  const autoplay = useRef(Autoplay({ delay: 5000 }));
+
   return (
     <>
       <Carousel
+        plugins={[autoplay.current]}
+        onMouseEnter={autoplay.current.stop}
+        onMouseLeave={autoplay.current.reset}
         height={720}
         loop
         align="start"
         slidesToScroll={1}
+        withIndicators
         styles={{
           control: {
             backgroundColor: "transparent",
@@ -49,6 +59,7 @@ const HeroCarousel = () => {
           },
         }}
         className={styles.carousel}
+        classNames={classes}
       >
         {heroDetails.map((item) => (
           <Carousel.Slide key={item.tag}>
@@ -56,8 +67,14 @@ const HeroCarousel = () => {
               className={`${styles.slideContent} ${styles[item.imgClass]}`}
             >
               <Stack className={styles.slideContentInner}>
-                <Text>{item.tag}</Text>
-                <Title order={1}>{item.title}</Title>
+                <Text className={styles.tag}>{item.tag}</Text>
+                <Title order={1} className={styles.title}>
+                  {item.title}
+                </Title>
+                <Text className={styles.desc}>{item.desc}</Text>
+                <Link href="#" className={styles.learn}>
+                  <span>Learn More &#62;</span>
+                </Link>
               </Stack>
             </Stack>
           </Carousel.Slide>
