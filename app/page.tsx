@@ -1,10 +1,16 @@
-import { Stack, Text } from "@mantine/core";
-import Image from "next/image";
+import { Stack } from "@mantine/core";
+import Navbar from "../components/navbar";
+import HeroSection from "@/components/hero";
+import HomeBlog from "@/components/homeBlog";
+import Explore from "@/components/explore";
 
 export default function Home() {
   return (
-    <Stack>
-      <Text>AppSolute</Text>
+    <Stack gap={0}>
+      <Navbar />
+      <HeroSection />
+      <HomeBlog />
+      <Explore />
     </Stack>
   );
 }

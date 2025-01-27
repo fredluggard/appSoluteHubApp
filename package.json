@@ -9,10 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/carousel": "^7.16.1",
     "@mantine/core": "^7.15.1",
     "@mantine/hooks": "^7.15.1",
     "@tanstack/react-query": "^5.62.7",
     "axios": "^1.7.9",
+    "embla-carousel": "^8.5.2",
+    "embla-carousel-autoplay": "^8.5.2",
+    "embla-carousel-react": "^8.5.2",
     "next": "15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
