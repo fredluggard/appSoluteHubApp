@@ -9,6 +9,7 @@ import Autoplay from "embla-carousel-autoplay";
 import styles from "./heroCarousel.module.css";
 import classes from "./options.module.css";
 import Link from "next/link";
+import LinkButton from "../button";
 
 const HeroCarousel = () => {
   const heroDetails = [
@@ -72,9 +73,7 @@ const HeroCarousel = () => {
                   {item.title}
                 </Title>
                 <Text className={styles.desc}>{item.desc}</Text>
-                <Link href="#" className={styles.learn}>
-                  <span>Learn More &#62;</span>
-                </Link>
+                <LinkButton url="#" text="Learn More &#62;" />
               </Stack>
             </Stack>
           </Carousel.Slide>
