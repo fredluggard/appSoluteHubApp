@@ -1,0 +1,10 @@
+.explore {
+  padding: 0 4.0625rem;
+  gap: 32px;
+}
+
+.title {
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 2.75rem;
+}
