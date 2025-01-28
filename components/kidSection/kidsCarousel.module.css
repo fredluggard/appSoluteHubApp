@@ -1,0 +1,12 @@
+.card {
+  width: 370px;
+  height: 376px;
+  gap: 20px;
+}
+
+.text {
+  font-family: "Sen", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1d242a;
+}
