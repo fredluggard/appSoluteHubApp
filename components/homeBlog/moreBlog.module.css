@@ -1,0 +1,81 @@
+.wrapper {
+  justify-content: center;
+  align-items: center;
+  margin: 0 5.625rem;
+}
+
+.blogTitle {
+  width: 100%;
+  justify-content: center;
+  align-self: start;
+}
+
+.blog {
+  font-family: "Sen", sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+.moreBlog {
+  gap: 40px;
+}
+
+.content {
+  width: 21.875rem;
+  height: 27.5rem;
+  gap: 1.25rem;
+}
+
+.slideContent {
+  width: 21.875rem;
+  height: 18.75rem;
+  display: flex;
+  gap: 1.25rem;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 1.25rem;
+  padding: 1rem;
+}
+
+.tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5.3125rem;
+  height: 2.1875rem;
+  background-color: #ffffff;
+  color: #404852;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: "Sen", sans-serif;
+  padding: 0.5rem 1rem;
+  border-radius: 6.25rem;
+  text-align: center;
+}
+
+.title {
+  width: 100%;
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: #232536;
+  font-family: "Sen", sans-serif;
+}
+
+.writer {
+  width: 100%;
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #4c4c4c;
+  font-family: "Inter", sans-serif;
+}
+
+.readMore {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  margin: 1.875rem 0;
+}
