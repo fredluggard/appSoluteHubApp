@@ -3,12 +3,10 @@
 import { Stack, Text, Title } from "@mantine/core";
 import "@mantine/carousel/styles.css";
 import { Carousel } from "@mantine/carousel";
-import { useInterval } from "@mantine/hooks";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import styles from "./heroCarousel.module.css";
 import classes from "./options.module.css";
-import Link from "next/link";
 import LinkButton from "../button";
 
 const HeroCarousel = () => {
@@ -52,13 +50,7 @@ const HeroCarousel = () => {
         align="start"
         slidesToScroll={1}
         withIndicators
-        styles={{
-          control: {
-            backgroundColor: "transparent",
-            border: "none",
-            boxShadow: "none",
-          },
-        }}
+        withControls={false}
         className={styles.carousel}
         classNames={classes}
       >
