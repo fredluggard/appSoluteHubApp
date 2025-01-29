@@ -1,0 +1,64 @@
+.joinUs {
+  width: 35rem;
+  height: 16rem;
+  margin: 5.625rem auto;
+  gap: 1.5625rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  width: 25.625rem;
+  text-align: center;
+  color: #232536;
+  font-size: 2.25rem;
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+}
+
+.text {
+  width: 25.625rem;
+  text-align: center;
+  color: #6d6e76;
+  font-size: 1rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+.inputGroup {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5625rem;
+}
+
+.input {
+  width: 20.1875rem;
+  height: 3.5rem;
+  border: 0.0625rem solid #4c4c4c;
+  border-radius: 6.25rem;
+  padding: 0.9375rem;
+}
+
+.input::placeholder {
+  color: #6d6e76;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14rem;
+  height: 3.5rem;
+  background-color: #37459c;
+  color: #ffffff;
+  font-size: 1.125rem;
+  font-weight: 700;
+  font-family: "Sen", sans-serif;
+  padding: 0.5rem 1rem;
+  border-radius: 6.25rem;
+  text-decoration: none;
+}
