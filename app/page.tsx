@@ -5,6 +5,7 @@ import HomeBlog from "@/components/homeBlog";
 import Explore from "@/components/explore";
 import KidSection from "@/components/kidSection";
 import MoreBlog from "@/components/homeBlog/moreBlog";
+import OngoingProjects from "@/components/projects";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Explore />
       <KidSection />
       <MoreBlog />
+      <OngoingProjects />
     </Stack>
   );
 }
