@@ -6,6 +6,7 @@ import Explore from "@/components/explore";
 import KidSection from "@/components/kidSection";
 import MoreBlog from "@/components/homeBlog/moreBlog";
 import OngoingProjects from "@/components/projects";
+import JoinUs from "@/components/joinUs";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <KidSection />
       <MoreBlog />
       <OngoingProjects />
+      <JoinUs />
     </Stack>
   );
 }
