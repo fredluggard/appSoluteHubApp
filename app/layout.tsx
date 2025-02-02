@@ -4,9 +4,12 @@ import "@mantine/core/styles.css";
 import {
   ColorSchemeScript,
   MantineProvider,
+  Stack,
   createTheme,
   mantineHtmlProps,
 } from "@mantine/core";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "AppSolute - Innovating the Future, One Solution at a Time",
@@ -30,7 +33,11 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body className="body">
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MantineProvider theme={theme}>
+          <Navbar />
+          <Stack>{children}</Stack>
+          <Footer />
+        </MantineProvider>
       </body>
     </html>
   );
