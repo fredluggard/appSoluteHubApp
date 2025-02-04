@@ -1,0 +1,41 @@
+.team {
+  width: 100%;
+  padding: 0 5.625rem 5.625rem 5.625rem;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemBox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.1875rem;
+  flex-basis: calc(25% - 0.625rem);
+  justify-content: center;
+  align-items: center;
+}
+
+.itemCover {
+  width: 20%;
+  gap: 0.625rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  width: 9.375rem;
+  height: 9.375rem;
+  border-radius: 6.25rem;
+}
+
+.itemTitle {
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+}
+
+.itemText {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+}
