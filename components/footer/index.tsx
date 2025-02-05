@@ -6,10 +6,9 @@ import styles from "./footer.module.css";
 import AppSoluteLogo from "../logo";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
-  const router = useRouter();
   const currentUrl = usePathname();
   const pagePath = ["auth/login", "auth/signup", "dashboard"];
 

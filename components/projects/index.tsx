@@ -1,4 +1,4 @@
-import { Box, Flex, Stack, Text, Title } from "@mantine/core";
+import { Flex, Stack, Text, Title } from "@mantine/core";
 import React from "react";
 import styles from "./onGoing.module.css";
 import Link from "next/link";

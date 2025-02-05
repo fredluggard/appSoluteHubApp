@@ -1,8 +1,7 @@
 "use client";
 
 import { Carousel } from "@mantine/carousel";
-import React, { useRef } from "react";
-import Autoplay from "embla-carousel-autoplay";
+import React from "react";
 import styles from "./exploreCarousel.module.css";
 import { Stack } from "@mantine/core";
 
@@ -37,8 +36,6 @@ const ExploreCarousel = () => {
       url: "/",
     },
   ];
-
-  const autoplay = useRef(Autoplay({ delay: 5000 }));
 
   return (
     <>

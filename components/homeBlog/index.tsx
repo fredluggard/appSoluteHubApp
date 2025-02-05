@@ -6,7 +6,6 @@ import styles from "./homeBlog.module.css";
 import Image from "next/image";
 import LinkButton from "../button";
 import Link from "next/link";
-import { url } from "inspector";
 import { useRouter } from "next/navigation";
 
 const HomeBlog = () => {
@@ -53,7 +52,7 @@ const HomeBlog = () => {
   return (
     <Flex className={styles.homeBlog}>
       <Stack className={styles.leftBox}>
-        {blogPosts.map((post, index) => {
+        {blogPosts.map((post) => {
           if (post.id % 2 === 0) {
             return (
               <Stack

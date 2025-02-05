@@ -1,4 +1,4 @@
-import { Button, Flex, Input, Stack, Text, Title } from "@mantine/core";
+import { Button, Flex, Stack, Text, Title } from "@mantine/core";
 import React from "react";
 import styles from "./joinUs.module.css";
 
