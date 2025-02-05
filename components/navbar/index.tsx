@@ -1,14 +1,13 @@
 "use client";
 
-import { Box, Flex, Stack } from "@mantine/core";
+import { Box, Flex } from "@mantine/core";
 import React from "react";
 import styles from "./navbar.module.css";
 import AppSoluteLogo from "../logo";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  const router = useRouter();
   const currentUrl = usePathname();
   const pagePath = ["auth/login", "auth/signup", "dashboard"];
 

@@ -36,8 +36,8 @@ const MoreBlog = () => {
         <Title className={styles.blog}>From Our Blog</Title>
       </Stack>
       <Flex className={styles.moreBlog}>
-        {moreBlogs.map((item) => (
-          <Stack className={styles.content}>
+        {moreBlogs.map((item, index) => (
+          <Stack className={styles.content} key={index}>
             <Stack
               className={styles.slideContent}
               style={{ backgroundImage: `url(${item.src})` }}
