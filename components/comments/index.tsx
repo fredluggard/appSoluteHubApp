@@ -5,7 +5,7 @@ import { Stack, Title } from "@mantine/core";
 
 const Comments = ({ postId }: { postId: string }) => {
   //   const [comments, setComments] = useState<any>(null);
-  const url = process.env.NEXT_PUBLIC_BASE_URL;
+  //   const url = process.env.NEXT_PUBLIC_BASE_URL;
 
   //   useEffect(() => {
   //     const fetchBlog = async () => {
