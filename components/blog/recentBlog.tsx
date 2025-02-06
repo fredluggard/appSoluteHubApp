@@ -88,7 +88,7 @@ const RecentBlog = () => {
     <Stack className={styles.recentContainer}>
       <Title className={styles.title}>Recent Blog Post</Title>
       <Flex className={styles.flex}>
-        <Link href={"#"} className={styles.leftPost}>
+        <Link href={`/blog/${blog?.id}`} className={styles.leftPost}>
           <Image
             src={blog.imageUrl || "/default-image.jpg"}
             alt="Post image"
@@ -121,7 +121,7 @@ const RecentBlog = () => {
         </Link>
 
         <Stack className={styles.rightPost}>
-          <Link href={"#"} className={styles.rightFlex}>
+          <Link href={`/blog/${blog2?.id}`} className={styles.rightFlex}>
             <Image
               src={blog2?.imageUrl || "/default-image.jpg"}
               alt="post image"
@@ -145,7 +145,7 @@ const RecentBlog = () => {
             </Stack>
           </Link>
 
-          <Link href={"#"} className={styles.rightFlex}>
+          <Link href={`/blog/${blog3?.id}`} className={styles.rightFlex}>
             <Image
               src={blog3?.imageUrl || "/default-image.jpg"}
               alt="post image"
@@ -171,7 +171,7 @@ const RecentBlog = () => {
         </Stack>
       </Flex>
 
-      <Link href={"#"} className={styles.bottomFlex}>
+      <Link href={`/blog/${blog4?.id}`} className={styles.bottomFlex}>
         <Image
           src={blog4?.imageUrl || "/default-image.jpg"}
           alt="post image"

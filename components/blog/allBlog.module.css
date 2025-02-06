@@ -1,14 +1,14 @@
 .allBlog {
   width: 100%;
-  gap: 32px;
-  padding: 10px 90px;
+  gap: 2rem;
+  padding: 0.625rem 5.625rem;
   background-color: #ffffff;
 }
 
 .title {
   font-family: "Inter", sans-serif;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 .blogPosts {
@@ -23,45 +23,45 @@
 .leftPost {
   width: 25%;
   height: 100%;
-  gap: 12px;
+  gap: 0.75rem;
   display: flex;
   flex-direction: column;
 }
 
 .leftImage {
   width: 100%;
-  height: 200px;
+  height: 12.5rem;
 }
 
 .postWriter {
   color: #6941c6;
   font-family: "Inter", sans-serif;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .titleFlex {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  gap: 40px;
+  gap: 2.5rem;
 }
 
 .postTitle {
   font-family: "Inter", sans-serif;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .arrow {
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
 }
 
 .text {
   font-family: "inter", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1rem;
   color: #667085;
 }
 
@@ -73,7 +73,7 @@
   color: #6941c6;
   font-weight: 400;
   font-family: "Inter", sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   list-style-type: none;
 }
 
@@ -81,7 +81,7 @@
   color: #3538cd;
   font-weight: 400;
   font-family: "Inter", sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   list-style-type: none;
 }
 
@@ -89,6 +89,6 @@
   color: #c11574;
   font-weight: 400;
   font-family: "Inter", sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   list-style-type: none;
 }

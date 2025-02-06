@@ -44,7 +44,11 @@ const AllBlog = () => {
       <Title className={styles.title}>All Blog Post</Title>
       <Flex className={styles.blogPosts}>
         {blog.slice(0, 9).map((post, index) => (
-          <Link href={"#"} key={index} className={styles.leftPost}>
+          <Link
+            href={`/blog/${post.id}`}
+            key={index}
+            className={styles.leftPost}
+          >
             <Image
               src={post.imageUrl || "/default-image.jpg"}
               alt="Post image"
