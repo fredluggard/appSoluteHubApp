@@ -1,0 +1,197 @@
+.blogId {
+  width: 100%;
+}
+
+.blogImg {
+  width: 100%;
+  height: 25rem;
+  object-fit: cover;
+}
+
+.blogFlex {
+  padding: 5.625rem;
+  gap: 5.625rem;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.blogSub {
+  width: 75%;
+  gap: 1.875rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.blogTitle {
+  width: 100%;
+  font-size: 2.875rem;
+  font-weight: 700;
+  font-family: "Sen", sans-serif;
+}
+
+.blogGroup {
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3.75rem;
+}
+
+.blogPack {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.625rem;
+}
+
+.blogtext {
+  color: #00000080;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+}
+
+.tag {
+  color: #6941c6;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+}
+
+.tag2 {
+  color: #3538cd;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+}
+
+.tag3 {
+  color: #c11574;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+}
+
+.mainText {
+  width: 100%;
+  color: #6d6e76;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+}
+
+.mainImg {
+  width: 100%;
+  height: 25.625rem;
+  object-fit: cover;
+}
+
+.aside {
+  width: 25%;
+  gap: 2.3125rem;
+}
+
+.paraGroup {
+  width: 100%;
+  gap: 0.625rem;
+  align-items: start;
+  justify-content: space-around;
+}
+
+.paraText {
+  color: #161722;
+  font-family: "Sen", sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
+}
+
+.writerGroup {
+  width: 100%;
+  gap: 1rem;
+  align-items: start;
+  justify-content: space-around;
+}
+
+.asideHeader {
+  color: #000000;
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.writerProfile {
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.writerImg {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 6.25rem;
+}
+
+.nameGroup {
+  gap: 0.3125rem;
+}
+
+.writerName {
+  color: #000000;
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.writerText {
+  color: #000000;
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+  font-size: 0.9375rem;
+}
+
+.timeText {
+  color: #000000;
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+
+.youtubeBox {
+  width: 100%;
+  gap: 16px;
+  align-items: start;
+  justify-content: space-around;
+  padding: 1rem 0;
+}
+
+.youtubeText {
+  color: #000000;
+  font-family: "Sen", sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
+}
+
+.youtubeFlex {
+  width: 100%;
+  gap: 0.9375rem;
+  align-items: center;
+}
+
+.appFlex {
+  gap: 0.3125rem;
+}
+
+.youtubeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 3.125rem;
+  border-radius: 6.25rem;
+  color: #ffffff;
+  background-color: #ff3d00;
+  font-family: "Open san", sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  text-align: center;
+}
