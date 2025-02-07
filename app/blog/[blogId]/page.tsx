@@ -73,7 +73,7 @@ const BlogContents = () => {
     };
 
     fetchBlog();
-  }, []);
+  });
 
   return blog ? (
     <Stack className={styles.blogId}>

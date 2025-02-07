@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 
 const Footer = () => {
   const currentUrl = usePathname();
-  const pagePath = ["auth/login", "auth/signup", "dashboard"];
+  const pagePath = ["/login", "/signup", "/dashboard"];
 
   const year = new Date().getFullYear().toString();
 
@@ -99,7 +99,7 @@ const Footer = () => {
                   </Link>
                   <Link href="#">
                     <Image
-                      src={"/icons/facebook.svg"}
+                      src={"/icons/youtube.svg"}
                       alt="facebook"
                       width={20}
                       height={20}
