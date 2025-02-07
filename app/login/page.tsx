@@ -55,6 +55,7 @@ const Login = () => {
       })
       .then((data) => {
         setAuthData(data);
+        console.log(authData);
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
@@ -131,7 +132,7 @@ const Login = () => {
           </Button>
 
           <Flex className={styles.signBox}>
-            <Text className={styles.signText}>Don't have an account?</Text>
+            <Text className={styles.signText}>Don&apos;t have an account?</Text>
             <Link href={"#"} className={styles.signLink}>
               Sign Up
             </Link>
