@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 
 const Footer = () => {
   const currentUrl = usePathname();
-  const pagePath = ["/login", "/signup", "/dashboard"];
+  const pagePath = ["/login", "/signup", "/recover", "/dashboard"];
 
   const year = new Date().getFullYear().toString();
 

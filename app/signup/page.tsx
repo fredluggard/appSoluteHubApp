@@ -12,10 +12,10 @@ import {
 } from "@mantine/core";
 import Image from "next/image";
 import React, { useState } from "react";
-import styles from "./login.module.css";
+import styles from "./signup.module.css";
 import Link from "next/link";
 
-const Login = () => {
+const SignUp = () => {
   const [authData, setAuthData] = useState(null);
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -40,8 +40,8 @@ const Login = () => {
       });
   };
 
-  const handleLogin = () => {
-    fetch(`${baseUrl}/api/v1/users/login`, {
+  const handleSignUp = () => {
+    fetch(`${baseUrl}/api/v1/users/register`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -63,11 +63,11 @@ const Login = () => {
   };
 
   return (
-    <Flex className={styles.loginContainer}>
-      <Stack className={styles.loginLeft}>
+    <Flex className={styles.signUpContainer}>
+      <Stack className={styles.signUpLeft}>
         <AppSoluteLogo />
-        <Stack className={styles.loginBox}>
-          <Title className={styles.title}>Login</Title>
+        <Stack className={styles.signUpBox}>
+          <Title className={styles.title}>Sign Up</Title>
           <Button className={styles.googleButton} onClick={handleGoogle}>
             <Image
               src={"/icons/google_Icon.svg"}
@@ -76,7 +76,7 @@ const Login = () => {
               height={30}
               className={styles.googleIcon}
             />
-            <Text className={styles.googleText}>Sign In with Google</Text>
+            <Text className={styles.googleText}>Sign Up with Google</Text>
           </Button>
 
           <Stack className={styles.divider}>
@@ -85,6 +85,19 @@ const Login = () => {
           </Stack>
 
           <Stack className={styles.inputGroup}>
+            <Stack className={styles.emailGroup}>
+              <label htmlFor="name" className={styles.label}>
+                Full Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Full Name"
+                className={styles.input}
+              />
+            </Stack>
+
             <Stack className={styles.emailGroup}>
               <label htmlFor="email" className={styles.label}>
                 Email Address
@@ -117,7 +130,7 @@ const Login = () => {
                 color="#37459C"
                 className={styles.rem}
               />
-              <Link href={"/recover"} className={styles.forget}>
+              <Link href={"#"} className={styles.forget}>
                 Forget Password?
               </Link>
             </Flex>
@@ -126,20 +139,20 @@ const Login = () => {
           <Button
             variant="filled"
             className={styles.logButton}
-            onClick={handleLogin}
+            onClick={handleSignUp}
           >
             Login
           </Button>
 
           <Flex className={styles.signBox}>
             <Text className={styles.signText}>Don&apos;t have an account?</Text>
-            <Link href={"/signup"} className={styles.signLink}>
+            <Link href={"#"} className={styles.signLink}>
               Sign Up
             </Link>
           </Flex>
         </Stack>
       </Stack>
-      <Stack className={styles.loginRight}>
+      <Stack className={styles.signUpRight}>
         <Image
           src={"/images/login.png"}
           alt="Robot and human shaking hands"
@@ -152,4 +165,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
