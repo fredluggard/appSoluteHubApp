@@ -1,0 +1,80 @@
+"use client";
+
+import { Button, Stack, Text, Title } from "@mantine/core";
+import React, { useState } from "react";
+import styles from "./recover.module.css";
+import AppSoluteLogo from "@/components/logo";
+import { useRouter } from "next/navigation";
+
+const RecoverPass = () => {
+  const [input, setInput] = useState("");
+  const [error, setError] = useState("");
+
+  const router = useRouter();
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+  const handleRecover = () => {
+    if (input !== "") {
+      fetch(`${baseUrl}/api/v1/users/forgot-password`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          router.push("/otp");
+          setInput("");
+          setError("");
+        })
+        .catch((error) => {
+          console.error("There was a problem with the fetch operation:", error);
+        });
+    } else {
+      setError("Please fill in your email");
+    }
+  };
+
+  return (
+    <Stack className={styles.recoverContainer}>
+      <Stack className={styles.recoverBox}>
+        <AppSoluteLogo />
+        <Title className={styles.title}>Sign Up</Title>
+        <Stack className={styles.emailGroup}>
+          <label htmlFor="email" className={styles.label}>
+            Email Address
+          </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email Address"
+            value={input}
+            required
+            onChange={(e) => {
+              setInput(e.target.value);
+              setError("");
+            }}
+            className={styles.input}
+          />
+          {error && <Text className={styles.danger}>{error}</Text>}
+        </Stack>
+        <Button
+          variant="filled"
+          className={styles.logButton}
+          onClick={handleRecover}
+        >
+          Recover
+        </Button>
+      </Stack>
+    </Stack>
+  );
+};
+
+export default RecoverPass;

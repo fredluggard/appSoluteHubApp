@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const currentUrl = usePathname();
-  const pagePath = ["/login", "/signup", "/dashboard"];
+  const pagePath = ["/login", "/signup", "/recover", "/dashboard"];
 
   return (
     <>
