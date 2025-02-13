@@ -1,0 +1,193 @@
+.leadContainer {
+  padding: 90px;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
+}
+
+.leadHead {
+  width: 100%;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.leadTitle {
+  color: #37459c;
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.leadText {
+  color: #000000;
+  font-family: "Sen", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.leadText2 {
+  color: #979797;
+  font-family: "Sen", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.leaderFlex {
+  width: 100%;
+  height: auto;
+  margin-top: 30px;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.firstBox {
+  position: relative;
+  width: 350px;
+  height: 480px;
+  background-color: #ffffff;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.secondBox {
+  position: relative;
+  width: 350px;
+  height: 400px;
+  background-color: #ffffff;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.pos1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -25px;
+  width: 50px;
+  height: 50px;
+  background-color: #e7f0f9;
+  border-radius: 100px;
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+}
+.pos2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -25px;
+  width: 50px;
+  height: 50px;
+  background-color: #e3fff8;
+  border-radius: 100px;
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+}
+
+.pos3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -25px;
+  width: 50px;
+  height: 50px;
+  background-color: #fff3e8;
+  border-radius: 100px;
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+}
+
+.posImg {
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+}
+
+.posText {
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+}
+
+.posName {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  text-align: center;
+}
+
+.posFlex {
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.points {
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  text-align: center;
+}
+
+.pointText {
+  font-family: "Sen", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  text-align: center;
+}
+
+.tableText {
+  text-align: center;
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.tableText2 {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.userImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+}
+
+.tableHeader {
+  background-color: #eceff5;
+  height: 100px;
+  width: 100%;
+}
+
+.tableRow {
+  height: 70px;
+  width: 100%;
+}
+
+.tableHead {
+  color: #232536;
+  text-align: center;
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+}
