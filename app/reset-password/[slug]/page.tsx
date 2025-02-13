@@ -2,24 +2,28 @@
 
 import { Button, Stack, Text, Title } from "@mantine/core";
 import React, { useState } from "react";
-import styles from "./recover.module.css";
+import styles from "./resetCode.module.css";
 import AppSoluteLogo from "@/components/logo";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-const RecoverPass = () => {
+const ResetCode = () => {
   const [input, setInput] = useState("");
+  const [input2, setInput2] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
   const router = useRouter();
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-  const handleRecover = () => {
-    setSuccess(true);
-    if (input !== "") {
-      fetch(`${baseUrl}/api/v1/users/forgot-password`, {
-        method: "GET",
+  const handleSuccess = () => {
+    router.push("/login");
+  };
+
+  const handleReset = () => {
+    if (input !== "" && input === input2) {
+      fetch(`${baseUrl}/api/v1/users/reset-password`, {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
@@ -34,13 +38,16 @@ const RecoverPass = () => {
           console.log(data);
           setSuccess(true);
           setInput("");
+          setInput2("");
           setError("");
         })
         .catch((error) => {
           console.error("There was a problem with the fetch operation:", error);
         });
+    } else if (input === "" && input2 === "") {
+      setError("Password cannot be empty");
     } else {
-      setError("Please fill in your email");
+      setError("Please make sure your passwords match");
     }
   };
 
@@ -49,20 +56,37 @@ const RecoverPass = () => {
       <Stack className={styles.recoverBox}>
         <AppSoluteLogo />
         <Stack w={"100%"}>
-          <Title className={styles.title}>Recover Password</Title>
+          <Title className={styles.title}>Reset Password</Title>
           <Stack className={styles.emailGroup}>
-            <label htmlFor="email" className={styles.label}>
-              Email Address
+            <label htmlFor="password" className={styles.label}>
+              New Password
             </label>
             <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email Address"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
               value={input}
               required
               onChange={(e) => {
                 setInput(e.target.value);
+              }}
+              className={styles.input}
+            />
+          </Stack>
+          <Stack className={styles.emailGroup}>
+            <label htmlFor="password2" className={styles.label}>
+              Confirm New Password
+            </label>
+            <input
+              type="password"
+              name="password2"
+              id="password2"
+              placeholder="Password"
+              value={input2}
+              required
+              onChange={(e) => {
+                setInput2(e.target.value);
                 setError("");
               }}
               className={styles.input}
@@ -72,9 +96,9 @@ const RecoverPass = () => {
           <Button
             variant="filled"
             className={styles.logButton}
-            onClick={handleRecover}
+            onClick={handleReset}
           >
-            Recover
+            Reset
           </Button>
         </Stack>
       </Stack>
@@ -82,15 +106,16 @@ const RecoverPass = () => {
       {success && (
         <Stack className={styles.darkLayout}>
           <Stack className={styles.recoverLink}>
-            {/* <Stack className={styles.cancelBox}>
+            <Stack className={styles.cancelBox}>
               <Image
                 src={"/icons/cancel.svg"}
                 alt="check"
                 width={30}
                 height={30}
                 className={styles.cancel}
+                onClick={handleSuccess}
               />
-            </Stack> */}
+            </Stack>
             <Image
               src={"/icons/check.svg"}
               alt="check"
@@ -99,11 +124,11 @@ const RecoverPass = () => {
               className={styles.check}
             />
             <Title className={styles.successTitle}>
-              Password Reset Link Sent
+              Password Reset Successful!
             </Title>
             <Text className={styles.successText}>
-              Kindly proceed to your email and click on the provided link to
-              reset your password.
+              Password successfully changed. Login to your account now with your
+              new password
             </Text>
           </Stack>
         </Stack>
@@ -112,4 +137,4 @@ const RecoverPass = () => {
   );
 };
 
-export default RecoverPass;
+export default ResetCode;

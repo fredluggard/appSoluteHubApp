@@ -9,7 +9,13 @@ import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const currentUrl = usePathname();
-  const pagePath = ["/login", "/signup", "/recover", "/dashboard"];
+  const pagePath = [
+    "/login",
+    "/signup",
+    "/recover",
+    "/reset-password/",
+    "/dashboard",
+  ];
 
   return (
     <>
@@ -23,6 +29,9 @@ const Navbar = () => {
               <ul className={styles.navLinks}>
                 <li className={styles.links}>
                   <Link href="/leaderboard">Leaderboard</Link>
+                </li>
+                <li className={styles.links}>
+                  <Link href="/media">Media</Link>
                 </li>
                 <li className={styles.links}>
                   <Link href="/research-development">R&D</Link>
