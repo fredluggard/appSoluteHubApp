@@ -4,7 +4,6 @@ import { Button, Stack, Text, Title } from "@mantine/core";
 import React, { useState } from "react";
 import styles from "./recover.module.css";
 import AppSoluteLogo from "@/components/logo";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 const RecoverPass = () => {
@@ -12,7 +11,6 @@ const RecoverPass = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
-  const router = useRouter();
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const handleRecover = () => {
