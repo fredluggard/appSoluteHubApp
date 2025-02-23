@@ -1,0 +1,173 @@
+.setContainer {
+  width: 80vw;
+  height: auto;
+  background-color: #34449c;
+}
+.innerBox {
+  height: 100vh;
+  width: 100%;
+  gap: 30px;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 30px 90px;
+  background-color: #ffffff;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.userBox {
+  position: relative;
+  width: 100%;
+  gap: 20px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.nameBox {
+  gap: 10px;
+  justify-content: center;
+}
+
+.userName {
+  color: #3e435d;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.date {
+  color: #ada7a7;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.noticeBox {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.noticeIcon {
+  position: relative;
+  width: 35px;
+  height: 35px;
+}
+
+.noticeNum {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: #ffffff;
+  background-color: #f28520;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.detailStack {
+  position: relative;
+  width: 100%;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userDetails {
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageStack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userImg {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
+.cameraBox {
+  position: absolute;
+  top: 60px;
+  left: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: #f28520;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.cameraIcon {
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+}
+
+.detailsBox {
+  gap: 5px;
+  justify-content: center;
+}
+
+.detailsName {
+  color: #000000;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.detailsEmail {
+  color: #000000;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 7.5rem;
+  height: 3.125rem;
+  background-color: #37459c;
+  color: #ffffff;
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 6.25rem;
+}
+
+.formBox {
+  position: relative;
+  width: 100%;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.formFlex {
+  width: 100%;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formInput {
+  width: 50%;
+  height: 56px;
+  border-radius: 8px;
+}

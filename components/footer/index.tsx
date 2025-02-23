@@ -26,7 +26,7 @@ const Footer = () => {
         <Stack className={styles.footer}>
           <Flex className={styles.top}>
             <Stack className={styles.logoBox}>
-              <AppSoluteLogo />
+              <AppSoluteLogo color="#ffffff" />
               <Text className={styles.logoText}>
                 Lorem ipsum dolor sit amet
               </Text>

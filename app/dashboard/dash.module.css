@@ -1,0 +1,157 @@
+.dashContainer {
+  width: 80vw;
+  height: auto;
+  background-color: #34449c;
+}
+.innerBox {
+  height: 100vh;
+  width: 100%;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 90px;
+  background-color: #ffffff;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.topFlex {
+  position: relative;
+  width: 100%;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.topStack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userImg {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
+.cameraBox {
+  position: absolute;
+  top: 60px;
+  left: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: #f28520;
+  border-radius: 50%;
+}
+
+.cameraIcon {
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+}
+
+.downStack {
+  position: relative;
+  width: 100%;
+  gap: 8px;
+  justify-content: center;
+}
+
+.userName {
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.progressBox {
+  width: 100%;
+  position: relative;
+  padding: 10px 0;
+}
+
+.completed {
+  position: absolute;
+  top: 0;
+  right: 0px;
+}
+
+.pointsBox {
+  width: 80%;
+  gap: 150px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pointsFlex {
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.pointStack {
+  gap: 5px;
+  justify-content: center;
+}
+
+.points {
+  font-family: "Open Sans", sans-serif;
+  font-family: 500;
+  font-size: 38px;
+}
+
+.pointsTotal {
+  font-family: "Open Sans", sans-serif;
+  font-family: 500;
+  font-size: 20px;
+}
+
+.availableBox {
+  width: 80%;
+  gap: 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ourBlogBox {
+  width: 80%;
+  gap: 20px;
+  justify-content: center;
+  align-items: start;
+}
+
+.blogTitle {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.blogStack {
+  width: 100%;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.blogFlex {
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.blogImg {
+  width: 48px;
+  height: 48px;
+  border-radius: 5px;
+}
+
+.blogText {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}

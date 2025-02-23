@@ -1,0 +1,81 @@
+"use client";
+
+import { Button, Stack, Text } from "@mantine/core";
+import React from "react";
+import styles from "./side.module.css";
+import AppSoluteLogo from "../logo";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+const SideBar = () => {
+  const pathname = usePathname();
+  return (
+    <Stack className={styles.sideContainer}>
+      <Stack className={styles.sideTop}>
+        <AppSoluteLogo color="#ffffff" />
+
+        <Link href="/dashboard" className={styles.sideLink}>
+          <Image
+            src={
+              pathname === "/dashboard" ? "/icons/dash.svg" : "/icons/dash2.svg"
+            }
+            alt="Dashboard"
+            width={25}
+            height={25}
+            className={styles.sideImage}
+          />
+          <Text
+            className={`${
+              pathname === "/dashboard" ? styles.active : styles.sideText
+            }`}
+          >
+            Dashboard
+          </Text>
+        </Link>
+
+        <Link
+          href="/dashboard/tasks"
+          className={`${styles.sideLink} ${
+            pathname === "/dashboard/tasks" ? styles.active : ""
+          }`}
+        >
+          <Image
+            src={
+              pathname === "/dashboard/tasks"
+                ? "/icons/task.svg"
+                : "/icons/task2.svg"
+            }
+            alt="tasks"
+            width={25}
+            height={25}
+            className={styles.sideImage}
+          />
+          <Text className={styles.sideText}>Tasks</Text>
+        </Link>
+
+        <Link
+          href="/dashboard/settings"
+          className={`${styles.sideLink} ${
+            pathname === "/dashboard/settings" ? styles.active : ""
+          }`}
+        >
+          <Image
+            src={"/icons/setting.svg"}
+            alt="settings"
+            width={25}
+            height={25}
+            className={styles.sideImage}
+          />
+          <Text className={styles.sideText}>Settings</Text>
+        </Link>
+      </Stack>
+
+      <Button variant="subtle" color="#ffffff" w={"80%"}>
+        <Image src={"/icons/logout.svg"} alt="Logout" width={30} height={30} />
+        <Text className={styles.sideText}>Logout</Text>
+      </Button>
+    </Stack>
+  );
+};
+
+export default SideBar;
