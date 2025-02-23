@@ -4,7 +4,7 @@ import React from "react";
 import styles from "./logo.module.css";
 import Link from "next/link";
 
-const AppSoluteLogo = () => {
+const AppSoluteLogo = ({ color }: { color: string }) => {
   return (
     <>
       <Link href="/">
@@ -16,7 +16,9 @@ const AppSoluteLogo = () => {
             height={49}
             className={styles.logo}
           />
-          <Text className={styles.text}>AppSolute</Text>
+          <Text c={color} className={styles.text}>
+            AppSolute
+          </Text>
         </Flex>
       </Link>
     </>

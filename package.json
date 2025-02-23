@@ -12,6 +12,7 @@
     "@mantine/carousel": "^7.16.1",
     "@mantine/core": "^7.15.1",
     "@mantine/hooks": "^7.15.1",
+    "@tabler/icons-react": "^3.30.0",
     "@tanstack/react-query": "^5.62.7",
     "axios": "^1.7.9",
     "embla-carousel": "^8.5.2",

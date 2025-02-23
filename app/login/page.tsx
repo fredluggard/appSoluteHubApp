@@ -65,7 +65,7 @@ const Login = () => {
   return (
     <Flex className={styles.loginContainer}>
       <Stack className={styles.loginLeft}>
-        <AppSoluteLogo />
+        <AppSoluteLogo color="#ffffff" />
         <Stack className={styles.loginBox}>
           <Title className={styles.title}>Login</Title>
           <Button className={styles.googleButton} onClick={handleGoogle}>

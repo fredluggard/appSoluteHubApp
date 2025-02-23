@@ -45,7 +45,7 @@ const RecoverPass = () => {
   return (
     <Stack className={styles.recoverContainer}>
       <Stack className={styles.recoverBox}>
-        <AppSoluteLogo />
+        <AppSoluteLogo color="#ffffff" />
         <Stack w={"100%"}>
           <Title className={styles.title}>Recover Password</Title>
           <Stack className={styles.emailGroup}>

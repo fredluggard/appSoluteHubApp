@@ -22,7 +22,7 @@ const Navbar = () => {
       {!pagePath.some((path) => currentUrl.includes(path)) ? (
         <Flex className={styles.body} justify="space-between" align="center">
           <Box>
-            <AppSoluteLogo />
+            <AppSoluteLogo color="#ffffff" />
           </Box>
           <Flex gap={70} align="center">
             <Flex>
