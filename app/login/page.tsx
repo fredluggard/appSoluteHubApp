@@ -14,9 +14,16 @@ import Image from "next/image";
 import React, { useState } from "react";
 import styles from "./login.module.css";
 import Link from "next/link";
+import { setUser, getUser } from "@/store/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [authData, setAuthData] = useState(null);
+  const dispacth = useDispatch();
+  const user = useSelector(getUser);
+
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const handleGoogle = () => {
@@ -42,10 +49,14 @@ const Login = () => {
 
   const handleLogin = () => {
     fetch(`${baseUrl}/api/v1/users/login`, {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
     })
       .then((response) => {
         if (!response.ok) {
@@ -54,8 +65,9 @@ const Login = () => {
         return response.json();
       })
       .then((data) => {
-        setAuthData(data);
-        console.log(authData);
+        dispacth(setUser(data));
+        console.log(data);
+        console.log(user);
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
@@ -94,6 +106,8 @@ const Login = () => {
                 name="email"
                 id="email"
                 placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className={styles.input}
               />
             </Stack>
@@ -107,6 +121,8 @@ const Login = () => {
                 name="password"
                 id="password"
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className={styles.input2}
               />
             </Stack>

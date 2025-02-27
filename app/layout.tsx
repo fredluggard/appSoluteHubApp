@@ -8,6 +8,7 @@ import {
   createTheme,
   mantineHtmlProps,
 } from "@mantine/core";
+import ReduxProvider from "@/store/Provider";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
@@ -33,11 +34,13 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body className="body">
-        <MantineProvider theme={theme}>
-          <Navbar />
-          <Stack>{children}</Stack>
-          <Footer />
-        </MantineProvider>
+        <ReduxProvider>
+          <MantineProvider theme={theme}>
+            <Navbar />
+            <Stack>{children}</Stack>
+            <Footer />
+          </MantineProvider>
+        </ReduxProvider>
       </body>
     </html>
   );
