@@ -42,7 +42,7 @@ const SignUp = () => {
 
   const handleSignUp = () => {
     fetch(`${baseUrl}/api/v1/users/register`, {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },

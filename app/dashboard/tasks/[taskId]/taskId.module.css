@@ -1,0 +1,228 @@
+.tasksContainer {
+  width: 80vw;
+  height: auto;
+  background-color: #34449c;
+}
+
+.innerBox {
+  height: 100vh;
+  width: 100%;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 90px;
+  background-color: #ffffff;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.topFlex {
+  position: relative;
+  width: 100%;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.topStack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userImg {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
+.cameraBox {
+  position: absolute;
+  top: 60px;
+  left: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: #f28520;
+  border-radius: 50%;
+}
+
+.cameraIcon {
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+}
+
+.downStack {
+  position: relative;
+  width: 70%;
+  gap: 8px;
+  justify-content: center;
+}
+
+.userName {
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.progressBox {
+  width: 100%;
+  position: relative;
+  padding: 10px 0;
+}
+
+.completed {
+  position: absolute;
+  top: 0;
+  right: 0px;
+}
+
+.todoTask {
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.todoSpan {
+  font-family: "Sen", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.questStack {
+  width: 605px;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.questFlex {
+  width: 100%;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.questTitle {
+  color: #1d242a;
+  font-family: "Sen", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.mainStack {
+  width: 774px;
+  gap: 10px;
+  justify-content: center;
+  align-items: start;
+}
+
+.mainQuest {
+  color: #1d242a66;
+  font-family: "Sen", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.mainFlex {
+  width: 100%;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mainAsk {
+  color: #1d242a;
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.index {
+  color: #00000080;
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.mainStack {
+  position: relative;
+  width: 100%;
+  gap: 32px;
+  justify-content: center;
+}
+
+.radioGroup {
+  width: 100%;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.radio {
+  color: #000000;
+  padding: 0 10px;
+  border-radius: 100px;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.taskBtn {
+  position: relative;
+  right: 0;
+}
+
+.btnBox {
+  width: 100%;
+  justify-content: center;
+  align-items: end;
+}
+
+.showStack {
+  width: 100%;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.showTitle {
+  color: #232536;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.showText {
+  color: #232536;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.showBtnBox {
+  width: 100%;
+  justify-content: center;
+  align-items: end;
+}
+
+.correct {
+  background-color: #99f0ad !important;
+}
+
+.incorrect {
+  background-color: #ec8590 !important;
+}
+
+.radio {
+  transition: background-color 0.3s ease-in-out;
+}

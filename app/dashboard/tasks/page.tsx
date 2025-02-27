@@ -1,10 +1,14 @@
+"use client";
+
 import { Box, Flex, Progress, Stack, Text, Title } from "@mantine/core";
 import React from "react";
 import styles from "./task.module.css";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const tasks = [
   {
+    id: "1",
     title: "How to open a stock account on Tradient?",
     points: "200",
     date: "2/3/2025",
@@ -12,6 +16,7 @@ const tasks = [
     image: "/images/task1.png",
   },
   {
+    id: "2",
     title: "How to open a stock account on Tradient?",
     points: "200",
     date: "2/3/2025",
@@ -19,6 +24,7 @@ const tasks = [
     image: "/images/task2.png",
   },
   {
+    id: "3",
     title: "How to open a stock account on Tradient?",
     points: "200",
     date: "2/3/2025",
@@ -26,6 +32,7 @@ const tasks = [
     image: "/images/task3.png",
   },
   {
+    id: "4",
     title: "How to open a stock account on Tradient?",
     points: "200",
     date: "2/3/2025",
@@ -33,6 +40,7 @@ const tasks = [
     image: "/images/task1.png",
   },
   {
+    id: "5",
     title: "How to open a stock account on Tradient?",
     points: "200",
     date: "2/3/2025",
@@ -40,6 +48,7 @@ const tasks = [
     image: "/images/task4.png",
   },
   {
+    id: "6",
     title: "How to open a stock account on Tradient?",
     points: "200",
     date: "2/3/2025",
@@ -47,6 +56,7 @@ const tasks = [
     image: "/images/task5.png",
   },
   {
+    id: "7",
     title: "How to open a stock account on Tradient?",
     points: "200",
     date: "2/3/2025",
@@ -54,6 +64,7 @@ const tasks = [
     image: "/images/task1.png",
   },
   {
+    id: "8",
     title: "How to open a stock account on Tradient?",
     points: "200",
     date: "2/3/2025",
@@ -61,6 +72,7 @@ const tasks = [
     image: "/images/task1.png",
   },
   {
+    id: "9",
     title: "How to open a stock account on Tradient?",
     points: "200",
     date: "2/3/2025",
@@ -68,6 +80,7 @@ const tasks = [
     image: "/images/task1.png",
   },
   {
+    id: "10",
     title: "How to open a stock account on Tradient?",
     points: "200",
     date: "2/3/2025",
@@ -75,6 +88,7 @@ const tasks = [
     image: "/images/task1.png",
   },
   {
+    id: "11",
     title: "How to open a stock account on Tradient?",
     points: "200",
     date: "2/3/2025",
@@ -82,6 +96,7 @@ const tasks = [
     image: "/images/task1.png",
   },
   {
+    id: "12",
     title: "How to open a stock account on Tradient?",
     points: "200",
     date: "2/3/2025",
@@ -91,6 +106,12 @@ const tasks = [
 ];
 
 const Tasks = () => {
+  const router = useRouter();
+
+  const handleTask = (taskId: string) => {
+    router.push(`/dashboard/tasks/${taskId}`);
+  };
+
   return (
     <Stack className={styles.taskContainer}>
       <Stack className={styles.innerBox}>
@@ -138,7 +159,10 @@ const Tasks = () => {
           <Flex className={styles.taskFlex}>
             {tasks.map((task, index) => (
               <Stack key={index} className={styles.taskBox}>
-                <Stack className={styles.imageBox}>
+                <Stack
+                  className={styles.imageBox}
+                  onClick={() => handleTask(task.id)}
+                >
                   <Image
                     src={task.image}
                     alt="task image"
@@ -152,7 +176,12 @@ const Tasks = () => {
                   <Text className={styles.taskDate}>{task.date}</Text>
                   <Text className={styles.taskDate}>{task.tags}</Text>
                 </Flex>
-                <Title className={styles.taskTitle}>{task.title}</Title>
+                <Title
+                  className={styles.taskTitle}
+                  onClick={() => handleTask(task.id)}
+                >
+                  {task.title}
+                </Title>
               </Stack>
             ))}
           </Flex>
