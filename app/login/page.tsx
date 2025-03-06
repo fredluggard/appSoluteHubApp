@@ -16,8 +16,11 @@ import styles from "./login.module.css";
 import Link from "next/link";
 import { setUser, getUser } from "@/store/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 const Login = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [authData, setAuthData] = useState(null);
@@ -32,6 +35,10 @@ const Login = () => {
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
     })
       .then((response) => {
         if (!response.ok) {
@@ -41,6 +48,7 @@ const Login = () => {
       })
       .then((data) => {
         setAuthData(data);
+        console.log(data);
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
@@ -65,9 +73,10 @@ const Login = () => {
         return response.json();
       })
       .then((data) => {
-        dispacth(setUser(data));
         console.log(data);
-        console.log(user);
+        Cookies.set("token", data.token, { expires: 7 });
+        dispacth(setUser(data));
+        router.push("/dashboard");
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);

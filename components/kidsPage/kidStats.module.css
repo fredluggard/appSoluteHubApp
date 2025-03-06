@@ -1,0 +1,144 @@
+.statsContainer {
+  width: 100%;
+  height: auto;
+  padding: 90px;
+  gap: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.topFlex {
+  width: 100%;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topImage {
+  width: 200px;
+  height: 200px;
+}
+
+.topStack {
+  width: 50%;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.topTitle {
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  text-align: center;
+}
+
+.topText {
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.midFlex {
+  position: relative;
+  gap: 30px;
+  flex: 1 1 calc(33.333% - 20px);
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.midStack {
+  position: relative;
+  width: 30%;
+  height: auto;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.midImage {
+  width: 50px;
+  height: 50px;
+}
+
+.midText {
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.5%;
+}
+
+.starFlex {
+  width: 100%;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nameText {
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 0%;
+}
+
+.starImage {
+  width: 20px;
+  height: 20px;
+}
+
+.joinStack {
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.joinTitle {
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.joinFlex {
+  width: 100%;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.lovedBox {
+  width: 30%;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.lovedText {
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.lovedTitle {
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0%;
+  text-align: center;
+}

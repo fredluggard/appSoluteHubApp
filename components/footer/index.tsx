@@ -23,7 +23,7 @@ const Footer = () => {
   return (
     <>
       {!pagePath.some((path) => currentUrl.includes(path)) ? (
-        <Stack className={styles.footer}>
+        <Stack gap={100} className={styles.footerBox}>
           <Flex className={styles.top}>
             <Stack className={styles.logoBox}>
               <AppSoluteLogo color="#ffffff" />
