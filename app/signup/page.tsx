@@ -14,8 +14,13 @@ import Image from "next/image";
 import React, { useState } from "react";
 import styles from "./signup.module.css";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const SignUp = () => {
+  const router = useRouter();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [authData, setAuthData] = useState(null);
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -34,6 +39,7 @@ const SignUp = () => {
       })
       .then((data) => {
         setAuthData(data);
+        console.log(data);
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
@@ -46,6 +52,11 @@ const SignUp = () => {
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        fullName: name,
+        email,
+        password,
+      }),
     })
       .then((response) => {
         if (!response.ok) {
@@ -55,7 +66,7 @@ const SignUp = () => {
       })
       .then((data) => {
         setAuthData(data);
-        console.log(authData);
+        router.push("/login");
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
@@ -95,6 +106,8 @@ const SignUp = () => {
                 id="name"
                 placeholder="Full Name"
                 className={styles.input}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </Stack>
 
@@ -108,6 +121,8 @@ const SignUp = () => {
                 id="email"
                 placeholder="Email Address"
                 className={styles.input}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Stack>
 
@@ -121,6 +136,8 @@ const SignUp = () => {
                 id="password"
                 placeholder="Password"
                 className={styles.input2}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </Stack>
 
@@ -141,13 +158,13 @@ const SignUp = () => {
             className={styles.logButton}
             onClick={handleSignUp}
           >
-            Login
+            Sign up
           </Button>
 
           <Flex className={styles.signBox}>
-            <Text className={styles.signText}>Don&apos;t have an account?</Text>
-            <Link href={"#"} className={styles.signLink}>
-              Sign Up
+            <Text className={styles.signText}>Already have an account?</Text>
+            <Link href={"/login"} className={styles.signLink}>
+              login
             </Link>
           </Flex>
         </Stack>
