@@ -21,7 +21,7 @@ const KidSection = () => {
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
               cupidatat non proident.
             </Text>
-            <LinkButton url="#" text="Learn More &#62;" />
+            <LinkButton url="kids" text="Learn More &#62;" />
           </Stack>
           <Stack className={styles.rightBox}>
             <Image
@@ -59,15 +59,10 @@ const KidSection = () => {
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
               cupidatat non proident.
             </Text>
-            <LinkButton url="#" text="Learn More &#62;" />
+            <LinkButton url="/media" text="Learn More &#62;" />
           </Stack>
           <Stack className={styles.rightBox}>
-            <Image
-              src="/images/appMedia.png"
-              width={508}
-              height={628}
-              alt="kid"
-            />
+            <Image src="/images/appMedia.png" width={508} height={628} alt="" />
           </Stack>
         </Stack>
         <Stack className={styles.bottom}>

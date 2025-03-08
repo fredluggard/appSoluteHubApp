@@ -1,9 +1,75 @@
+"use client";
+
 import { Box, Flex, Progress, Stack, Text, Title } from "@mantine/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./dash.module.css";
 import Image from "next/image";
+import Cookies from "js-cookie";
 
 const Dashboard = () => {
+  const [blog, setBlog] = useState<
+    | {
+        id?: string;
+        imageUrl: string;
+        title: string;
+        description?: string;
+        contributor?: string;
+        category?: string;
+        authorId?: string;
+        author?: {
+          email?: string;
+          fullName?: string;
+          id?: string;
+        };
+      }[]
+    | null
+  >(null);
+
+  const [tasks, setTasks] = useState(null);
+  const [user, setUser] = useState(null);
+
+  // useEffect(() => {
+  //   const fetchBlog = async () => {
+  //     try {
+  //       const response = await fetch(`${url}/api/v1/posts/`);
+  //       const data = await response.json();
+  //       setBlog(data.data || null);
+  //     } catch (error) {
+  //       console.error("Error fetching recent blog:", error);
+  //     }
+  //   };
+
+  //   fetchBlog();
+  // });
+  const token = Cookies.get("token");
+  const url = process.env.NEXT_PUBLIC_BASE_URL;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [blogRes, taskRes, userRes] = await Promise.all([
+          fetch(`${url}/api/v1/posts/`).then((res) => res.json()),
+          fetch(`${url}/api/v1/tasks`).then((res) => res.json()),
+          fetch(`${url}/api/v1/users/auth/${token}`).then((res) => res.json()),
+        ]);
+
+        console.log(blogRes?.data);
+        console.log(taskRes?.data);
+        console.log(userRes?.data);
+
+        setBlog(blogRes?.data);
+        setTasks(taskRes?.data);
+        setUser(userRes?.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    if (token) {
+      fetchData();
+    }
+  }, [token]);
+
   return (
     <Stack className={styles.dashContainer}>
       <Stack className={styles.innerBox}>

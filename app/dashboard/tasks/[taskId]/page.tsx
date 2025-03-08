@@ -11,11 +11,12 @@ import {
   Text,
   Title,
 } from "@mantine/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./taskId.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 
 const quizQuestions = [
   {
@@ -62,23 +63,13 @@ const quizQuestions = [
 
 const TaskID = () => {
   const [hide, setHide] = useState(true);
-  // Track the current question index
+  const [singleTask, setSingleTask] = useState<any>();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-
-  // Track the number of correct answers
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
-
-  // Track the user’s selected option for each question
   const [answers, setAnswers] = useState<(string | null)[]>(
     Array(quizQuestions.length).fill(null)
   );
-
-  const router = useRouter();
-
-  // Destructure current question data
   const { question, options } = quizQuestions[currentQuestionIndex];
-
-  // Check if the selected answer is correct
   const checkAnswer = () => {
     const currentQuestion = quizQuestions[currentQuestionIndex];
     if (
@@ -88,7 +79,6 @@ const TaskID = () => {
       setCorrectAnswersCount((prev) => prev + 1);
     }
   };
-
   const handleNext = () => {
     if (!answers[currentQuestionIndex])
       return alert("Please select an answer.");
@@ -102,6 +92,7 @@ const TaskID = () => {
     }
   };
 
+  const router = useRouter();
   const handleEndTask = () => {
     router.push("/dashboard/tasks");
   };
@@ -121,13 +112,39 @@ const TaskID = () => {
         quizQuestions[currentQuestionIndex].correctAnswer
       ];
 
-    if (!selectedAnswer) return styles.radio; // Default styling
+    if (!selectedAnswer) return styles.radio;
 
-    if (option === isCorrect) return styles.correct; // Green for correct answer
-    if (option === selectedAnswer) return styles.incorrect; // Red for wrong selection
+    if (option === isCorrect) return styles.correct;
+    if (option === selectedAnswer) return styles.incorrect;
 
     return styles.radio;
   };
+
+  const { taskId } = useParams();
+  const url = process.env.NEXT_PUBLIC_BASE_URL;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${url}/api/v1/tasks/${taskId}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        console.log(data);
+        setSingleTask(data.Task);
+      } catch (error) {
+        console.error("Error fetching task:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <Stack className={styles.tasksContainer}>

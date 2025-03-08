@@ -24,7 +24,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [authData, setAuthData] = useState(null);
-  const dispacth = useDispatch();
+  const dispatch = useDispatch();
   const user = useSelector(getUser);
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -73,9 +73,8 @@ const Login = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         Cookies.set("token", data.token, { expires: 7 });
-        dispacth(setUser(data));
+        dispatch(setUser(data));
         router.push("/dashboard");
       })
       .catch((error) => {

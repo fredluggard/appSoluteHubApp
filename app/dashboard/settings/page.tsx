@@ -14,6 +14,7 @@ import { IconChevronDown } from "@tabler/icons-react";
 import React, { useEffect, useState } from "react";
 import styles from "./settings.module.css";
 import Image from "next/image";
+import Cookies from "js-cookie";
 
 const Settings = () => {
   const [activeForm, setActiveForm] = useState(true);
@@ -25,6 +26,7 @@ const Settings = () => {
   const [phone, setPhone] = useState("");
   const [country, setCountry] = useState("");
   const [countries, setCountries] = useState<string[]>([]);
+  const [user, setUser] = useState(null);
 
   const date = new Date().toLocaleDateString("en-GB", {
     weekday: "short",
@@ -38,6 +40,56 @@ const Settings = () => {
   const handleEdit = () => {
     setActiveForm(!activeForm);
   };
+
+  const token = Cookies.get("token");
+  const url = process.env.NEXT_PUBLIC_BASE_URL;
+
+  const updateUser = async () => {
+    try {
+      const response = await fetch(`${url}/api/v1/users/auth/${token}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName,
+          nickName,
+          email,
+          gender,
+          phone,
+          country,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      console.log(data);
+      setUser(data.data);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${url}/api/v1/users/auth/${token}`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        console.log(data);
+        setUser(data.data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    if (token) {
+      fetchData();
+    }
+  }, [token]);
 
   useEffect(() => {
     const fetchCountries = async () => {

@@ -1,10 +1,11 @@
 "use client";
 
 import { Box, Flex, Progress, Stack, Text, Title } from "@mantine/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./task.module.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 const tasks = [
   {
@@ -106,11 +107,38 @@ const tasks = [
 ];
 
 const Tasks = () => {
+  const [task, setTask] = useState(null);
+  const [user, setUser] = useState(null);
   const router = useRouter();
 
   const handleTask = (taskId: string) => {
     router.push(`/dashboard/tasks/${taskId}`);
   };
+
+  const token = Cookies.get("token");
+  const url = process.env.NEXT_PUBLIC_BASE_URL;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [taskRes, userRes] = await Promise.all([
+          fetch(`${url}/api/v1/tasks`).then((res) => res.json()),
+          fetch(`${url}/api/v1/users/auth/${token}`).then((res) => res.json()),
+        ]);
+
+        console.log(taskRes?.data);
+        console.log(userRes?.data);
+
+        setTask(taskRes?.data);
+        setUser(userRes?.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    if (token) {
+      fetchData();
+    }
+  }, [token]);
 
   return (
     <Stack className={styles.taskContainer}>

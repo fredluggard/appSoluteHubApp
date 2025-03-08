@@ -1,76 +1,112 @@
+"use client";
+
 import { Flex, Stack, Table, Text, Title } from "@mantine/core";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./leader.module.css";
 
 const LeaderBoard = () => {
+  interface User {
+    id: string;
+    rank: string;
+    fullName: string;
+    totalScore: string;
+    joined: string;
+    answered: string;
+    profileImage: string;
+  }
+
+  // const data = [
+  //   {
+  //     rank: "1",
+  //     fullName: "James Bond",
+  //     points: "4000",
+  //     joined: "12/09/2023",
+  //     answered: "10",
+  //     image: "/images/team.png",
+  //   },
+  //   {
+  //     rank: "2",
+  //     fullName: "Darmain Joe",
+  //     points: "4000",
+  //     joined: "12/09/2023",
+  //     answered: "10",
+  //     image: "/images/team.png",
+  //   },
+  //   {
+  //     rank: "3",
+  //     fullName: "Sarah Lee",
+  //     points: "4000",
+  //     joined: "12/09/2023",
+  //     answered: "10",
+  //     image: "/images/team.png",
+  //   },
+  //   {
+  //     rank: "4",
+  //     fullName: "William Spencer",
+  //     points: "4000",
+  //     joined: "12/09/2023",
+  //     answered: "10",
+  //     image: "/images/team.png",
+  //   },
+  //   {
+  //     rank: "5",
+  //     fullName: "Abel Woods",
+  //     points: "4000",
+  //     joined: "12/09/2023",
+  //     answered: "10",
+  //     image: "/images/team.png",
+  //   },
+  // ];
+
+  const [data, setData] = useState<User[]>([]);
   const date = new Date().toLocaleDateString("en-GB", {
     month: "short",
     day: "numeric",
     year: "numeric",
   });
 
-  const data = [
-    {
-      rank: "1",
-      name: "James Bond",
-      points: "4000",
-      joined: "12/09/2023",
-      answered: "10",
-      image: "/images/team.png",
-    },
-    {
-      rank: "2",
-      name: "Darmain Joe",
-      points: "4000",
-      joined: "12/09/2023",
-      answered: "10",
-      image: "/images/team.png",
-    },
-    {
-      rank: "3",
-      name: "Sarah Lee",
-      points: "4000",
-      joined: "12/09/2023",
-      answered: "10",
-      image: "/images/team.png",
-    },
-    {
-      rank: "4",
-      name: "William Spencer",
-      points: "4000",
-      joined: "12/09/2023",
-      answered: "10",
-      image: "/images/team.png",
-    },
-    {
-      rank: "5",
-      name: "Abel Woods",
-      points: "4000",
-      joined: "12/09/2023",
-      answered: "10",
-      image: "/images/team.png",
-    },
-  ];
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-  const rows = data.map((user, i) => (
+  useEffect(() => {
+    fetch(`${baseUrl}/api/v1/leaderborad`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setData(data.leaderboard);
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
+  }, []);
+
+  const rows = data?.map((user, i) => (
     <tr key={i} className={styles.tableRow}>
-      <td className={styles.tableText}>{user.rank}</td>
+      <td className={styles.tableText}>{i + 1}</td>
       <td className={styles.tableText2}>
         <Flex align={"center"} w={"60%"} h={70} gap={20}>
           <Image
-            src={user.image}
-            alt={user.name}
+            src={user.profileImage || "/images/userProfile.png"}
+            alt={user.fullName}
             width={35}
             height={35}
             className={styles.userImg}
           />
-          <Text>{user.name}</Text>
+          <Text>{user.fullName}</Text>
         </Flex>
       </td>
       <td className={styles.tableText}>{user.joined}</td>
       <td className={styles.tableText}>{user.answered}</td>
-      <td className={styles.tableText}>{user.points}</td>
+      <td className={styles.tableText}>{user.totalScore}</td>
     </tr>
   ));
 
@@ -87,16 +123,20 @@ const LeaderBoard = () => {
         <Stack className={styles.secondBox}>
           <Text className={styles.pos2}>2</Text>
           <Image
-            src={"/images/team.png"}
+            src={
+              data[1]?.profileImage && data[1].profileImage.trim() !== ""
+                ? data[1].profileImage
+                : "/images/userProfile.png"
+            }
             alt="user"
             width={150}
             height={150}
             className={styles.posImg}
           />
           <Title className={styles.posText}>2nd Place</Title>
-          <Text className={styles.posName}>{data[1].name}</Text>
+          <Text className={styles.posName}>{data[1]?.fullName}</Text>
           <Flex className={styles.posFlex}>
-            <Title className={styles.points}>{data[1].points}</Title>
+            <Title className={styles.points}>{data[1]?.totalScore}</Title>
             <Text className={styles.pointText}>Points</Text>
           </Flex>
         </Stack>
@@ -104,16 +144,20 @@ const LeaderBoard = () => {
         <Stack className={styles.firstBox}>
           <Text className={styles.pos1}>1</Text>
           <Image
-            src={"/images/team.png"}
+            src={
+              data[0]?.profileImage && data[0].profileImage.trim() !== ""
+                ? data[0].profileImage
+                : "/images/userProfile.png"
+            }
             alt="user"
             width={150}
             height={150}
             className={styles.posImg}
           />
           <Title className={styles.posText}>1st Place</Title>
-          <Text className={styles.posName}>{data[0].name}</Text>
+          <Text className={styles.posName}>{data[0]?.fullName}</Text>
           <Flex className={styles.posFlex}>
-            <Title className={styles.points}>{data[0].points}</Title>
+            <Title className={styles.points}>{data[0]?.totalScore}</Title>
             <Text className={styles.pointText}>Points</Text>
           </Flex>
         </Stack>
@@ -121,16 +165,20 @@ const LeaderBoard = () => {
         <Stack className={styles.secondBox}>
           <Text className={styles.pos3}>3</Text>
           <Image
-            src={"/images/team.png"}
+            src={
+              data[2]?.profileImage && data[2].profileImage.trim() !== ""
+                ? data[2].profileImage
+                : "/images/userProfile.png"
+            }
             alt="user"
             width={150}
             height={150}
             className={styles.posImg}
           />
           <Title className={styles.posText}>3rd Place</Title>
-          <Text className={styles.posName}>{data[2].name}</Text>
+          <Text className={styles.posName}>{data[2]?.fullName}</Text>
           <Flex className={styles.posFlex}>
-            <Title className={styles.points}>{data[2].points}</Title>
+            <Title className={styles.points}>{data[2]?.totalScore}</Title>
             <Text className={styles.pointText}>Points</Text>
           </Flex>
         </Stack>
