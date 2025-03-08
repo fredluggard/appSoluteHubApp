@@ -23,7 +23,7 @@ const OngoingProjects = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </Text>
-          <Link href="#" className={styles.link}>
+          <Link href="/blog" className={styles.link}>
             Read More &#62;
           </Link>
         </Stack>
@@ -36,7 +36,7 @@ const OngoingProjects = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </Text>
-          <Link href="#" className={styles.link}>
+          <Link href="/research" className={styles.link}>
             Read More &#62;
           </Link>
         </Stack>

@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import Cookies from "js-cookie";
 
 export function middleware(req: NextRequest) {
-  const token = Cookies.get("token");
+  const token = req.cookies.get("token")?.value;
 
   if (!token) {
     const loginUrl = new URL("/login", req.url);

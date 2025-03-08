@@ -1,11 +1,16 @@
+"use client";
+
 import { Flex, Stack, Title } from "@mantine/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./moreBlog.module.css";
 import LinkButton from "../button";
+import { useRouter } from "next/navigation";
 
 const MoreBlog = () => {
+  const [blogs, setBlogs] = useState([]);
   const moreBlogs = [
     {
+      id: "1",
       tag: "R & D",
       title: "Explore our Research and Development center",
       writer: "Uche",
@@ -13,6 +18,7 @@ const MoreBlog = () => {
       url: "/",
     },
     {
+      id: "2",
       tag: "MEDIA",
       title: "Explore AppSolute media  for our Educational vidoes",
       writer: "Sochima",
@@ -20,6 +26,7 @@ const MoreBlog = () => {
       url: "/",
     },
     {
+      id: "3",
       tag: "KIDS",
       title: "Explore our AppSolute kids section",
       writer: "Fredrick",
@@ -28,7 +35,36 @@ const MoreBlog = () => {
     },
   ];
 
+  const router = useRouter();
+  const handleClick = (url: string) => {
+    // router.push(url);
+    router.push(`/blog/${url}`);
+  };
+
   const date = new Date().toDateString();
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+  useEffect(() => {
+    fetch(`${baseUrl}/api/v1/posts`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setBlogs(data.data);
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
+  }, []);
 
   return (
     <Stack className={styles.wrapper}>
@@ -37,7 +73,11 @@ const MoreBlog = () => {
       </Stack>
       <Flex className={styles.moreBlog}>
         {moreBlogs.map((item, index) => (
-          <Stack className={styles.content} key={index}>
+          <Stack
+            className={styles.content}
+            key={index}
+            onClick={() => handleClick(item.id)}
+          >
             <Stack
               className={styles.slideContent}
               style={{ backgroundImage: `url(${item.src})` }}
@@ -54,7 +94,7 @@ const MoreBlog = () => {
         ))}
       </Flex>
       <Stack className={styles.readMore}>
-        <LinkButton url="#" text="Read More &#62;" />
+        <LinkButton url="/blog" text="Read More &#62;" />
       </Stack>
     </Stack>
   );
