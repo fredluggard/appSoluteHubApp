@@ -3,7 +3,6 @@
 import {
   Box,
   Button,
-  CheckIcon,
   Flex,
   Progress,
   Radio,
@@ -18,49 +17,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
 import Cookies from "js-cookie";
-
-// const quizQuestions = [
-//   {
-//     question: "How to open a stock account at Tradiant?",
-//     options: [
-//       "Fill out an online form",
-//       "Visit a local bank",
-//       "Call customer support",
-//       "Use a 3rd party broker",
-//     ],
-//     correctAnswer: 0,
-//   },
-//   {
-//     question: "What is the minimum deposit required?",
-//     options: ["$100", "$500", "$1000", "No minimum deposit"],
-//     correctAnswer: 3,
-//   },
-//   {
-//     question: "Which document is required for verification?",
-//     options: [
-//       "Passport",
-//       "Driver's License",
-//       "Utility Bill",
-//       "All of the above",
-//     ],
-//     correctAnswer: 3,
-//   },
-//   {
-//     question: "How long does the verification process take?",
-//     options: ["1-2 days", "3-5 days", "1 week", "2 weeks"],
-//     correctAnswer: 1,
-//   },
-//   {
-//     question: "Can you trade immediately after opening an account?",
-//     options: [
-//       "Yes",
-//       "No",
-//       "Depends on the verification",
-//       "Depends on the deposit amount",
-//     ],
-//     correctAnswer: 2,
-//   },
-// ];
 
 const TaskID = () => {
   interface Question {
@@ -88,11 +44,6 @@ const TaskID = () => {
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
 
-  // const { questionText, options } = quizQuestions[currentQuestionIndex] || {
-  //   questionText: "",
-  //   options: [],
-  // };
-
   const currentQuestion = useMemo(
     () => quizQuestions[currentQuestionIndex] || null,
     [quizQuestions, currentQuestionIndex]
@@ -119,6 +70,27 @@ const TaskID = () => {
     }
   };
 
+  const submitScore = async (questionId: number, userAnswer: string) => {
+    try {
+      const response = await fetch(`${url}/api/v1/tasks/answer/${taskId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          questionId,
+          userAnswer,
+        }),
+      });
+      if (!response.ok) throw new Error("Network response was not ok");
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error submitting score:", error);
+    }
+  };
+
   const router = useRouter();
   const handleEndTask = () => {
     router.push("/dashboard/tasks");
@@ -127,10 +99,16 @@ const TaskID = () => {
   const handleOptionChange = (idx: number) => {
     if (answers[currentQuestionIndex] !== null) return;
 
+    const selectedAnswer = currentQuestion?.options[idx] || "";
     const updatedAnswers = [...answers];
-    updatedAnswers[currentQuestionIndex] = currentQuestion?.options[idx] || "";
+    updatedAnswers[currentQuestionIndex] = selectedAnswer;
     setAnswers(updatedAnswers);
+
     checkAnswer(idx);
+
+    if (currentQuestion) {
+      submitScore(currentQuestion.id, selectedAnswer);
+    }
   };
 
   const getOptionClass = (idx: number) => {

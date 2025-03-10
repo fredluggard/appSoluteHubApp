@@ -148,7 +148,6 @@ const Tasks = () => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        console.log(data);
         setTask(data);
       } catch (error) {
         console.error("Error fetching task:", error);
@@ -165,7 +164,6 @@ const Tasks = () => {
       try {
         const response = await fetch(`${url}/api/v1/userPage/${userId}`);
         const data = await response.json();
-        console.log(data.data);
         setUser(data?.data);
       } catch (error) {
         console.error("Error fetching user data:", error);

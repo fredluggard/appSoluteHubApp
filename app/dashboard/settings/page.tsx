@@ -5,6 +5,7 @@ import {
   Button,
   Flex,
   Input,
+  Loader,
   Stack,
   Text,
   TextInput,
@@ -17,6 +18,17 @@ import Image from "next/image";
 import Cookies from "js-cookie";
 
 const Settings = () => {
+  interface User {
+    id: string;
+    fullName: string;
+    email: string;
+    gender: string;
+    nickName: string;
+    profileImage: string;
+    role: string;
+  }
+
+  const [loading, setLoading] = useState(false);
   const [activeForm, setActiveForm] = useState(true);
   const [image, setImage] = useState("");
   const [fullName, setFullName] = useState("");
@@ -26,7 +38,7 @@ const Settings = () => {
   const [phone, setPhone] = useState("");
   const [country, setCountry] = useState("");
   const [countries, setCountries] = useState<string[]>([]);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User>({} as User);
 
   const date = new Date().toLocaleDateString("en-GB", {
     weekday: "short",
@@ -39,12 +51,34 @@ const Settings = () => {
 
   const handleEdit = () => {
     setActiveForm(!activeForm);
+    if (activeForm === false) {
+      updateUser();
+    }
   };
 
   const token = Cookies.get("token");
+  const userId = Cookies.get("userId");
   const url = process.env.NEXT_PUBLIC_BASE_URL;
 
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${url}/api/v1/userPage/${userId}`);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      console.log(data);
+      setUser(data.data);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const updateUser = async () => {
+    setLoading(true);
     try {
       const response = await fetch(`${url}/api/v1/users/auth/${token}`, {
         method: "PATCH",
@@ -56,8 +90,9 @@ const Settings = () => {
           nickName,
           email,
           gender,
-          phone,
-          country,
+          profileImage: image,
+          // phone,
+          // country,
         }),
       });
       if (!response.ok) {
@@ -65,27 +100,16 @@ const Settings = () => {
       }
       const data = await response.json();
       console.log(data);
-      setUser(data.data);
+      // setUser(data.data);
+      await fetchData();
     } catch (error) {
       console.error("Error fetching user data:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${url}/api/v1/users/auth/${token}`);
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        console.log(data);
-        setUser(data.data);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
-
     if (token) {
       fetchData();
     }
@@ -110,225 +134,225 @@ const Settings = () => {
 
   return (
     <Stack className={styles.setContainer}>
-      <Stack className={styles.innerBox}>
-        <Flex className={styles.userBox}>
-          <Stack className={styles.nameBox}>
-            <Title className={styles.userName}>Welcome, Sochima</Title>
-            <Text className={styles.date}>{date}</Text>
-          </Stack>
-
-          <Stack className={styles.noticeBox}>
-            <Image
-              src={"/icons/noticeBell.svg"}
-              alt=""
-              width={30}
-              height={30}
-              className={styles.noticeIcon}
-            />
-            <Text className={styles.noticeNum}>{notitications.length}</Text>
-          </Stack>
-        </Flex>
-
-        <Flex className={styles.detailStack}>
-          <Flex className={styles.userDetails}>
-            <Stack className={styles.imageStack}>
-              <Image
-                src={image || "/images/userProfile.png"}
-                alt="user profile"
-                width={50}
-                height={50}
-                className={styles.userImg}
-              />
-              <Box
-                bg={"orange"}
-                className={styles.cameraBox}
-                onClick={() => document.getElementById("fileInput")?.click()}
-              >
-                <Image
-                  src={"/icons/camera.svg"}
-                  alt=""
-                  width={20}
-                  height={20}
-                  className={styles.cameraIcon}
-                />
-                <input
-                  type="file"
-                  id="fileInput"
-                  style={{ display: "none" }}
-                  accept="image/*"
-                  onChange={(e) => {
-                    const file = e.target.files?.[0];
-                    if (file) {
-                      setImage(URL.createObjectURL(file));
-                    }
-                  }}
-                />
-              </Box>
+      {loading ? (
+        <Stack className={styles.innerBox} justify="center" align="center">
+          <Loader color="blue" size="lg" />
+        </Stack>
+      ) : user.fullName ? (
+        <Stack className={styles.innerBox}>
+          <Flex className={styles.userBox}>
+            <Stack className={styles.nameBox}>
+              <Title
+                className={styles.userName}
+              >{`Welcome, ${user.fullName}`}</Title>
+              <Text className={styles.date}>{date}</Text>
             </Stack>
 
-            <Stack className={styles.detailsBox}>
-              <Title className={styles.detailsName}>
-                {fullName || "Sochima Onah"}
-              </Title>
-              <Text className={styles.detailsEmail}>
-                {email || "sochima@gmail.com"}
-              </Text>
+            <Stack className={styles.noticeBox}>
+              <Image
+                src={"/icons/noticeBell.svg"}
+                alt=""
+                width={30}
+                height={30}
+                className={styles.noticeIcon}
+              />
+              <Text className={styles.noticeNum}>{notitications.length}</Text>
             </Stack>
           </Flex>
 
-          <Button className={styles.edit} onClick={handleEdit}>
-            {activeForm ? "Edit" : "Save"}
-          </Button>
-        </Flex>
+          <Flex className={styles.detailStack}>
+            <Flex className={styles.userDetails}>
+              <Stack className={styles.imageStack}>
+                <Image
+                  src={image ? image : user?.profileImage}
+                  alt="user profile"
+                  width={50}
+                  height={50}
+                  className={styles.userImg}
+                />
+                <Box
+                  bg={"orange"}
+                  className={styles.cameraBox}
+                  onClick={() => document.getElementById("fileInput")?.click()}
+                >
+                  <Image
+                    src={"/icons/camera.svg"}
+                    alt=""
+                    width={20}
+                    height={20}
+                    className={styles.cameraIcon}
+                  />
+                  <input
+                    type="file"
+                    id="fileInput"
+                    style={{ display: "none" }}
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        setImage(URL.createObjectURL(file));
+                      }
+                    }}
+                  />
+                </Box>
+              </Stack>
 
-        {activeForm ? (
-          <Stack className={styles.formBox}>
-            <Flex className={styles.formFlex}>
-              <TextInput
-                disabled
-                label="Full Name"
-                placeholder="Sochima Onah"
-                value={fullName}
-                onChange={(e) => setFullName(e.currentTarget.value)}
-                className={styles.formInput}
-              />
-              <TextInput
-                disabled
-                label="Nick Name"
-                placeholder="Sochima"
-                value={nickName}
-                onChange={(e) => setNickName(e.currentTarget.value)}
-                className={styles.formInput}
-              />
+              <Stack className={styles.detailsBox}>
+                <Title className={styles.detailsName}>{user?.fullName}</Title>
+                <Text className={styles.detailsEmail}>{user?.email}</Text>
+              </Stack>
             </Flex>
 
-            <Flex className={styles.formFlex}>
-              <TextInput
-                type="email"
-                disabled
-                label="Email"
-                placeholder="sochimaonah@gmail.com"
-                value={email}
-                onChange={(e) => setEmail(e.currentTarget.value)}
-                className={styles.formInput}
-              />
-              <TextInput
-                type="number"
-                disabled
-                label="Phone Number"
-                placeholder="0816581xxxx"
-                value={phone}
-                onChange={(e) => setPhone(e.currentTarget.value)}
-                className={styles.formInput}
-              />
-            </Flex>
+            <Button className={styles.edit} onClick={handleEdit}>
+              {activeForm ? "Edit" : "Save"}
+            </Button>
+          </Flex>
 
-            <Flex className={styles.formFlex}>
-              <Input.Wrapper label="Gender" className={styles.formInput}>
-                <Input
-                  component="select"
-                  rightSection={<IconChevronDown size={14} stroke={1.5} />}
-                  pointer
-                  mt="md"
+          {activeForm ? (
+            <Stack className={styles.formBox}>
+              <Flex className={styles.formFlex}>
+                <TextInput
                   disabled
-                  value={gender}
-                  onChange={(e) => setGender(e.currentTarget.value)}
-                >
-                  <option value="1">Male</option>
-                  <option value="2">Female</option>
-                </Input>
-              </Input.Wrapper>
-              <Input.Wrapper label="Country" className={styles.formInput}>
-                <Input
-                  component="select"
-                  rightSection={<IconChevronDown size={14} stroke={1.5} />}
-                  pointer
-                  mt="md"
+                  label="Full Name"
+                  placeholder="Sochima Onah"
+                  value={user.fullName}
+                  className={styles.formInput}
+                />
+                <TextInput
                   disabled
-                  value={country}
-                  onChange={(e) => setCountry(e.currentTarget.value)}
-                >
-                  {countries.map((country, index) => (
-                    <option key={index} value={country}>
-                      {country}
-                    </option>
-                  ))}
-                </Input>
-              </Input.Wrapper>
-            </Flex>
-          </Stack>
-        ) : (
-          <Stack className={styles.formBox}>
-            <Flex className={styles.formFlex}>
-              <TextInput
-                label="Full Name"
-                placeholder="Sochima Onah"
-                value={fullName}
-                onChange={(e) => setFullName(e.currentTarget.value)}
-                className={styles.formInput}
-              />
-              <TextInput
-                label="Nick Name"
-                placeholder="Sochima"
-                value={nickName}
-                onChange={(e) => setNickName(e.currentTarget.value)}
-                className={styles.formInput}
-              />
-            </Flex>
+                  label="Nick Name"
+                  placeholder="Sochima"
+                  value={user.nickName ?? ""}
+                  className={styles.formInput}
+                />
+              </Flex>
 
-            <Flex className={styles.formFlex}>
-              <TextInput
-                type="email"
-                label="Email"
-                placeholder="sochimaonah@gmail.com"
-                value={email}
-                onChange={(e) => setEmail(e.currentTarget.value)}
-                className={styles.formInput}
-              />
-              <TextInput
-                type="number"
-                label="Phone Number"
-                placeholder="0816581xxxx"
-                value={phone}
-                onChange={(e) => setPhone(e.currentTarget.value)}
-                className={styles.formInput}
-              />
-            </Flex>
+              <Flex className={styles.formFlex}>
+                <TextInput
+                  type="email"
+                  disabled
+                  label="Email"
+                  placeholder="sochimaonah@gmail.com"
+                  value={user.email}
+                  className={styles.formInput}
+                />
+                <TextInput
+                  type="number"
+                  disabled
+                  label="Phone Number"
+                  placeholder="0816581xxxx"
+                  // value={user.phone}
+                  className={styles.formInput}
+                />
+              </Flex>
 
-            <Flex className={styles.formFlex}>
-              <Input.Wrapper label="Gender" className={styles.formInput}>
-                <Input
-                  component="select"
-                  rightSection={<IconChevronDown size={14} stroke={1.5} />}
-                  pointer
-                  mt="md"
-                  value={gender}
-                  onChange={(e) => setGender(e.currentTarget.value)}
-                >
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </Input>
-              </Input.Wrapper>
-              <Input.Wrapper label="Country" className={styles.formInput}>
-                <Input
-                  component="select"
-                  rightSection={<IconChevronDown size={14} stroke={1.5} />}
-                  pointer
-                  mt="md"
-                  value={country}
-                  onChange={(e) => setCountry(e.currentTarget.value)}
-                >
-                  {countries.map((country, index) => (
-                    <option key={index} value={country}>
-                      {country}
-                    </option>
-                  ))}
-                </Input>
-              </Input.Wrapper>
-            </Flex>
-          </Stack>
-        )}
-      </Stack>
+              <Flex className={styles.formFlex}>
+                <Input.Wrapper label="Gender" className={styles.formInput}>
+                  <Input
+                    component="select"
+                    rightSection={<IconChevronDown size={14} stroke={1.5} />}
+                    pointer
+                    mt="md"
+                    disabled
+                    value={user.gender}
+                    onChange={(e) => setGender(e.currentTarget.value)}
+                  >
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                  </Input>
+                </Input.Wrapper>
+                <Input.Wrapper label="Country" className={styles.formInput}>
+                  <Input
+                    component="select"
+                    rightSection={<IconChevronDown size={14} stroke={1.5} />}
+                    pointer
+                    mt="md"
+                    disabled
+                    // value={user.country}
+                    onChange={(e) => setCountry(e.currentTarget.value)}
+                  >
+                    {countries.map((country, index) => (
+                      <option key={index} value={country}>
+                        {country}
+                      </option>
+                    ))}
+                  </Input>
+                </Input.Wrapper>
+              </Flex>
+            </Stack>
+          ) : (
+            <Stack className={styles.formBox}>
+              <Flex className={styles.formFlex}>
+                <TextInput
+                  label="Full Name"
+                  placeholder="Sochima Onah"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.currentTarget.value)}
+                  className={styles.formInput}
+                />
+                <TextInput
+                  label="Nick Name"
+                  placeholder="Sochima"
+                  value={nickName}
+                  onChange={(e) => setNickName(e.currentTarget.value)}
+                  className={styles.formInput}
+                />
+              </Flex>
+
+              <Flex className={styles.formFlex}>
+                <TextInput
+                  type="email"
+                  label="Email"
+                  placeholder="sochimaonah@gmail.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.currentTarget.value)}
+                  className={styles.formInput}
+                />
+                <TextInput
+                  type="number"
+                  label="Phone Number"
+                  placeholder="0816581xxxx"
+                  value={phone}
+                  onChange={(e) => setPhone(e.currentTarget.value)}
+                  className={styles.formInput}
+                />
+              </Flex>
+
+              <Flex className={styles.formFlex}>
+                <Input.Wrapper label="Gender" className={styles.formInput}>
+                  <Input
+                    component="select"
+                    rightSection={<IconChevronDown size={14} stroke={1.5} />}
+                    pointer
+                    mt="md"
+                    value={gender}
+                    onChange={(e) => setGender(e.currentTarget.value)}
+                  >
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </Input>
+                </Input.Wrapper>
+                <Input.Wrapper label="Country" className={styles.formInput}>
+                  <Input
+                    component="select"
+                    rightSection={<IconChevronDown size={14} stroke={1.5} />}
+                    pointer
+                    mt="md"
+                    value={country}
+                    onChange={(e) => setCountry(e.currentTarget.value)}
+                  >
+                    {countries.map((country, index) => (
+                      <option key={index} value={country}>
+                        {country}
+                      </option>
+                    ))}
+                  </Input>
+                </Input.Wrapper>
+              </Flex>
+            </Stack>
+          )}
+        </Stack>
+      ) : null}
     </Stack>
   );
 };
