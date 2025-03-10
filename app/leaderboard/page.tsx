@@ -104,7 +104,13 @@ const LeaderBoard = () => {
           <Text>{user.fullName}</Text>
         </Flex>
       </td>
-      <td className={styles.tableText}>{user.joined}</td>
+      <td className={styles.tableText}>
+        {new Date(user.joined).toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+        })}
+      </td>
       <td className={styles.tableText}>{user.answered}</td>
       <td className={styles.tableText}>{user.totalScore}</td>
     </tr>
