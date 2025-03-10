@@ -27,27 +27,24 @@ const Navbar = () => {
           <Flex gap={70} align="center">
             <Flex>
               <ul className={styles.navLinks}>
-                <li className={styles.links}>
-                  <Link href="/leaderboard">Leaderboard</Link>
-                </li>
-                <li className={styles.links}>
-                  <Link href="/media">Media</Link>
-                </li>
-                <li className={styles.links}>
-                  <Link href="/research-development">R&D</Link>
-                </li>
-                <li className={styles.links}>
-                  <Link href="/kids">Kids</Link>
-                </li>
-                <li className={styles.links}>
-                  <Link href="/blog">Blog</Link>
-                </li>
-                <li className={styles.links}>
-                  <Link href="/about">About</Link>
-                </li>
-                <li className={styles.links}>
-                  <Link href="/contact">Contact</Link>
-                </li>
+                {[
+                  { href: "/leaderboard", label: "Leaderboard" },
+                  { href: "/media", label: "Media" },
+                  { href: "/research-development", label: "R&D" },
+                  { href: "/kids", label: "Kids" },
+                  { href: "/blog", label: "Blog" },
+                  { href: "/about", label: "About" },
+                  { href: "/contact", label: "Contact" },
+                ].map((link) => (
+                  <li
+                    key={link.href}
+                    className={`${styles.links} ${
+                      currentUrl === link.href ? styles.active : ""
+                    }`}
+                  >
+                    <Link href={link.href}>{link.label}</Link>
+                  </li>
+                ))}
               </ul>
             </Flex>
 

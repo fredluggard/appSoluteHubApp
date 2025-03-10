@@ -7,108 +7,125 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 
-const tasks = [
-  {
-    id: "1",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task1.png",
-  },
-  {
-    id: "2",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task2.png",
-  },
-  {
-    id: "3",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task3.png",
-  },
-  {
-    id: "4",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task1.png",
-  },
-  {
-    id: "5",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task4.png",
-  },
-  {
-    id: "6",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task5.png",
-  },
-  {
-    id: "7",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task1.png",
-  },
-  {
-    id: "8",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task1.png",
-  },
-  {
-    id: "9",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task1.png",
-  },
-  {
-    id: "10",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task1.png",
-  },
-  {
-    id: "11",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task1.png",
-  },
-  {
-    id: "12",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task1.png",
-  },
-];
+// const tasks = [
+//   {
+//     id: "1",
+//     title: "How to open a stock account on Tradient?",
+//     points: "200",
+//     date: "2/3/2025",
+//     tags: "YouTube, AI",
+//     image: "/images/task1.png",
+//   },
+//   {
+//     id: "2",
+//     title: "How to open a stock account on Tradient?",
+//     points: "200",
+//     date: "2/3/2025",
+//     tags: "YouTube, AI",
+//     image: "/images/task2.png",
+//   },
+//   {
+//     id: "3",
+//     title: "How to open a stock account on Tradient?",
+//     points: "200",
+//     date: "2/3/2025",
+//     tags: "YouTube, AI",
+//     image: "/images/task3.png",
+//   },
+//   {
+//     id: "4",
+//     title: "How to open a stock account on Tradient?",
+//     points: "200",
+//     date: "2/3/2025",
+//     tags: "YouTube, AI",
+//     image: "/images/task1.png",
+//   },
+//   {
+//     id: "5",
+//     title: "How to open a stock account on Tradient?",
+//     points: "200",
+//     date: "2/3/2025",
+//     tags: "YouTube, AI",
+//     image: "/images/task4.png",
+//   },
+//   {
+//     id: "6",
+//     title: "How to open a stock account on Tradient?",
+//     points: "200",
+//     date: "2/3/2025",
+//     tags: "YouTube, AI",
+//     image: "/images/task5.png",
+//   },
+//   {
+//     id: "7",
+//     title: "How to open a stock account on Tradient?",
+//     points: "200",
+//     date: "2/3/2025",
+//     tags: "YouTube, AI",
+//     image: "/images/task1.png",
+//   },
+//   {
+//     id: "8",
+//     title: "How to open a stock account on Tradient?",
+//     points: "200",
+//     date: "2/3/2025",
+//     tags: "YouTube, AI",
+//     image: "/images/task1.png",
+//   },
+//   {
+//     id: "9",
+//     title: "How to open a stock account on Tradient?",
+//     points: "200",
+//     date: "2/3/2025",
+//     tags: "YouTube, AI",
+//     image: "/images/task1.png",
+//   },
+//   {
+//     id: "10",
+//     title: "How to open a stock account on Tradient?",
+//     points: "200",
+//     date: "2/3/2025",
+//     tags: "YouTube, AI",
+//     image: "/images/task1.png",
+//   },
+//   {
+//     id: "11",
+//     title: "How to open a stock account on Tradient?",
+//     points: "200",
+//     date: "2/3/2025",
+//     tags: "YouTube, AI",
+//     image: "/images/task1.png",
+//   },
+//   {
+//     id: "12",
+//     title: "How to open a stock account on Tradient?",
+//     points: "200",
+//     date: "2/3/2025",
+//     tags: "YouTube, AI",
+//     image: "/images/task1.png",
+//   },
+// ];
 
 const Tasks = () => {
-  const [task, setTask] = useState(null);
-  const [user, setUser] = useState(null);
+  interface User {
+    fullName: string;
+  }
+
+  interface TaskType {
+    id: string;
+    question: string;
+    correctAnswer: string;
+    options: string[];
+    points: number;
+    tags: string[];
+    title: string;
+    url: string;
+    createdAt: string;
+    updatedAt: string;
+  }
+
+  const [task, setTask] = useState<TaskType[]>([]);
+  const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
 
   const handleTask = (taskId: string) => {
@@ -116,27 +133,47 @@ const Tasks = () => {
   };
 
   const token = Cookies.get("token");
+  const userId = Cookies.get("userId");
   const url = process.env.NEXT_PUBLIC_BASE_URL;
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchTasks = async () => {
       try {
-        const [taskRes, userRes] = await Promise.all([
-          fetch(`${url}/api/v1/tasks`).then((res) => res.json()),
-          fetch(`${url}/api/v1/users/auth/${token}`).then((res) => res.json()),
-        ]);
-
-        console.log(taskRes?.data);
-        console.log(userRes?.data);
-
-        setTask(taskRes?.data);
-        setUser(userRes?.data);
+        const response = await fetch(`${url}/api/v1/tasks`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        console.log(data);
+        setTask(data);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching task:", error);
       }
     };
 
     if (token) {
-      fetchData();
+      fetchTasks();
+    }
+  }, [token]);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await fetch(`${url}/api/v1/userPage/${userId}`);
+        const data = await response.json();
+        console.log(data.data);
+        setUser(data?.data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    if (token) {
+      fetchUser();
     }
   }, [token]);
 
@@ -164,7 +201,7 @@ const Tasks = () => {
           </Stack>
 
           <Stack className={styles.downStack}>
-            <Title className={styles.userName}>Sochima Onah</Title>
+            <Title className={styles.userName}>{user?.fullName}</Title>
             <Stack className={styles.progressBox}>
               <Progress w={"90%"} color="#f28520" value={30} />
               <Text className={styles.completed}>158/500</Text>
@@ -185,14 +222,14 @@ const Tasks = () => {
           <Title className={styles.availTitle}>Available Tasks</Title>
 
           <Flex className={styles.taskFlex}>
-            {tasks.map((task, index) => (
+            {task?.map((task, index: any) => (
               <Stack key={index} className={styles.taskBox}>
                 <Stack
                   className={styles.imageBox}
                   onClick={() => handleTask(task.id)}
                 >
                   <Image
-                    src={task.image}
+                    src={task.url}
                     alt="task image"
                     width={240}
                     height={150}
@@ -201,8 +238,12 @@ const Tasks = () => {
                   <p className={styles.taskPnt}>{task.points} points</p>
                 </Stack>
                 <Flex className={styles.flexSpace}>
-                  <Text className={styles.taskDate}>{task.date}</Text>
-                  <Text className={styles.taskDate}>{task.tags}</Text>
+                  <Text className={styles.taskDate}>
+                    {new Date(task.createdAt).toLocaleDateString("en-GB")}
+                  </Text>
+                  <Text className={styles.taskDate}>
+                    {task.tags.join(", ")}
+                  </Text>
                 </Flex>
                 <Title
                   className={styles.taskTitle}

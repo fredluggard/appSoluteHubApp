@@ -30,29 +30,21 @@ const Login = () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const handleGoogle = () => {
-    fetch(`${baseUrl}/auth/google`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setAuthData(data);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("There was a problem with the fetch operation:", error);
-      });
+    window.location.href = "https://appsolute-api-1.onrender.com/auth/google";
+    // fetch(`${baseUrl}/auth/google`)
+    //   .then((response) => {
+    //     if (!response.ok) {
+    //       throw new Error("Network response was not ok");
+    //     }
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     setAuthData(data);
+    //     console.log(data);
+    //   })
+    //   .catch((error) => {
+    //     console.error("There was a problem with the fetch operation:", error);
+    //   });
   };
 
   const handleLogin = () => {
@@ -74,6 +66,7 @@ const Login = () => {
       })
       .then((data) => {
         Cookies.set("token", data.token, { expires: 7 });
+        Cookies.set("userId", data.rest.id, { expires: 7 });
         dispatch(setUser(data));
         router.push("/dashboard");
       })
