@@ -1,0 +1,113 @@
+.recoverContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.recoverBox {
+  position: relative;
+  width: 40%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 0 12px 8px rgba(0, 0, 0, 0.1);
+  gap: 40px;
+}
+
+.title {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  text-align: center;
+}
+
+.emailGroup {
+  width: 100%;
+  gap: 5px;
+  justify-content: center;
+}
+
+.label {
+  font-family: "Sen", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.input {
+  width: 100%;
+  height: 55px;
+  outline: #d0d0d1;
+  border: 1px solid #d0d0d1;
+  border-radius: 200px;
+  background: url("/icons/icon_lock.svg") no-repeat left 10px center;
+  background-size: 20px;
+  padding-left: 35px;
+}
+
+.danger {
+  color: red;
+  font-size: 14px;
+}
+
+.logButton {
+  background-color: #37459c;
+  margin-top: 20px;
+  width: 100%;
+  height: 55px;
+  border-radius: 200px;
+}
+
+.darkLayout {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+
+.recoverLink {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 10px;
+  z-index: 100;
+  width: 465px;
+  height: 260px;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancelBox {
+  width: 100%;
+  justify-content: start;
+  align-items: end;
+}
+
+.cancel {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.successTitle {
+  font-family: "inter", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.successText {
+  width: 90%;
+  font-family: "inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+}

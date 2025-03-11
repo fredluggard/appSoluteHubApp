@@ -27,6 +27,10 @@ const ResetCode = () => {
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          password: input,
+          confirmPassword: input2,
+        }),
       })
         .then((response) => {
           if (!response.ok) {

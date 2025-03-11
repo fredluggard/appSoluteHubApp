@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Flex, Progress, Stack, Text, Title } from "@mantine/core";
+import { Box, Flex, Loader, Progress, Stack, Text, Title } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import styles from "./task.module.css";
 import Image from "next/image";
@@ -126,6 +126,7 @@ const Tasks = () => {
 
   const [task, setTask] = useState<TaskType[]>([]);
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleTask = (taskId: string) => {
@@ -161,12 +162,15 @@ const Tasks = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
+      setLoading(true);
       try {
         const response = await fetch(`${url}/api/v1/userPage/${userId}`);
         const data = await response.json();
         setUser(data?.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -177,83 +181,89 @@ const Tasks = () => {
 
   return (
     <Stack className={styles.taskContainer}>
-      <Stack className={styles.innerBox}>
-        <Flex className={styles.topFlex}>
-          <Stack className={styles.topStack}>
-            <Image
-              src={"/images/userProfile.png"}
-              alt="user profile"
-              width={50}
-              height={50}
-              className={styles.userImg}
-            />
-            <Box bg={"orange"} className={styles.cameraBox}>
-              <Image
-                src={"/icons/camera.svg"}
-                alt=""
-                width={20}
-                height={20}
-                className={styles.cameraIcon}
-              />
-            </Box>
-          </Stack>
-
-          <Stack className={styles.downStack}>
-            <Title className={styles.userName}>{user?.fullName}</Title>
-            <Stack className={styles.progressBox}>
-              <Progress w={"90%"} color="#f28520" value={30} />
-              <Text className={styles.completed}>158/500</Text>
-            </Stack>
-            <Text className={styles.morePoints}>
-              Earn more 332 more points to bypass 50 people
-            </Text>
-          </Stack>
-
-          <Flex>
-            <p className={styles.todoTask}>
-              2/55 {""} <span className={styles.todoSpan}>tasks</span>
-            </p>
-          </Flex>
-        </Flex>
-
-        <Stack className={styles.taskStack}>
-          <Title className={styles.availTitle}>Available Tasks</Title>
-
-          <Flex className={styles.taskFlex}>
-            {task?.map((task, index: any) => (
-              <Stack key={index} className={styles.taskBox}>
-                <Stack
-                  className={styles.imageBox}
-                  onClick={() => handleTask(task.id)}
-                >
-                  <Image
-                    src={task.url}
-                    alt="task image"
-                    width={240}
-                    height={150}
-                    className={styles.taskImg}
-                  />
-                  <p className={styles.taskPnt}>{task.points} points</p>
-                </Stack>
-                <Flex className={styles.flexSpace}>
-                  <Text className={styles.taskDate}>
-                    {new Date(task.createdAt).toLocaleDateString("en-GB")}
-                  </Text>
-                  <Text className={styles.taskDate}>
-                    {task.tags.join(", ")}
-                  </Text>
-                </Flex>
-                <Title
-                  className={styles.taskTitle}
-                  onClick={() => handleTask(task.id)}
-                >
-                  {task.title}
-                </Title>
-              </Stack>
-            ))}
-          </Flex>
+      {loading ? (
+        <Stack className={styles.innerBox} justify="center" align="center">
+          <Loader color="blue" size="lg" />
         </Stack>
-      </Stack>
+      ) : (
+        <Stack className={styles.innerBox}>
+          <Flex className={styles.topFlex}>
+            <Stack className={styles.topStack}>
+              <Image
+                src={"/images/userProfile.png"}
+                alt="user profile"
+                width={50}
+                height={50}
+                className={styles.userImg}
+              />
+              <Box bg={"orange"} className={styles.cameraBox}>
+                <Image
+                  src={"/icons/camera.svg"}
+                  alt=""
+                  width={20}
+                  height={20}
+                  className={styles.cameraIcon}
+                />
+              </Box>
+            </Stack>
+
+            <Stack className={styles.downStack}>
+              <Title className={styles.userName}>{user?.fullName}</Title>
+              <Stack className={styles.progressBox}>
+                <Progress w={"90%"} color="#f28520" value={30} />
+                <Text className={styles.completed}>158/500</Text>
+              </Stack>
+              <Text className={styles.morePoints}>
+                Earn more 332 more points to bypass 50 people
+              </Text>
+            </Stack>
+
+            <Flex>
+              <p className={styles.todoTask}>
+                2/55 {""} <span className={styles.todoSpan}>tasks</span>
+              </p>
+            </Flex>
+          </Flex>
+
+          <Stack className={styles.taskStack}>
+            <Title className={styles.availTitle}>Available Tasks</Title>
+
+            <Flex className={styles.taskFlex}>
+              {task?.map((task, index: any) => (
+                <Stack key={index} className={styles.taskBox}>
+                  <Stack
+                    className={styles.imageBox}
+                    onClick={() => handleTask(task.id)}
+                  >
+                    <Image
+                      src={task.url}
+                      alt="task image"
+                      width={240}
+                      height={150}
+                      className={styles.taskImg}
+                    />
+                    <p className={styles.taskPnt}>{task.points} points</p>
+                  </Stack>
+                  <Flex className={styles.flexSpace}>
+                    <Text className={styles.taskDate}>
+                      {new Date(task.createdAt).toLocaleDateString("en-GB")}
+                    </Text>
+                    <Text className={styles.taskDate}>
+                      {task.tags.join(", ")}
+                    </Text>
+                  </Flex>
+                  <Title
+                    className={styles.taskTitle}
+                    onClick={() => handleTask(task.id)}
+                  >
+                    {task.title}
+                  </Title>
+                </Stack>
+              ))}
+            </Flex>
+          </Stack>
+        </Stack>
+      )}
     </Stack>
   );
 };
