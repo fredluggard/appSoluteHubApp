@@ -24,6 +24,8 @@ const Settings = () => {
     email: string;
     gender: string;
     nickName: string;
+    phone: string;
+    country: string;
     profileImage: string;
     role: string;
   }
@@ -80,7 +82,7 @@ const Settings = () => {
   const updateUser = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${url}/api/v1/users/auth/${token}`, {
+      const response = await fetch(`${url}/api/v1/userPage/${userId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -90,17 +92,20 @@ const Settings = () => {
           nickName,
           email,
           gender,
-          profileImage: image,
-          // phone,
-          // country,
+          // profileImage: image,
+          phone,
+          country,
         }),
       });
+
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        const errorMessage = await response.text();
+        console.error(`Error ${response.status}:`, errorMessage);
+        throw new Error(`Network response was not ok: ${errorMessage}`);
       }
       const data = await response.json();
       console.log(data);
-      // setUser(data.data);
+      setUser(data.data);
       await fetchData();
     } catch (error) {
       console.error("Error fetching user data:", error);
@@ -241,7 +246,7 @@ const Settings = () => {
                   disabled
                   label="Phone Number"
                   placeholder="0816581xxxx"
-                  // value={user.phone}
+                  value={user.phone}
                   className={styles.formInput}
                 />
               </Flex>
@@ -257,8 +262,9 @@ const Settings = () => {
                     value={user.gender}
                     onChange={(e) => setGender(e.currentTarget.value)}
                   >
-                    <option value="1">Male</option>
-                    <option value="2">Female</option>
+                    <option value="">{user.gender}</option>
+                    <option value="2">Male</option>
+                    <option value="3">Female</option>
                   </Input>
                 </Input.Wrapper>
                 <Input.Wrapper label="Country" className={styles.formInput}>
@@ -268,7 +274,7 @@ const Settings = () => {
                     pointer
                     mt="md"
                     disabled
-                    // value={user.country}
+                    value={user.country}
                     onChange={(e) => setCountry(e.currentTarget.value)}
                   >
                     {countries.map((country, index) => (
@@ -328,8 +334,9 @@ const Settings = () => {
                     value={gender}
                     onChange={(e) => setGender(e.currentTarget.value)}
                   >
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option value="1"></option>
+                    <option value="2">Male</option>
+                    <option value="3">Female</option>
                   </Input>
                 </Input.Wrapper>
                 <Input.Wrapper label="Country" className={styles.formInput}>

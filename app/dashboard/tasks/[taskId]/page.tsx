@@ -70,6 +70,11 @@ const TaskID = () => {
     }
   };
 
+  const token = Cookies.get("token");
+  const userId = Cookies.get("userId");
+  const { taskId } = useParams();
+  const url = process.env.NEXT_PUBLIC_BASE_URL;
+
   const submitScore = async (questionId: number, userAnswer: string) => {
     try {
       const response = await fetch(`${url}/api/v1/tasks/answer/${taskId}`, {
@@ -83,7 +88,13 @@ const TaskID = () => {
           userAnswer,
         }),
       });
-      if (!response.ok) throw new Error("Network response was not ok");
+
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        console.error(`Error ${response.status}:`, errorMessage);
+        throw new Error(`Network response was not ok: ${errorMessage}`);
+      }
+
       const data = await response.json();
       console.log(data);
     } catch (error) {
@@ -122,11 +133,6 @@ const TaskID = () => {
     }
     return styles.radio;
   };
-
-  const token = Cookies.get("token");
-  const userId = Cookies.get("userId");
-  const { taskId } = useParams();
-  const url = process.env.NEXT_PUBLIC_BASE_URL;
 
   const fetchData = useCallback(async () => {
     try {
