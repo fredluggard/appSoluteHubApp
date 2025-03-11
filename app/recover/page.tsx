@@ -7,36 +7,45 @@ import AppSoluteLogo from "@/components/logo";
 import Image from "next/image";
 
 const RecoverPass = () => {
+  const [loading, setLoading] = useState(false);
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-  const handleRecover = () => {
-    setSuccess(true);
+  const handleRecover = async () => {
     if (input !== "") {
-      fetch(`${baseUrl}/api/v1/users/forgot-password`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
+      setLoading(true);
+      try {
+        const response = await fetch(
+          `${baseUrl}/api/v1/users/forgot-password`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: input,
+            }),
           }
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          setSuccess(true);
-          setInput("");
-          setError("");
-        })
-        .catch((error) => {
-          console.error("There was a problem with the fetch operation:", error);
-        });
+        );
+
+        if (!response.ok) {
+          const errorMessage = await response.text();
+          console.error(`Error ${response.status}:`, errorMessage);
+          throw new Error(`Network response was not ok: ${errorMessage}`);
+        }
+
+        const data = await response.json();
+        setSuccess(true);
+        setInput("");
+        setError("");
+      } catch (error) {
+        console.error("There was a problem with the fetch operation:", error);
+      } finally {
+        setLoading(false);
+      }
     } else {
       setError("Please fill in your email");
     }
@@ -71,8 +80,9 @@ const RecoverPass = () => {
             variant="filled"
             className={styles.logButton}
             onClick={handleRecover}
+            disabled={loading}
           >
-            Recover
+            {loading ? "Processing..." : "Recover"}
           </Button>
         </Stack>
       </Stack>

@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Flex,
+  Loader,
   Progress,
   Radio,
   Stack,
@@ -36,6 +37,7 @@ const TaskID = () => {
     questions: Question[];
   }
 
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<any | null>(null);
   const [hide, setHide] = useState(true);
   const [task, setTask] = useState<TaskType | null>(null);
@@ -135,6 +137,7 @@ const TaskID = () => {
   };
 
   const fetchData = useCallback(async () => {
+    setLoading(true);
     try {
       const response = await fetch(`${url}/api/v1/tasks/${taskId}`);
       if (!response.ok) throw new Error("Network response was not ok");
@@ -144,6 +147,8 @@ const TaskID = () => {
       setQuizQuestions(data?.Task.questions || []);
     } catch (error) {
       console.error("Error fetching task:", error);
+    } finally {
+      setLoading(false);
     }
   }, [taskId, url]);
 
@@ -170,7 +175,11 @@ const TaskID = () => {
 
   return (
     <Stack className={styles.tasksContainer}>
-      {task && (
+      {loading ? (
+        <Stack className={styles.innerBox} justify="center" align="center">
+          <Loader color="blue" size="lg" />
+        </Stack>
+      ) : (
         <Stack className={styles.innerBox}>
           <Flex className={styles.topFlex}>
             <Stack className={styles.topStack}>
@@ -212,14 +221,14 @@ const TaskID = () => {
 
           <Stack className={styles.questStack}>
             <Image
-              src={task.url}
+              src={task?.url || "/images/dashBlog.png"}
               alt="task"
               width={605}
               height={260}
               className={styles.questImg}
             />
             <Flex className={styles.questFlex}>
-              <Text className={styles.questTitle}>{task.title}</Text>
+              <Text className={styles.questTitle}>{task?.title}</Text>
               <Link href={"#"} target="_blank" className={styles.questLink}>
                 <Image
                   src={"/icons/linkOut.svg"}
