@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./dash.module.css";
 import Image from "next/image";
 import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const Dashboard = () => {
   const [blog, setBlog] = useState<
@@ -32,66 +32,71 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
-
-  // useEffect(() => {
-  //   const fetchBlog = async () => {
-  //     try {
-  //       const response = await fetch(`${url}/api/v1/posts/`);
-  //       const data = await response.json();
-  //       setBlog(data.data || null);
-  //     } catch (error) {
-  //       console.error("Error fetching recent blog:", error);
-  //     }
-  //   };
-
-  //   fetchBlog();
-  // });
-  const token = Cookies.get("token");
-  const userId = Cookies.get("userId");
+  const searchParams = useSearchParams();
   const url = process.env.NEXT_PUBLIC_BASE_URL;
 
   useEffect(() => {
+    const token = searchParams.get("token");
+    const userId = searchParams.get("userId");
+
+    if (token && userId) {
+      Cookies.set("token", token, { expires: 7 });
+      Cookies.set("userId", userId, { expires: 7 });
+
+      router.replace("/dashboard");
+    }
+  }, [searchParams, router]);
+
+  const token = Cookies.get("token");
+  const userId = Cookies.get("userId");
+
+  useEffect(() => {
     const fetchBlog = async () => {
+      if (!token) return;
+
       try {
-        const response = await fetch(`${url}/api/v1/posts/`);
+        const response = await fetch(`${url}/api/v1/posts/`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         const data = await response.json();
-        console.log(data);
-        setBlog(data?.data);
+        setBlog(data?.data || []);
       } catch (error) {
         console.error("Error fetching blog data:", error);
       }
     };
 
-    if (token) {
-      fetchBlog();
-    }
+    fetchBlog();
   }, [token]);
 
   useEffect(() => {
     const fetchTasks = async () => {
+      if (!token) return;
+
       try {
-        const response = await fetch(`${url}/api/v1/tasks`);
+        const response = await fetch(`${url}/api/v1/tasks`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         const data = await response.json();
-        console.log(data);
-        setTasks(data);
+        setTasks(data || []);
       } catch (error) {
         console.error("Error fetching tasks data:", error);
       }
     };
 
-    if (token) {
-      fetchTasks();
-    }
+    fetchTasks();
   }, [token]);
 
   useEffect(() => {
     const fetchUser = async () => {
+      if (!token || !userId) return;
       setLoading(true);
+
       try {
-        const response = await fetch(`${url}/api/v1/userPage/${userId}`);
+        const response = await fetch(`${url}/api/v1/userPage/${userId}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         const data = await response.json();
-        console.log(data.data);
-        setUser(data?.data);
+        setUser(data?.data || null);
       } catch (error) {
         console.error("Error fetching user data:", error);
       } finally {
@@ -99,9 +104,7 @@ const Dashboard = () => {
       }
     };
 
-    if (token) {
-      fetchUser();
-    }
+    fetchUser();
   }, [token, userId]);
 
   return (
