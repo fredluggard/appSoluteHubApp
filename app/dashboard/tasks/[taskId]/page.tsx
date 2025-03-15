@@ -37,6 +37,15 @@ const TaskID = () => {
     questions: Question[];
   }
 
+  interface Answer {
+    questionId: number;
+    userAnswer: string;
+  }
+
+  interface AnswersPayload {
+    answers: Answer[];
+  }
+
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<any | null>(null);
   const [hide, setHide] = useState(true);
@@ -45,6 +54,7 @@ const TaskID = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
+  const [userAnswers, setUserAnswers] = useState<Answer[]>([]);
 
   const currentQuestion = useMemo(
     () => quizQuestions[currentQuestionIndex] || null,
@@ -77,17 +87,16 @@ const TaskID = () => {
   const { taskId } = useParams();
   const url = process.env.NEXT_PUBLIC_BASE_URL;
 
-  const submitScore = async (questionId: number, userAnswer: string) => {
+  const submitScore = async () => {
     try {
       const response = await fetch(`${url}/api/v1/tasks/answer/${taskId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
         },
+        credentials: "include",
         body: JSON.stringify({
-          questionId,
-          userAnswer,
+          answers: userAnswers,
         }),
       });
 
@@ -105,8 +114,17 @@ const TaskID = () => {
   };
 
   const router = useRouter();
-  const handleEndTask = () => {
-    router.push("/dashboard/tasks");
+  const handleEndTask = async () => {
+    console.log(userId);
+    console.log(taskId);
+    console.log(userAnswers);
+    try {
+      await submitScore();
+      // router.push("/dashboard/tasks");
+    } catch (error) {
+      console.error("Failed to submit score:", error);
+      alert("There was an issue submitting your answers. Please try again.");
+    }
   };
 
   const handleOptionChange = (idx: number) => {
@@ -119,9 +137,13 @@ const TaskID = () => {
 
     checkAnswer(idx);
 
-    if (currentQuestion) {
-      submitScore(currentQuestion.id, selectedAnswer);
-    }
+    setUserAnswers((prev) => [
+      ...prev,
+      {
+        questionId: currentQuestion?.id ?? 0,
+        userAnswer: selectedAnswer,
+      },
+    ]);
   };
 
   const getOptionClass = (idx: number) => {

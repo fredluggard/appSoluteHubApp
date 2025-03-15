@@ -29,22 +29,21 @@ const Login = () => {
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-  const handleGoogle = () => {
+  const handleGoogle = async () => {
     window.location.href = "https://appsolute-api-1.onrender.com/auth/google";
-    // fetch(`${baseUrl}/auth/google`)
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       throw new Error("Network response was not ok");
-    //     }
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     setAuthData(data);
-    //     console.log(data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("There was a problem with the fetch operation:", error);
-    //   });
+    // try {
+    //   const response = await fetch(`${baseUrl}/auth/google`);
+    //   if (!response.ok) {
+    //     const errorMessage = await response.text();
+    //     console.error(`Error ${response.status}:`, errorMessage);
+    //     throw new Error(`Network response was not ok: ${errorMessage}`);
+    //   }
+    //   const data = await response.json();
+    //   setAuthData(data);
+    //   console.log(data);
+    // } catch (error) {
+    //   console.error("There was a problem with the fetch operation:", error);
+    // }
   };
 
   const handleLogin = () => {
