@@ -141,8 +141,10 @@ const Tasks = () => {
       try {
         const response = await fetch(`${url}/api/v1/tasks`, {
           method: "GET",
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
         });
         if (!response.ok) {

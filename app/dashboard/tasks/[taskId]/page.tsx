@@ -93,6 +93,7 @@ const TaskID = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         credentials: "include",
         body: JSON.stringify({
@@ -107,7 +108,6 @@ const TaskID = () => {
       }
 
       const data = await response.json();
-      console.log(data);
     } catch (error) {
       console.error("Error submitting score:", error);
     }
@@ -115,12 +115,9 @@ const TaskID = () => {
 
   const router = useRouter();
   const handleEndTask = async () => {
-    console.log(userId);
-    console.log(taskId);
-    console.log(userAnswers);
     try {
       await submitScore();
-      // router.push("/dashboard/tasks");
+      router.push("/dashboard/tasks");
     } catch (error) {
       console.error("Failed to submit score:", error);
       alert("There was an issue submitting your answers. Please try again.");
@@ -161,10 +158,13 @@ const TaskID = () => {
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${url}/api/v1/tasks/${taskId}`);
+      const response = await fetch(`${url}/api/v1/tasks/${taskId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
-      console.log(data);
       setTask(data?.Task);
       setQuizQuestions(data?.Task.questions || []);
     } catch (error) {
@@ -172,7 +172,7 @@ const TaskID = () => {
     } finally {
       setLoading(false);
     }
-  }, [taskId, url]);
+  }, [taskId, url, token]);
 
   useEffect(() => {
     fetchData();
@@ -183,7 +183,6 @@ const TaskID = () => {
       try {
         const response = await fetch(`${url}/api/v1/userPage/${userId}`);
         const data = await response.json();
-        console.log(data.data);
         setUser(data?.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -245,7 +244,7 @@ const TaskID = () => {
             <Image
               src={task?.url || "/images/dashBlog.png"}
               alt="task"
-              width={605}
+              width={405}
               height={260}
               className={styles.questImg}
             />
@@ -314,7 +313,9 @@ const TaskID = () => {
                 </Text>
                 <Text className={styles.showText}>You have earned</Text>
                 <Text className={styles.showTitle}>
-                  {correctAnswersCount * 40} points
+                  {(correctAnswersCount * (task?.points || 0)) /
+                    quizQuestions.length}{" "}
+                  points
                 </Text>
                 <Stack className={styles.showBtnBox}>
                   <Button className={styles.showBtn} onClick={handleEndTask}>

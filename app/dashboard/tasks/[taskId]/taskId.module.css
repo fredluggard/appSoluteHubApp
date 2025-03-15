@@ -98,9 +98,15 @@
 
 .questStack {
   width: 605px;
+  height: 350px;
   gap: 15px;
   justify-content: center;
   align-items: center;
+}
+
+.questImg {
+  width: 100%;
+  height: 90%;
 }
 
 .questFlex {

@@ -23,7 +23,7 @@ const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [authData, setAuthData] = useState(null);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector(getUser);
 
@@ -31,22 +31,10 @@ const Login = () => {
 
   const handleGoogle = async () => {
     window.location.href = "https://appsolute-api-1.onrender.com/auth/google";
-    // try {
-    //   const response = await fetch(`${baseUrl}/auth/google`);
-    //   if (!response.ok) {
-    //     const errorMessage = await response.text();
-    //     console.error(`Error ${response.status}:`, errorMessage);
-    //     throw new Error(`Network response was not ok: ${errorMessage}`);
-    //   }
-    //   const data = await response.json();
-    //   setAuthData(data);
-    //   console.log(data);
-    // } catch (error) {
-    //   console.error("There was a problem with the fetch operation:", error);
-    // }
   };
 
   const handleLogin = () => {
+    setLoading(true);
     fetch(`${baseUrl}/api/v1/users/login`, {
       method: "POST",
       headers: {
@@ -65,9 +53,10 @@ const Login = () => {
       })
       .then((data) => {
         Cookies.set("token", data.token, { expires: 7 });
-        Cookies.set("userId", data.rest.id, { expires: 7 });
+        Cookies.set("userId", data.user.id, { expires: 7 });
         dispatch(setUser(data));
         router.push("/dashboard");
+        setLoading(false);
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
@@ -144,7 +133,7 @@ const Login = () => {
             className={styles.logButton}
             onClick={handleLogin}
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </Button>
 
           <Flex className={styles.signBox}>

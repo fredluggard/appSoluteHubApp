@@ -96,6 +96,7 @@ const Dashboard = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
+        console.log(data);
         setUser(data?.data || null);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -150,7 +151,7 @@ const Dashboard = () => {
           <Flex className={styles.pointsBox}>
             <Flex className={styles.pointsFlex}>
               <Stack className={styles.pointStack}>
-                <Text className={styles.points}>55</Text>
+                <Text className={styles.points}>{user?.totalScore}</Text>
                 <Text className={styles.pointsTotal}>Total Points</Text>
               </Stack>
               <Image
