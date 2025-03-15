@@ -32,31 +32,13 @@ const SignUp = () => {
 
   const handleGoogle = () => {
     window.location.href = "https://appsolute-api-1.onrender.com/auth/google";
-    // fetch(`${baseUrl}/auth/google`, {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       throw new Error("Network response was not ok");
-    //     }
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     setAuthData(data);
-    //     console.log(data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("There was a problem with the fetch operation:", error);
-    //   });
   };
 
   const handleSignUp = () => {
     setLoading(true);
     fetch(`${baseUrl}/api/v1/users/register`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },

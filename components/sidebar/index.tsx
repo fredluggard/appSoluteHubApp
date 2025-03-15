@@ -12,24 +12,33 @@ const SideBar = () => {
   const router = useRouter();
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-  const logOut = async () => {
+  const logOut = async (): Promise<void> => {
+    const token = localStorage.getItem("token");
     try {
       const response = await fetch(`${baseUrl}/api/v1/users/logout`, {
         method: "POST",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
       });
-  
+
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error(`Logout failed: ${response.status} ${response.statusText}`);
+        throw new Error(
+          `Logout failed: ${response.status} ${response.statusText}`
+        );
       }
-  
+
       localStorage.removeItem("token");
       router.push("/");
     } catch (error) {
-      console.error("Failed to log out:", error);
+      console.error(
+        "Failed to log out:",
+        error instanceof Error ? error.message : error
+      );
     }
   };
 

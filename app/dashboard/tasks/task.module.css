@@ -110,6 +110,7 @@
 }
 
 .taskFlex {
+  width: 100%;
   position: relative;
   gap: 30px;
   flex: 1 1 calc(33.333% - 20px);
