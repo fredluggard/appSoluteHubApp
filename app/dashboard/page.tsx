@@ -96,7 +96,6 @@ const Dashboard = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
-        console.log(data);
         setUser(data?.data || null);
       } catch (error) {
         console.error("Error fetching user data:", error);

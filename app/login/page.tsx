@@ -66,7 +66,7 @@ const Login = () => {
   return (
     <Flex className={styles.loginContainer}>
       <Stack className={styles.loginLeft}>
-        <AppSoluteLogo color="#ffffff" />
+        <AppSoluteLogo color="#ffffff" logoColor="blue" />
         <Stack className={styles.loginBox}>
           <Title className={styles.title}>Login</Title>
           <Button className={styles.googleButton} onClick={handleGoogle}>
@@ -130,7 +130,7 @@ const Login = () => {
 
           <Button
             variant="filled"
-            className={styles.logButton}
+            className={styles.signinlogButton}
             onClick={handleLogin}
           >
             {loading ? "Logging in..." : "Login"}

@@ -4,18 +4,26 @@ import React from "react";
 import styles from "./logo.module.css";
 import Link from "next/link";
 
-const AppSoluteLogo = ({ color }: { color: string }) => {
+const AppSoluteLogo = ({ color, logoColor }: { color: string; logoColor: string }) => {
   return (
     <>
       <Link href="/">
         <Flex gap={15} align="center">
-          <Image
-            src="/icons/logo.svg"
-            alt="AppSolute Logo"
-            width={50}
-            height={49}
-            className={styles.logo}
-          />
+          {
+            logoColor === "white" ? (<Image
+              src="/icons/logo2.svg"
+              alt="AppSolute Logo"
+              width={50}
+              height={49}
+              className={styles.logo}
+            />) : (<Image
+              src="/icons/logo.svg"
+              alt="AppSolute Logo"
+              width={50}
+              height={49}
+              className={styles.logo}
+            />)
+          }
           <Text c={color} className={styles.text}>
             AppSolute
           </Text>

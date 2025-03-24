@@ -26,7 +26,7 @@ const Footer = () => {
         <Stack gap={100} className={styles.footerBox}>
           <Flex className={styles.top}>
             <Stack className={styles.logoBox}>
-              <AppSoluteLogo color="#ffffff" />
+              <AppSoluteLogo color="#ffffff" logoColor="white" />
               <Text className={styles.logoText}>
                 Lorem ipsum dolor sit amet
               </Text>
@@ -71,7 +71,7 @@ const Footer = () => {
                   SOCIALS
                 </Title>
                 <Flex className={styles.groupLink}>
-                  <Link href="#">
+                  <Link href="https://www.facebook.com/share/14N6e7xVyM/?mibextid=LQQJ4d">
                     <Image
                       src={"/icons/facebook.svg"}
                       alt="facebook"
@@ -79,7 +79,7 @@ const Footer = () => {
                       height={20}
                     />
                   </Link>
-                  <Link href="#">
+                  <Link href="https://x.com/appsolutehub?s=21">
                     <Image
                       src={"/icons/twitter.svg"}
                       alt="twitter"
@@ -87,7 +87,7 @@ const Footer = () => {
                       height={20}
                     />
                   </Link>
-                  <Link href="#">
+                  <Link href="https://www.instagram.com/appsolutehub?igsh=MWR3d3lnOHBzOXF0Zg==">
                     <Image
                       src={"/icons/instagram.svg"}
                       alt="instagram"
@@ -95,7 +95,7 @@ const Footer = () => {
                       height={20}
                     />
                   </Link>
-                  <Link href="#">
+                  <Link href="https://www.tiktok.com/@appsolutehub?_t=ZM-8uB70uxmNnR&_r=1">
                     <Image
                       src={"/icons/tiktok.svg"}
                       alt="tiktok"
@@ -103,7 +103,7 @@ const Footer = () => {
                       height={20}
                     />
                   </Link>
-                  <Link href="#">
+                  <Link href="https://youtube.com/@appsolutehub?si=i4tjPWK2JXzxIWZK">
                     <Image
                       src={"/icons/youtube.svg"}
                       alt="facebook"
