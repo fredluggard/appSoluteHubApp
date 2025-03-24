@@ -16,6 +16,18 @@
   scale: 1.1;
 }
 
+.active {
+  color: #e98629;
+  scale: 1.1;
+}
+
+.userImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 .login {
   display: flex;
   justify-content: center;

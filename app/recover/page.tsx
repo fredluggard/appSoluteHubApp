@@ -54,7 +54,7 @@ const RecoverPass = () => {
   return (
     <Stack className={styles.recoverContainer}>
       <Stack className={styles.recoverBox}>
-        <AppSoluteLogo color="#ffffff" />
+        <AppSoluteLogo color="#ffffff" logoColor="blue" />
         <Stack w={"100%"}>
           <Title className={styles.title}>Recover Password</Title>
           <Stack className={styles.emailGroup}>
@@ -78,7 +78,7 @@ const RecoverPass = () => {
           </Stack>
           <Button
             variant="filled"
-            className={styles.logButton}
+            className={styles.recoverlogButton}
             onClick={handleRecover}
             disabled={loading}
           >

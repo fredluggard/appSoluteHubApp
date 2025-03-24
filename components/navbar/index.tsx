@@ -1,13 +1,20 @@
 "use client";
 
-import { Box, Flex } from "@mantine/core";
+import { Box, Flex, Text } from "@mantine/core";
 import React from "react";
 import styles from "./navbar.module.css";
 import AppSoluteLogo from "../logo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSelector } from "react-redux";
+import { getUser } from "@/store/userSlice";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const user = useSelector(getUser);
+  const router = useRouter();
+
   const currentUrl = usePathname();
   const pagePath = [
     "/login",
@@ -22,7 +29,7 @@ const Navbar = () => {
       {!pagePath.some((path) => currentUrl.includes(path)) ? (
         <Flex className={styles.body} justify="space-between" align="center">
           <Box>
-            <AppSoluteLogo color="#ffffff" />
+            <AppSoluteLogo color="#ffffff" logoColor="white" />
           </Box>
           <Flex gap={70} align="center">
             <Flex>
@@ -48,11 +55,26 @@ const Navbar = () => {
               </ul>
             </Flex>
 
-            <Flex>
-              <Link href="/login" className={styles.login}>
-                Login
-              </Link>
-            </Flex>
+            {user?.email ? (
+              <Flex gap={10} align="center">
+                <Image
+                  src={user?.profileImage || "/images/userProfile.png"}
+                  alt=""
+                  width={50}
+                  height={50}
+                  className={styles.userImg}
+                  onClick={() => router.push("/dashboard/settings")}
+                />
+
+                <Text>Hi, {user?.fullName.split(" ")[0]}</Text>
+              </Flex>
+            ) : (
+              <Flex>
+                <Link href="/login" className={styles.login}>
+                  Login
+                </Link>
+              </Flex>
+            )}
           </Flex>
         </Flex>
       ) : null}

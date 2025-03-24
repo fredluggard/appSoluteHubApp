@@ -65,7 +65,7 @@ const ResetCode = () => {
   return (
     <Stack className={styles.recoverContainer}>
       <Stack className={styles.recoverBox}>
-        <AppSoluteLogo color="#ffffff" />
+        <AppSoluteLogo color="#ffffff" logoColor="blue" />
         <Stack w={"100%"}>
           <Title className={styles.title}>Reset Password</Title>
           <Stack className={styles.emailGroup}>
@@ -107,7 +107,7 @@ const ResetCode = () => {
 
           <Button
             variant="filled"
-            className={styles.logButton}
+            className={styles.resetlogButton}
             onClick={handleReset}
             disabled={loading}
           >

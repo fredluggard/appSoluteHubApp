@@ -77,10 +77,10 @@ const SignUp = () => {
     <>
       <Flex className={styles.signUpContainer}>
         <Stack className={styles.signUpLeft}>
-          <AppSoluteLogo color="#ffffff" />
+          <AppSoluteLogo color="#ffffff" logoColor="blue" />
           <Stack className={styles.signUpBox}>
             <Title className={styles.title}>Sign Up</Title>
-            <Button className={styles.googleButton} onClick={handleGoogle}>
+            <Button className={styles.upgoogleButton} onClick={handleGoogle}>
               <Image
                 src={"/icons/google_Icon.svg"}
                 alt="google icon"
@@ -106,7 +106,7 @@ const SignUp = () => {
                   name="name"
                   id="name"
                   placeholder="Full Name"
-                  className={styles.input}
+                  className={styles.input3}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -156,7 +156,7 @@ const SignUp = () => {
 
             <Button
               variant="filled"
-              className={styles.logButton}
+              className={styles.signuplogButton}
               onClick={handleSignUp}
             >
               {loading ? "Processing..." : "Sign up"}
