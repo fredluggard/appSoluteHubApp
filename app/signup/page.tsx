@@ -24,7 +24,6 @@ const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [authData, setAuthData] = useState(null);
   const [success, setSuccess] = useState(false);
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -55,7 +54,6 @@ const SignUp = () => {
         return response.json();
       })
       .then((data) => {
-        setAuthData(data);
         setShow(true);
         setSuccess(true);
         setLoading(false);
