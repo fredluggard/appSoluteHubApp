@@ -45,7 +45,7 @@ const SideBar = () => {
   return (
     <Stack className={styles.sideContainer}>
       <Stack className={styles.sideTop}>
-        <AppSoluteLogo color="#ffffff" />
+        <AppSoluteLogo color="#ffffff" logoColor="white" />
 
         <Link href="/dashboard" className={styles.sideLink}>
           <Image
