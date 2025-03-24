@@ -30,9 +30,9 @@
   height: 55px;
   gap: 10px;
   align-items: center;
-  border-radius: 200px;
+  border-radius: 200px !important;
   color: #000000;
-  background-color: #ffffff;
+  background-color: #ffffff !important;
   border: 1px solid #000000;
 }
 
@@ -120,6 +120,7 @@
 }
 
 .signinlogButton {
+  color: #ffffff !important;
   background-color: #37459c !important;
   margin-top: 20px;
   width: 100%;
