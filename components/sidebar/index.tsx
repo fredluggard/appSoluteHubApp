@@ -7,7 +7,10 @@ import AppSoluteLogo from "../logo";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { clearUser } from "@/store/userSlice";
 const SideBar = () => {
+  const dispatch = useDispatch();
   const pathname = usePathname();
   const router = useRouter();
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -25,6 +28,7 @@ const SideBar = () => {
       });
 
       const data = await response.json();
+      dispatch(clearUser());
 
       if (!response.ok) {
         throw new Error(
