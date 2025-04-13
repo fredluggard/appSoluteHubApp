@@ -26,7 +26,7 @@ const KidsHero = () => {
         </Stack>
 
         <Image
-          src={"/images/neural.png"}
+          src={"/images/kids.png"}
           alt=""
           width={300}
           height={300}

@@ -6,12 +6,14 @@ import styles from "./resetCode.module.css";
 import AppSoluteLogo from "@/components/logo";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import MobileNavbar from "@/components/navbar/mobileNavbar";
+import MobileFooter from "@/components/footer/mobileFooter";
 
 const ResetCode = () => {
   const [input, setInput] = useState("");
   const [input2, setInput2] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(true);
 
   const router = useRouter();
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -57,8 +59,11 @@ const ResetCode = () => {
 
   return (
     <Stack className={styles.recoverContainer}>
+      <MobileNavbar />
       <Stack className={styles.recoverBox}>
-        <AppSoluteLogo color="#ffffff" logoColor="blue" />
+        <Stack visibleFrom="md">
+          <AppSoluteLogo color="#ffffff" logoColor="blue" />
+        </Stack>
         <Stack w={"100%"}>
           <Title className={styles.title}>Reset Password</Title>
           <Stack className={styles.emailGroup}>
@@ -106,6 +111,7 @@ const ResetCode = () => {
           </Button>
         </Stack>
       </Stack>
+      <MobileFooter />
 
       {success && (
         <Stack className={styles.darkLayout}>

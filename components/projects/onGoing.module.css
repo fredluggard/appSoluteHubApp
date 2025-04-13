@@ -90,3 +90,76 @@
   font-size: 18px;
   font-weight: 700;
 }
+
+@media screen and (max-width: 768px) {
+  .ongoingProjects {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    gap: 120px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .top {
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .mainTitle {
+    font-family: "Sen", sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -2px;
+  }
+
+  .contain {
+    width: 100%;
+    height: 25px;
+    gap: 0;
+    border-radius: 100px;
+  }
+
+  .bottom {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    padding-bottom: 50px;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    background-color: #f4f0f8;
+  }
+
+  .left {
+    width: 100%;
+    height: auto;
+    justify-content: center;
+  }
+
+  .right {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .title {
+    font-size: 26px;
+    font-weight: 700;
+  }
+  .text {
+    font-size: 16px;
+  }
+
+  .link {
+    color: #592ea9;
+    font-family: "Sen", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+  }
+}

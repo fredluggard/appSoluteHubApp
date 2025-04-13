@@ -13,6 +13,7 @@ const Footer = () => {
   const pagePath = [
     "/login",
     "/signup",
+    "/signup/",
     "/recover",
     "/reset-password/",
     "/dashboard",

@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  Alert,
-  Button,
-  Flex,
-  Notification,
-  Stack,
-  Text,
-  Title,
-} from "@mantine/core";
+import { Button, Flex, Notification, Stack, Text, Title } from "@mantine/core";
 import React, { useState } from "react";
 import { IconX, IconCheck } from "@tabler/icons-react";
 import styles from "./joinUs.module.css";

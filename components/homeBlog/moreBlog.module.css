@@ -1,7 +1,8 @@
 .wrapper {
+  position: relative;
   justify-content: center;
   align-items: center;
-  margin: 0 5.625rem;
+  margin: 0 90px;
 }
 
 .blogTitle {
@@ -12,53 +13,53 @@
 
 .blog {
   font-family: "Sen", sans-serif;
-  font-size: 2.25rem;
+  font-size: 36px;
   font-weight: 700;
 }
 .moreBlog {
-  gap: 40px;
+  gap: 2.5rem;
 }
 
 .content {
-  width: 21.875rem;
-  height: 27.5rem;
-  gap: 1.25rem;
+  width: 350px;
+  height: 440px;
+  gap: 20px;
 }
 
 .slideContent {
-  width: 21.875rem;
-  height: 18.75rem;
+  width: 350px;
+  height: 300px;
   display: flex;
-  gap: 1.25rem;
+  gap: 20px;
   flex-direction: column;
   justify-content: start;
   align-items: start;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  border-radius: 1.25rem;
-  padding: 1rem;
+  border-radius: 20px;
+  padding: 16px;
 }
 
 .tag {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 5.3125rem;
-  height: 2.1875rem;
+  width: 85px;
+  height: 35px;
   background-color: #ffffff;
   color: #404852;
-  font-size: 0.75rem;
+  font-size: 12px;
   font-weight: 500;
   font-family: "Sen", sans-serif;
-  padding: 0.5rem 1rem;
-  border-radius: 6.25rem;
+  padding: 8px 16px;
+  border-radius: 100px;
   text-align: center;
 }
 
 .title {
   width: 100%;
-  font-size: 1.625rem;
+  font-size: 26px;
   font-weight: 700;
   color: #232536;
   font-family: "Sen", sans-serif;
@@ -66,7 +67,7 @@
 
 .writer {
   width: 100%;
-  font-size: 1.125rem;
+  font-size: 18px;
   font-weight: 400;
   color: #4c4c4c;
   font-family: "Inter", sans-serif;
@@ -77,5 +78,95 @@
   display: flex;
   align-items: start;
   justify-content: center;
-  margin: 1.875rem 0;
+  margin: 30px 0;
+}
+
+@media screen and (max-width: 48rem) {
+  .wrapper {
+    margin: 20px;
+  }
+
+  .blogTitle {
+    width: 100%;
+  }
+
+  .blog {
+    font-size: 1.875rem;
+  }
+
+  .moreBlog {
+    width: 100vw;
+    padding-left: 20px;
+    overflow-x: scroll;
+    gap: 1.25rem;
+
+    /* Firefox */
+    scrollbar-width: none;
+
+    /* Chrome, Safari and Edge */
+    -ms-overflow-style: none;
+  }
+
+  .moreBlog::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+  }
+
+  .content {
+    width: 300px;
+    height: 440px;
+    gap: 1.25rem;
+  }
+
+  .slideContent {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    padding: 16px;
+  }
+
+  .tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85px;
+    height: 35px;
+    background-color: #ffffff;
+    color: #404852;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: "Sen", sans-serif;
+    padding: 8px 16px;
+    border-radius: 100px;
+    text-align: center;
+  }
+
+  .title {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .writer {
+    width: 100%;
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .readMore {
+    position: relative;
+    top: -40px;
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    /* margin: 20px 0; */
+  }
 }

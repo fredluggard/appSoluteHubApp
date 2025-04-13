@@ -9,7 +9,7 @@ import JoinUs from "@/components/joinUs";
 
 export default function Home() {
   return (
-    <Stack gap={0}>
+    <Stack w="100vw" gap={0}>
       <HeroSection />
       <HomeBlog />
       <Explore />
