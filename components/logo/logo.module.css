@@ -8,3 +8,16 @@
   font-weight: 600;
   font-family: "Poppins", sans-serif;
 }
+
+@media screen and (max-width: 768px) {
+  .logo {
+    width: 25px;
+    height: 25px;
+  }
+
+  .text {
+    font-size: 14px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+  }
+}

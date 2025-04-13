@@ -29,6 +29,7 @@ const KidSection = () => {
               width={508}
               height={628}
               alt="kid"
+              className={styles.img}
             />
           </Stack>
         </Stack>
@@ -51,8 +52,8 @@ const KidSection = () => {
         <Stack className={styles.topLevel}>
           <Stack className={styles.leftBoxLevel}>
             <Title className={styles.title}>
-              AppSolute Media; grow your knowledge and business with our
-              tailored ai and software videos
+              AppSolute Media grow your knowledge and business with our tailored
+              ai and software videos
             </Title>
             <Text className={styles.text}>
               Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -62,7 +63,13 @@ const KidSection = () => {
             <LinkButton url="/media" text="Learn More &#62;" />
           </Stack>
           <Stack className={styles.rightBox}>
-            <Image src="/images/appMedia.png" width={508} height={628} alt="" />
+            <Image
+              src="/images/appMedia.png"
+              width={508}
+              height={628}
+              alt=""
+              className={styles.img}
+            />
           </Stack>
         </Stack>
         <Stack className={styles.bottom}>

@@ -13,34 +13,34 @@ const HomeBlog = () => {
   const blogPosts = [
     {
       id: "1",
-      title: "Lorem ipsum dolor",
+      title: "Innovation Pipeline",
       description:
         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore e",
-      image: "/images/blogImg.png",
+      image: "/icons/pipeline.svg",
       url: "/",
     },
     {
       id: "2",
-      title: "Lorem ipsum dolor sit amet, consectetur ",
+      title: "Emerging Technologies",
       description:
         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
-      image: "/images/blogImg.png",
+      image: "/icons/rocket.svg",
       url: "/",
     },
     {
       id: "3",
-      title: "Lorem ipsum dolor",
+      title: "Market Insights",
       description:
         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore e",
-      image: "/images/blogImg.png",
+      image: "/icons/insight.svg",
       url: "/",
     },
     {
       id: "4",
-      title: "Lorem ipsum dolor sit amet, consectetur ",
+      title: "Technology Advancement",
       description:
         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
-      image: "/images/blogImg.png",
+      image: "/icons/robotics.svg",
       url: "/",
     },
   ];
@@ -67,7 +67,6 @@ const HomeBlog = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         setBlogs(data.data);
       })
       .catch((error) => {
@@ -77,6 +76,9 @@ const HomeBlog = () => {
 
   return (
     <Flex className={styles.homeBlog}>
+      <Stack hiddenFrom="md" mt={15}>
+        <LinkButton url="/blog" text="Learn More &#62;" />
+      </Stack>
       <Stack className={styles.leftBox}>
         {blogPosts.map((post) => {
           if (parseInt(post.id) % 2 === 0) {
@@ -114,8 +116,10 @@ const HomeBlog = () => {
                     width={85}
                     height={85}
                   />
-                  <Title order={3}>{post.title}</Title>
-                  <Text>{post.description}</Text>
+                  <Link href={"#"} className={styles.postTitle}>
+                    {post.title}
+                  </Link>
+                  <Text className={styles.postText}>{post.description}</Text>
                 </Stack>
               </Stack>
             );
@@ -134,8 +138,10 @@ const HomeBlog = () => {
                     width={85}
                     height={85}
                   />
-                  <Title order={3}>{post.title}</Title>
-                  <Text>{post.description}</Text>
+                  <Link href={"#"} className={styles.postTitle}>
+                    {post.title}
+                  </Link>
+                  <Text className={styles.postText}>{post.description}</Text>
                 </Stack>
               </Stack>
             );
@@ -149,7 +155,9 @@ const HomeBlog = () => {
           dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
           proident.
         </Text>
-        <LinkButton url="/blog" text="Learn More &#62;" />
+        <Stack visibleFrom="md">
+          <LinkButton url="/blog" text="Learn More &#62;" />
+        </Stack>
       </Stack>
     </Flex>
   );

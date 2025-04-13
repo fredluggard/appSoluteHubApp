@@ -10,3 +10,18 @@
   font-weight: 600;
   color: #1d242a;
 }
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: 300px;
+    height: 376px;
+    gap: 20px;
+  }
+
+  .text {
+    font-family: "Sen", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1d242a;
+  }
+}

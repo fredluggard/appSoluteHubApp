@@ -116,7 +116,7 @@
   flex: 1 1 calc(33.333% - 20px);
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
 }
 
 .taskBox {

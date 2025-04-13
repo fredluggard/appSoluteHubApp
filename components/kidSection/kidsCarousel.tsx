@@ -6,6 +6,7 @@ import Image from "next/image";
 import React from "react";
 import styles from "./kidsCarousel.module.css";
 import Link from "next/link";
+import { useMediaQuery } from "@mantine/hooks";
 
 const KidsCarousel = () => {
   const tutorials = [
@@ -27,13 +28,15 @@ const KidsCarousel = () => {
     },
   ];
 
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <Stack>
       <Carousel
         height={380}
         loop
         align="start"
-        slideSize="25%"
+        slideSize={isMobile ? "70%" : "25%"}
         slideGap="md"
         slidesToScroll={1}
         withControls={false}

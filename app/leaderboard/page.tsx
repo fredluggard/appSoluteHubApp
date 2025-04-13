@@ -49,24 +49,6 @@ const LeaderBoard = () => {
   };
 
   useEffect(() => {
-    // fetch(`${baseUrl}/api/v1/leaderborad`, {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       throw new Error("Network response was not ok");
-    //     }
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     setData(data.leaderboard);
-    //   })
-    //   .catch((error) => {
-    //     console.error("There was a problem with the fetch operation:", error);
-    //   });
     fetchData();
   }, []);
 

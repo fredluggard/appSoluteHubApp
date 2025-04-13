@@ -51,6 +51,9 @@
 
 .img {
   width: 45%;
-  height: 360px;
+  height: 450px;
   border-radius: 10px;
+  aspect-ratio: 1/1;
+  object-fit: fill;
+  object-position: center;
 }

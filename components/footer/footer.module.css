@@ -60,3 +60,76 @@
   gap: 1.25rem;
   justify-content: space-evenly;
 }
+
+@media screen and (max-width: 768px) {
+  .footerBox {
+    width: 100%;
+    height: auto;
+    margin-top: 6.25rem;
+    color: #ffffff;
+    background-color: #34449c;
+    padding: 55px 20px;
+    gap: 20px;
+    align-items: start;
+    justify-content: center;
+  }
+
+  .top {
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .logoBox {
+    width: 100%;
+    gap: 0 !important;
+    justify-content: center;
+    align-items: start;
+    margin-bottom: 30px;
+  }
+
+  .logoText {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #ffffff;
+  }
+
+  .group {
+    flex-direction: column;
+    width: 100%;
+    gap: 30px;
+    align-items: start;
+    justify-content: start;
+  }
+
+  .list {
+    justify-content: space-between;
+    align-items: start;
+    gap: 20px;
+  }
+
+  .titles {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: "Sen", sans-serif;
+  }
+
+  .text {
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: "Inter", sans-serif;
+  }
+
+  .groupLink {
+    display: flex;
+    gap: 1.25rem;
+    justify-content: space-evenly;
+  }
+
+  .copyright {
+    margin-top: 56px !important;
+  }
+}
