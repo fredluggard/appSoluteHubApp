@@ -168,3 +168,90 @@
   font-size: 16px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+  .mediaContainer {
+    width: 100%;
+    height: auto;
+    gap: 64px;
+    padding: 50px 20px;
+  }
+
+  .mediaStack {
+    width: 100%;
+    height: auto;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mediaTitle {
+    font-size: 30px;
+    line-height: 64px;
+    letter-spacing: -2px;
+  }
+
+  .mediaText {
+    width: 100%;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .tab {
+    width: 100%;
+    overflow-x: scroll;
+  }
+
+  .tabLists {
+    min-width: fit-content;
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    justify-content: center;
+    position: relative;
+    gap: 20px;
+    margin-bottom: var(--mantine-spacing-md);
+  }
+
+  .subOptions {
+    width: 200px;
+    height: 56px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #34449c;
+    z-index: 1;
+    font-weight: 500;
+
+    &[data-active] {
+      color: #ffffff;
+    }
+  }
+
+  .week {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .taskFlex {
+    position: relative;
+    gap: 10px;
+    /* flex: 1 1 calc(33.333% - 20px); */
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .taskBox {
+    position: relative;
+    width: 100%;
+    height: auto;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+}

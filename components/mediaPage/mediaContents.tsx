@@ -98,6 +98,7 @@ const MediaContents = () => {
         value={value}
         onChange={setValue}
         className={styles.tab}
+        visibleFrom="md"
       >
         <Tabs.List ref={setRootRef} className={styles.tabLists}>
           <Tabs.Tab
@@ -174,7 +175,7 @@ const MediaContents = () => {
           </Stack>
         </Tabs.Panel>
 
-        <Tabs.Panel value="content">
+        <Tabs.Panel value="content" className={styles.week}>
           <Flex pt={50} className={styles.taskFlex}>
             {tasks.map((task, index) => (
               <Stack key={index} className={styles.taskBox}>
@@ -302,6 +303,32 @@ const MediaContents = () => {
           </Stack>
         </Tabs.Panel>
       </Tabs>
+
+      <Flex pt={50} className={styles.taskFlex}>
+        {tasks.map((task, index) => (
+          <Stack key={index} className={styles.taskBox}>
+            <Stack
+              className={styles.imageBox}
+              onClick={() => handleTask(task.id)}
+            >
+              <Image
+                src={task.image}
+                alt="task image"
+                width={240}
+                height={150}
+                className={styles.taskImg}
+              />
+            </Stack>
+            <Title
+              className={styles.taskTitle}
+              lineClamp={2}
+              onClick={() => handleTask(task.id)}
+            >
+              {task.title}
+            </Title>
+          </Stack>
+        ))}
+      </Flex>
     </Stack>
   );
 };

@@ -56,7 +56,7 @@ const Team = () => {
           <Stack key={index} className={styles.itemCover}>
             <Image
               src={item.img}
-              alt="Team member"
+              alt=""
               width={250}
               height={250}
               className={styles.image}
