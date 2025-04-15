@@ -13,7 +13,7 @@ const ResetCode = () => {
   const [input, setInput] = useState("");
   const [input2, setInput2] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState(true);
+  const [success, setSuccess] = useState(false);
 
   const router = useRouter();
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;

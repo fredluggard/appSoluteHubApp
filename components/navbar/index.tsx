@@ -102,27 +102,21 @@ const Navbar = () => {
             {mobile && (
               <Stack px={20} pt={40} justify="center" align="center">
                 <ul className={styles.navLinks}>
-                  <li>
-                    <Link href="/leaderboard">Leaderboard</Link>
-                  </li>
-                  <li>
-                    <Link href="/media">Media</Link>
-                  </li>
-                  <li>
-                    <Link href="/research-development">R&D</Link>
-                  </li>
-                  <li>
-                    <Link href="/kids">Kids</Link>
-                  </li>
-                  <li>
-                    <Link href="/blog">Blog</Link>
-                  </li>
-                  <li>
-                    <Link href="/about">About</Link>
-                  </li>
-                  <li>
-                    <Link href="/contact">Contact</Link>
-                  </li>
+                  {[
+                    { href: "/leaderboard", label: "Leaderboard" },
+                    { href: "/media", label: "Media" },
+                    { href: "/research-development", label: "R&D" },
+                    { href: "/kids", label: "Kids" },
+                    { href: "/blog", label: "Blog" },
+                    { href: "/about", label: "About" },
+                    { href: "/contact", label: "Contact" },
+                  ].map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} onClick={() => setMobile(false)}>
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
 
                 <button
