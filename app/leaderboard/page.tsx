@@ -94,7 +94,8 @@ const LeaderBoard = () => {
             </Text>
           </Flex>
 
-          <Flex className={styles.leaderFlex}>
+          {/* For Desktop  */}
+          <Flex visibleFrom="md" className={styles.leaderFlex}>
             <Stack className={styles.secondBox}>
               <Text className={styles.pos2}>2</Text>
               <Image
@@ -159,18 +160,86 @@ const LeaderBoard = () => {
             </Stack>
           </Flex>
 
-          <Table>
-            <thead>
-              <tr className={styles.tableHeader}>
-                <th className={styles.tableHead}>Rank</th>
-                <th className={styles.tableHead}>Participant Name</th>
-                <th className={styles.tableHead}>Joined</th>
-                <th className={styles.tableHead}>Answered</th>
-                <th className={styles.tableHead}>Points</th>
-              </tr>
-            </thead>
-            <tbody>{rows}</tbody>
-          </Table>
+          {/* For mobile */}
+          <Flex hiddenFrom="md" className={styles.leaderFlex}>
+            <Stack className={styles.firstBox}>
+              <Text className={styles.pos1}>1</Text>
+              <Image
+                src={
+                  data[0]?.profileImage && data[0].profileImage.trim() !== ""
+                    ? data[0].profileImage
+                    : "/images/userProfile.png"
+                }
+                alt="user"
+                width={150}
+                height={150}
+                className={styles.posImg}
+              />
+              <Title className={styles.posText}>1st Place</Title>
+              <Text className={styles.posName}>{data[0]?.fullName}</Text>
+              <Flex className={styles.posFlex}>
+                <Title className={styles.points}>{data[0]?.totalScore}</Title>
+                <Text className={styles.pointText}>Points</Text>
+              </Flex>
+            </Stack>
+
+            <Stack className={styles.secondBox}>
+              <Text className={styles.pos2}>2</Text>
+              <Image
+                src={
+                  data[1]?.profileImage && data[1].profileImage.trim() !== ""
+                    ? data[1].profileImage
+                    : "/images/userProfile.png"
+                }
+                alt="user"
+                width={150}
+                height={150}
+                className={styles.posImg}
+              />
+              <Title className={styles.posText}>2nd Place</Title>
+              <Text className={styles.posName}>{data[1]?.fullName}</Text>
+              <Flex className={styles.posFlex}>
+                <Title className={styles.points}>{data[1]?.totalScore}</Title>
+                <Text className={styles.pointText}>Points</Text>
+              </Flex>
+            </Stack>
+
+            <Stack className={styles.secondBox}>
+              <Text className={styles.pos3}>3</Text>
+              <Image
+                src={
+                  data[2]?.profileImage && data[2].profileImage.trim() !== ""
+                    ? data[2].profileImage
+                    : "/images/userProfile.png"
+                }
+                alt="user"
+                width={150}
+                height={150}
+                className={styles.posImg}
+              />
+              <Title className={styles.posText}>3rd Place</Title>
+              <Text className={styles.posName}>{data[2]?.fullName}</Text>
+              <Flex className={styles.posFlex}>
+                <Title className={styles.points}>{data[2]?.totalScore}</Title>
+                <Text className={styles.pointText}>Points</Text>
+              </Flex>
+            </Stack>
+          </Flex>
+
+          <Stack className={styles.leaderBoardTable}>
+            <Table className={styles.leaderTable}>
+              <thead>
+                <tr className={styles.tableHeader}>
+                  <th className={styles.tableHead}>Rank</th>
+                  <th className={styles.tableHead}>Participant Name</th>
+                  <th className={styles.tableHead}>Joined</th>
+                  <th className={styles.tableHead}>Answered</th>
+                  <th className={styles.tableHead}>Points</th>
+                </tr>
+              </thead>
+              <tbody>{rows}</tbody>
+            </Table>
+          </Stack>
         </Stack>
       )}
     </>

@@ -5,7 +5,6 @@ import React, { useRef } from "react";
 import styles from "./contactUs.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import LinkButton from "../button";
 import emailjs from "@emailjs/browser";
 
 const Contacts = () => {

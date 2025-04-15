@@ -6,6 +6,14 @@
   align-items: center;
 }
 
+.title {
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  letter-spacing: -2px;
+  text-align: center;
+}
+
 .itemBox {
   display: flex;
   flex-wrap: wrap;
@@ -38,4 +46,55 @@
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 0.875rem;
+}
+
+@media screen and (max-width: 768px) {
+  .team {
+    width: 100%;
+    padding: 20px;
+    gap: 48px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 30px;
+    letter-spacing: -2px;
+  }
+
+  .itemBox {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 35px;
+    flex-basis: calc(25% - 10px);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .itemCover {
+    width: 100%;
+    height: 300px;
+    gap: 0.625rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image {
+    width: 9.375rem;
+    height: 9.375rem;
+    border-radius: 6.25rem;
+  }
+
+  .itemTitle {
+    font-family: "Sen", sans-serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+  }
+
+  .itemText {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+  }
 }

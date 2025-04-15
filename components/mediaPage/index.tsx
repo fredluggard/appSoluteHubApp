@@ -27,7 +27,7 @@ const MediaHero = () => {
         </Stack>
 
         <Image
-          src={"/images/neural.png"}
+          src={"/images/dddd.jpeg"}
           alt=""
           width={300}
           height={300}

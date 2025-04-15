@@ -76,3 +76,78 @@
   letter-spacing: 3%;
   text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+  .mediaContainer {
+    width: 100%;
+    height: auto;
+    gap: 100px;
+    padding: 50px 20px;
+  }
+
+  .mediaStack {
+    width: 100%;
+    height: auto;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mediaTitle {
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-align: center;
+  }
+
+  .mediaText {
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+    line-height: 100%;
+  }
+
+  .cardFlex {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    gap: 26px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cardStack {
+    width: 100%;
+    height: auto;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #34449c4d;
+    border-radius: 10px;
+  }
+
+  .img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .cardTitle {
+    color: #34449c;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 3%;
+    text-align: center;
+  }
+
+  .cardText {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 3%;
+    text-align: center;
+  }
+}
