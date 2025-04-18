@@ -28,13 +28,15 @@ const KidStats = () => {
   return (
     <Stack className={styles.statsContainer}>
       <Flex className={styles.topFlex}>
-        <Image
-          src={"/icons/robot.svg"}
-          alt=""
-          height={200}
-          width={200}
-          className={styles.topImage}
-        />
+        <Stack visibleFrom="md">
+          <Image
+            src={"/icons/robot.svg"}
+            alt=""
+            height={200}
+            width={200}
+            className={styles.topImage}
+          />
+        </Stack>
         <Stack className={styles.topStack}>
           <Title className={styles.topTitle}>
             95% of parents said their children learn a lot from our videos
@@ -43,13 +45,15 @@ const KidStats = () => {
             Below are some of the reviews parents left on our website
           </Text>
         </Stack>
-        <Image
-          src={"/icons/artificial.svg"}
-          alt=""
-          height={200}
-          width={200}
-          className={styles.topImage}
-        />
+        <Stack>
+          <Image
+            src={"/icons/artificial.svg"}
+            alt=""
+            height={200}
+            width={200}
+            className={styles.topImage}
+          />
+        </Stack>
       </Flex>
 
       <Flex className={styles.midFlex}>
@@ -102,6 +106,15 @@ const KidStats = () => {
             <Text className={styles.lovedTitle}>1000 videos</Text>
           </Stack>
         </Flex>
+        <Stack hiddenFrom="md">
+          <Image
+            src={"/icons/robot.svg"}
+            alt=""
+            height={200}
+            width={200}
+            className={styles.topImage}
+          />
+        </Stack>
       </Stack>
     </Stack>
   );

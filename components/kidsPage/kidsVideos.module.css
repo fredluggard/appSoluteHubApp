@@ -84,3 +84,77 @@
   font-size: 16px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+  .mediaContainer {
+    width: 100%;
+    height: auto;
+    gap: 64px;
+    padding: 0 20px;
+    background-color: #ffffff;
+  }
+
+  .mediaStack {
+    gap: 16px;
+  }
+
+  .mediaTitle {
+    font-size: 30px;
+    line-height: 44px;
+    letter-spacing: -2px;
+  }
+
+  .mediaText {
+    width: 100%;
+    font-size: 16px;
+    text-align: justify;
+    line-height: 100%;
+    letter-spacing: 0px;
+  }
+
+  .week {
+    width: 100%;
+    gap: 0px;
+    align-items: start;
+  }
+
+  .taskFlex {
+    width: 100vw;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: scroll;
+    padding: 20px 10px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .taskBox {
+    flex: 0 0 80vw;
+    scroll-snap-align: start;
+    border-radius: 8px;
+  }
+
+  .taskBox:hover {
+    transform: scale(1.02);
+  }
+
+  .imageBox {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .taskImg {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+  }
+
+  .taskTitle {
+    color: #1d242a;
+    font-family: "Sen", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+  }
+}
