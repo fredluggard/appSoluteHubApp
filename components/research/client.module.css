@@ -1,0 +1,202 @@
+.clientContainer {
+  width: 100%;
+  height: auto;
+  padding: 50px 90px;
+  gap: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.clientTop {
+  width: 100%;
+  height: auto;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.topStack {
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.clientTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #000000;
+}
+
+.clientText {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #717171;
+}
+
+.clientFlex {
+  width: 100%;
+  height: auto;
+  gap: 100px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.clientImg {
+  width: 48px;
+  height: 48px;
+  aspect-ratio: 1/1;
+}
+
+.clientBottom {
+  width: 100%;
+  height: auto;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardFlex {
+  width: 100%;
+  height: auto;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.card {
+  width: 300px;
+  height: 225px;
+  gap: 6px;
+  padding: 30px;
+  border-top: 3px solid #34449c;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.cardImg {
+  width: 40px;
+  height: 40px;
+  aspect-ratio: 1/1;
+}
+
+.cardTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 3%;
+}
+
+.cardText {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 3%;
+}
+
+@media screen and (max-width: 768px) {
+  .clientContainer {
+    width: 100%;
+    height: auto;
+    padding: 0px;
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .clientTop {
+    width: 100%;
+    height: auto;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .topStack {
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 20px;
+  }
+
+  .clientTitle {
+    font-size: 30px;
+  }
+
+  .clientFlex {
+    width: 100%;
+    height: auto;
+    gap: 30px;
+    justify-content: space-around;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .clientFlex::-webkit-scrollbar {
+    display: none;
+  }
+
+  .clientBottom {
+    width: 100%;
+    height: auto;
+    gap: 32px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cardFlex {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .card {
+    width: 300px;
+    height: 225px;
+    gap: 6px;
+    padding: 30px;
+    border-top: 3px solid #34449c;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .cardImg {
+    width: 40px;
+    height: 40px;
+    aspect-ratio: 1/1;
+  }
+
+  .cardTitle {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 3%;
+  }
+
+  .cardText {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 3%;
+  }
+}

@@ -142,3 +142,146 @@
   letter-spacing: 0%;
   text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+  .statsContainer {
+    width: 100%;
+    height: auto;
+    padding: 50px 20px;
+    gap: 60px;
+  }
+
+  .topFlex {
+    width: 100%;
+    gap: 40px;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .topImage {
+    width: 250px;
+    height: 225px;
+  }
+
+  .topStack {
+    width: 100%;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .topTitle {
+    font-size: 30px;
+    line-height: 100%;
+    text-align: center;
+  }
+
+  .topText {
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+
+  .midFlex {
+    position: relative;
+    flex-direction: column;
+    gap: 32px;
+    flex: 1 1 calc(100% - 20px);
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .midStack {
+    position: relative;
+    width: 100%;
+    height: auto;
+    gap: 20px;
+    justify-content: center;
+    align-items: start;
+    margin-bottom: 0px;
+    padding: 30px;
+  }
+
+  .midImage {
+    width: 40px;
+    height: 30px;
+  }
+
+  .midText {
+    font-family: "Sen", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: 0.5%;
+  }
+
+  .starFlex {
+    width: 100%;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nameText {
+    font-family: "Sen", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 0%;
+  }
+
+  .starImage {
+    width: 15px;
+    height: 15px;
+  }
+
+  .joinStack {
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+  }
+  .joinTitle {
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+
+  .joinFlex {
+    width: 100%;
+    flex-direction: column;
+    gap: 22px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .lovedBox {
+    width: 100%;
+    gap: 7px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .lovedText {
+    font-family: "Sen", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+
+  .lovedTitle {
+    font-family: "Sen", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+}

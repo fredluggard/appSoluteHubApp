@@ -76,3 +76,80 @@
   letter-spacing: 3%;
   text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+  .mediaContainer {
+    width: 100%;
+    height: auto;
+    gap: 32px;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    background-color: #ffffff;
+  }
+
+  .mediaStack {
+    width: 100%;
+    height: auto;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mediaTitle {
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: -2px;
+  }
+
+  .mediaText {
+    width: 100%;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: justify;
+    line-height: 100%;
+  }
+
+  .cardFlex {
+    width: 100%;
+    height: auto;
+    gap: 26px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cardStack {
+    width: 100%;
+    height: auto;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 38px 48px;
+    border: 1px solid #34449c4d;
+    border-radius: 10px;
+  }
+
+  .img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .cardTitle {
+    color: #34449c;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 3%;
+    text-align: center;
+  }
+
+  .cardText {
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 3%;
+    text-align: center;
+  }
+}
