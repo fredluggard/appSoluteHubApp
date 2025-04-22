@@ -148,6 +148,7 @@ const Settings = () => {
           <Flex className={styles.userBox}>
             <Stack className={styles.nameBox}>
               <Title
+                visibleFrom="md"
                 className={styles.userName}
               >{`Welcome, ${user.fullName}`}</Title>
               <Text className={styles.date}>{date}</Text>
@@ -208,7 +209,11 @@ const Settings = () => {
               </Stack>
             </Flex>
 
-            <Button className={styles.edit} onClick={handleEdit}>
+            <Button
+              visibleFrom="md"
+              className={styles.edit}
+              onClick={handleEdit}
+            >
               {activeForm ? "Edit" : "Save"}
             </Button>
           </Flex>
@@ -358,6 +363,9 @@ const Settings = () => {
               </Flex>
             </Stack>
           )}
+          <Button hiddenFrom="md" className={styles.edit} onClick={handleEdit}>
+            {activeForm ? "Edit" : "Save"}
+          </Button>
         </Stack>
       ) : null}
     </Stack>

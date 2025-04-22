@@ -1,0 +1,52 @@
+@media screen and (max-width: 48rem) {
+  .mobileBody {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #37459c;
+    color: #ffffff;
+    padding: 1.25rem;
+  }
+
+  .navbarBox {
+    position: fixed;
+    width: 100vw;
+    height: auto;
+    z-index: 999;
+    overflow: hidden;
+    background-color: #37459c;
+    color: #ffffff;
+  }
+
+  .menu {
+    width: 25px;
+    height: 25px;
+    aspect-ratio: 1/1;
+  }
+
+  .navLinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+    color: #000000;
+    list-style-type: none;
+    padding: 50px 20px;
+  }
+
+  .links {
+    color: #000000;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .flexMenu {
+    align-items: center;
+    gap: 5px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #34449c;
+  }
+}

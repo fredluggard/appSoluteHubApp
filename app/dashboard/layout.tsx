@@ -1,5 +1,7 @@
+import MobileFooter from "@/components/footer/mobileFooter";
+import DashNavbar from "@/components/navbar/dashNavbar";
 import SideBar from "@/components/sidebar";
-import { Flex } from "@mantine/core";
+import { Flex, Stack } from "@mantine/core";
 import React from "react";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
@@ -8,7 +10,11 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       <aside>
         <SideBar />
       </aside>
-      <main>{children}</main>
+      <Stack>
+        <DashNavbar />
+        <main>{children}</main>
+        <MobileFooter />
+      </Stack>
     </Flex>
   );
 };

@@ -97,6 +97,7 @@ const Dashboard = () => {
         });
         const data = await response.json();
         setUser(data?.data || null);
+        console.log(data);
       } catch (error) {
         console.error("Error fetching user data:", error);
       } finally {
@@ -118,7 +119,7 @@ const Dashboard = () => {
           <Flex className={styles.topFlex}>
             <Stack className={styles.topStack}>
               <Image
-                src={"/images/userProfile.png"}
+                src={user ? user?.profileImage : "/images/userProfile.png"}
                 alt="user profile"
                 width={50}
                 height={50}

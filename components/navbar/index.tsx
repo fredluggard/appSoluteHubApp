@@ -71,7 +71,7 @@ const Navbar = () => {
                     width={50}
                     height={50}
                     className={styles.userImg}
-                    onClick={() => router.push("/dashboard/settings")}
+                    onClick={() => router.push("/dashboard")}
                   />
 
                   <Text>Hi, {user?.fullName.split(" ")[0]}</Text>

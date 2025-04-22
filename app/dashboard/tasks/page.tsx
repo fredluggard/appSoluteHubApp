@@ -109,6 +109,7 @@ import Cookies from "js-cookie";
 const Tasks = () => {
   interface User {
     fullName: string;
+    profileImage: string;
   }
 
   interface TaskType {
@@ -192,7 +193,7 @@ const Tasks = () => {
           <Flex className={styles.topFlex}>
             <Stack className={styles.topStack}>
               <Image
-                src={"/images/userProfile.png"}
+                src={user ? user?.profileImage : "/images/userProfile.png"}
                 alt="user profile"
                 width={50}
                 height={50}
@@ -220,9 +221,10 @@ const Tasks = () => {
               </Text>
             </Stack>
 
-            <Flex>
+            <Flex visibleFrom="md">
               <p className={styles.todoTask}>
-                2/55 {""} <span className={styles.todoSpan}>tasks</span>
+                2/{task.length} {""}{" "}
+                <span className={styles.todoSpan}>tasks</span>
               </p>
             </Flex>
           </Flex>
@@ -251,7 +253,8 @@ const Tasks = () => {
                       {new Date(task.createdAt).toLocaleDateString("en-GB")}
                     </Text>
                     <Text className={styles.taskDate}>
-                      {task.tags.join(", ")}
+                      {/* {task.tags.join(", ")} */}
+                      {task.tags[0]}
                     </Text>
                   </Flex>
                   <Title

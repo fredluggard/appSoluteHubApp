@@ -232,3 +232,104 @@
 .radio {
   transition: background-color 0.3s ease-in-out;
 }
+
+@media screen and (max-width: 768px) {
+  .tasksContainer {
+    width: 100vw;
+    height: auto;
+    background-color: #fafafa;
+  }
+
+  .innerBox {
+    height: auto;
+    width: 100%;
+    gap: 30px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 20px;
+    background-color: #fafafa;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+
+  .topFlex {
+    width: 100%;
+    gap: 16px;
+    background-color: #ffffff;
+    border-radius: 10px;
+  }
+
+  .userImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+
+  .cameraBox {
+    top: 35px;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .cameraIcon {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+  }
+
+  .downStack {
+    width: 90%;
+  }
+
+  .userName {
+    font-size: 16px;
+  }
+
+  .progressBox {
+    width: 100%;
+    position: relative;
+    padding: 10px 0;
+  }
+
+  .completed {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0px;
+  }
+
+  .todoTask {
+    font-family: "Sen", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+  }
+
+  .todoSpan {
+    font-family: "Sen", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+  .questStack {
+    width: 100%;
+    height: 300px;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .questImg {
+    width: 100%;
+    height: 90%;
+  }
+
+  .questFlex {
+    width: 100%;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

@@ -8,7 +8,7 @@ import CustomBtn from "@/components/button/customBtn";
 import { useSearchParams } from "next/navigation";
 
 const VerifySignUp = () => {
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(true);
   const [loading, setLoading] = useState(false);
   const searchParams = useSearchParams();
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
