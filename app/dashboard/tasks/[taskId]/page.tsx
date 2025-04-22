@@ -205,7 +205,7 @@ const TaskID = () => {
           <Flex className={styles.topFlex}>
             <Stack className={styles.topStack}>
               <Image
-                src={"/images/userProfile.png"}
+                src={user ? user?.profileImage : "/images/userProfile.png"}
                 alt="user profile"
                 width={50}
                 height={50}
@@ -233,7 +233,7 @@ const TaskID = () => {
               </Text>
             </Stack>
 
-            <Flex>
+            <Flex visibleFrom="md">
               <p className={styles.todoTask}>
                 2/55 {""} <span className={styles.todoSpan}>tasks</span>
               </p>

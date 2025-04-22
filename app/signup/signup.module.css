@@ -270,4 +270,30 @@
     width: 0;
     height: 0;
   }
+
+  .darkLayout {
+    background-color: #f4f4f4;
+    position: relative;
+    top: 0;
+    width: 100vw;
+    height: 90vh;
+    z-index: 100;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .recoverLink {
+    position: relative;
+    top: 0%;
+    left: 0%;
+    transform: none;
+    background-color: #ffffff;
+    border-radius: 10px !important;
+    z-index: 100;
+    width: 90%;
+    height: 260px;
+    gap: 20px;
+    justify-content: center !important;
+    align-items: center !important;
+  }
 }
