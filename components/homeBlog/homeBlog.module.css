@@ -2,8 +2,10 @@
   width: 100%;
   height: 1200px;
   gap: 120px;
-  padding: 90px 90px;
+  padding: 90px;
   box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
 }
 
 .leftBox {
@@ -18,8 +20,8 @@
 }
 
 .blogPost1 {
-  width: 45%;
-  height: 450px;
+  width: 40%;
+  height: 440px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,7 +52,7 @@
 
 .blogPost2 {
   width: 100%;
-  height: 250px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
