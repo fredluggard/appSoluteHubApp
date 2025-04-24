@@ -43,7 +43,8 @@
 
 @media screen and (max-width: 768px) {
   .sideContainer {
-    display: none;
-    width: 0;
+    display: none !important;
+    height: 0px !important;
+    width: 0px !important;
   }
 }

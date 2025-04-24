@@ -47,7 +47,7 @@ const SideBar = () => {
   };
 
   return (
-    <Stack className={styles.sideContainer}>
+    <Stack visibleFrom="md" className={styles.sideContainer}>
       <Stack className={styles.sideTop}>
         <AppSoluteLogo color="#ffffff" logoColor="white" />
 

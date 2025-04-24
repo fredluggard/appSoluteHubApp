@@ -8,7 +8,7 @@ import React from "react";
 
 const KidsPage = () => {
   return (
-    <Stack>
+    <Stack w={"100vw"} style={{ overflowX: "hidden" }}>
       <KidsHero />
       <KidsImageCard />
       <KidStats />
