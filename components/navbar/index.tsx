@@ -119,12 +119,27 @@ const Navbar = () => {
                   ))}
                 </ul>
 
-                <button
-                  className={styles.loginBtn}
-                  onClick={() => router.push("/login")}
-                >
-                  Login
-                </button>
+                {user?.email ? (
+                  <Flex gap={10} align="center">
+                    <Image
+                      src={user?.profileImage || "/images/userProfile.png"}
+                      alt=""
+                      width={50}
+                      height={50}
+                      className={styles.userImg}
+                      onClick={() => router.push("/dashboard")}
+                    />
+
+                    <Text>Hi, {user?.fullName.split(" ")[0]}</Text>
+                  </Flex>
+                ) : (
+                  <button
+                    className={styles.loginBtn}
+                    onClick={() => router.push("/login")}
+                  >
+                    Login
+                  </button>
+                )}
               </Stack>
             )}
           </Stack>

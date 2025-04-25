@@ -1,7 +1,7 @@
 "use client";
 
 import { useDisclosure } from "@mantine/hooks";
-import { Drawer, Flex, Stack } from "@mantine/core";
+import { Button, Drawer, Flex, Stack, Text } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import styles from "./dashNav.module.css";
 import AppSoluteLogo from "../logo";
@@ -9,14 +9,18 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 import { getUser } from "@/store/userSlice";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import SideBar from "../sidebar";
+import { usePathname, useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { clearUser } from "@/store/userSlice";
 
 const DashNavbar = () => {
   const [mobile, setMobile] = useState(false);
   const [opened, { open, close }] = useDisclosure(false);
   const user = useSelector(getUser);
+  const dispatch = useDispatch();
+  const pathname = usePathname();
   const router = useRouter();
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const makeMobile = () => {
     setMobile(true);
@@ -26,6 +30,37 @@ const DashNavbar = () => {
   const removeMobile = () => {
     setMobile(false);
     close();
+  };
+
+  const logOut = async (): Promise<void> => {
+    const token = localStorage.getItem("token");
+    try {
+      const response = await fetch(`${baseUrl}/api/v1/users/logout`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+      dispatch(clearUser());
+
+      if (!response.ok) {
+        throw new Error(
+          `Logout failed: ${response.status} ${response.statusText}`
+        );
+      }
+
+      localStorage.removeItem("token");
+      router.push("/");
+    } catch (error) {
+      console.error(
+        "Failed to log out:",
+        error instanceof Error ? error.message : error
+      );
+    }
   };
 
   return (
@@ -83,6 +118,16 @@ const DashNavbar = () => {
               </li>
             ))}
           </ul>
+
+          <Button variant="subtle" color="#ffffff" w={"80%"} onClick={logOut}>
+            <Image
+              src={"/icons/logout.svg"}
+              alt="Logout"
+              width={30}
+              height={30}
+            />
+            <Text className={styles.sideText}>Logout</Text>
+          </Button>
         </Drawer>
       </Stack>
     </Stack>
