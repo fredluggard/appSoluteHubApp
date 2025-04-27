@@ -14,13 +14,14 @@
   gap: 60px;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
 }
 
 .sideLink {
   width: 70%;
   display: flex;
   gap: 10px;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   color: #b1aeae;
 }
