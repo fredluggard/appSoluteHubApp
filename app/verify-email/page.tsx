@@ -18,10 +18,13 @@ const VerifySignUp = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(`${baseUrl}/users/verify-email/${token}`, {
-        method: "GET",
-        credentials: "include",
-      });
+      const response = await fetch(
+        `${baseUrl}/api/v1/users/verify-email?token=${token}`,
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to verify email");
