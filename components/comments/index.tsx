@@ -1,30 +1,161 @@
 "use client";
 
-import { Stack, Title } from "@mantine/core";
-// import React, { useEffect, useState } from "react";
+import { Button, Flex, Stack, Text, Title } from "@mantine/core";
+import React, { useCallback, useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import styles from "./comment.module.css";
+import Image from "next/image";
+
+export interface Comment {
+  id: string;
+  body: string;
+  authorId: string;
+  postId: string;
+  createdAt: string;
+  author: {
+    fullName: string;
+    profileImage: string;
+  };
+}
 
 const Comments = ({ postId }: { postId: string }) => {
-  //   const [comments, setComments] = useState<any>(null);
-  //   const url = process.env.NEXT_PUBLIC_BASE_URL;
+  const [comments, setComments] = useState<Comment[] | null>(null);
+  const [input, setInput] = useState<string>("");
+  const url = process.env.NEXT_PUBLIC_BASE_URL;
+  const token = Cookies.get("token");
 
-  //   useEffect(() => {
-  //     const fetchBlog = async () => {
-  //       try {
-  //         const response = await fetch(`${url}/api/v1/posts/${postId}`);
-  //         const data = await response.json();
-  //         // setComments(data.data || null);
-  //       } catch (error) {
-  //         console.error("Error fetching recent blog:", error);
-  //       }
-  //     };
+  const fetchBlog = useCallback(async () => {
+    try {
+      const response = await fetch(`${url}/api/v1/coments/${postId}`);
+      const data = await response.json();
+      console.log("Posts:", data);
+      setComments(data || null);
+    } catch (error) {
+      console.error("Error fetching recent blog:", error);
+    }
+  }, [url, postId]);
 
-  //     fetchBlog();
-  //   });
+  const postComment = async () => {
+    if (input === "") {
+      alert("Please write a comment");
+    } else {
+      try {
+        const response = await fetch(`${url}/api/v1/coments/${postId}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ body: input }),
+        });
+        const data = await response.json();
+        console.log(data);
+        fetchBlog();
+      } catch (error) {
+        console.error("Error fetching blog data:", error);
+      } finally {
+        setInput("");
+      }
+    }
+  };
+
+  // ...existing code...
+  const formatCreatedAt = (createdAt: string) => {
+    const now = new Date();
+    const created = new Date(createdAt);
+    const diffMs = now.getTime() - created.getTime();
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+
+    if (diffHours < 24) {
+      if (diffHours < 1) {
+        const diffMinutes = Math.floor(diffMs / (1000 * 60));
+        return diffMinutes <= 1 ? "Just now" : `${diffMinutes} min ago`;
+      }
+      return `${diffHours} hour${diffHours > 1 ? "s" : ""} ago`;
+    }
+    // Format as date (e.g., Jun 12, 2025)
+    return created.toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  };
+  // ...existing code...
+
+  useEffect(() => {
+    fetchBlog();
+  }, [fetchBlog]);
 
   return (
-    <Stack>
-      <Title>Comments</Title>
-      <p>{postId}</p>
+    <Stack className={styles.container}>
+      <Stack className={styles.inputBox}>
+        <textarea
+          placeholder="Write a comment about this post"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          className={styles.input}
+        />
+        <Button className={styles.btn} onClick={postComment}>
+          Post Comment
+        </Button>
+      </Stack>
+
+      <Title className={styles.title}>
+        Comments &#40;{comments?.length}&#41;
+      </Title>
+
+      <Stack className={styles.commentStack}>
+        {comments?.map((item, id) => (
+          <Flex key={id} className={styles.commentFlex}>
+            <Stack className={styles.imageBox}>
+              <Image
+                src={item?.author.profileImage}
+                alt="user image"
+                width={50}
+                height={50}
+                className={styles.image}
+              />
+            </Stack>
+
+            <Stack className={styles.itemBox}>
+              <Flex className={styles.authorBox}>
+                <Title className={styles.author}>{item.author.fullName}</Title>
+                <Text>•</Text>
+                <Text className={styles.create}>
+                  {formatCreatedAt(item.createdAt)}
+                </Text>
+              </Flex>
+
+              <Text className={styles.bodyText}>{item.body}</Text>
+
+              <Flex className={styles.reactionBox}>
+                <Flex className={styles.likeFlex}>
+                  <Image
+                    src="/icons/like.svg"
+                    alt="Like icon"
+                    width={18}
+                    height={18}
+                    className={styles.likeIcon}
+                  />
+
+                  <Text className={styles.likeText}>23</Text>
+                </Flex>
+                <Flex className={styles.likeFlex}>
+                  <Image
+                    src="/icons/dislike.svg"
+                    alt="Dislike icon"
+                    width={18}
+                    height={18}
+                    className={styles.likeIcon}
+                  />
+
+                  <Text className={styles.likeText}>23</Text>
+                </Flex>
+              </Flex>
+            </Stack>
+          </Flex>
+        ))}
+      </Stack>
     </Stack>
   );
 };
