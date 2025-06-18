@@ -37,7 +37,7 @@ const AllBlog = () => {
     };
 
     fetchBlog();
-  });
+  }, []);
 
   return blog ? (
     <Stack className={styles.allBlog}>
