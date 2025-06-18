@@ -82,7 +82,7 @@ const RecentBlog = () => {
     };
 
     fetchBlog();
-  });
+  }, []);
 
   return blog ? (
     <Stack className={styles.recentContainer}>

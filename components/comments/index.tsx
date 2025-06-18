@@ -29,7 +29,7 @@ const Comments = ({ postId }: { postId: string }) => {
       const response = await fetch(`${url}/api/v1/coments/${postId}`);
       const data = await response.json();
       console.log("Posts:", data);
-      setComments(data || null);
+      setComments(data.rawComments || null);
     } catch (error) {
       console.error("Error fetching recent blog:", error);
     }
@@ -59,7 +59,6 @@ const Comments = ({ postId }: { postId: string }) => {
     }
   };
 
-  // ...existing code...
   const formatCreatedAt = (createdAt: string) => {
     const now = new Date();
     const created = new Date(createdAt);
@@ -73,14 +72,42 @@ const Comments = ({ postId }: { postId: string }) => {
       }
       return `${diffHours} hour${diffHours > 1 ? "s" : ""} ago`;
     }
-    // Format as date (e.g., Jun 12, 2025)
     return created.toLocaleDateString(undefined, {
       year: "numeric",
       month: "short",
       day: "numeric",
     });
   };
-  // ...existing code...
+
+  const [reactions, setReactions] = useState<{
+    [commentId: string]: { liked: boolean; disliked: boolean };
+  }>({});
+
+  const handleLike = (id: string) => {
+    setReactions((prev) => {
+      const current = prev[id] || { liked: false, disliked: false };
+      return {
+        ...prev,
+        [id]: {
+          liked: !current.liked,
+          disliked: current.liked ? current.disliked : false,
+        },
+      };
+    });
+  };
+
+  const handleDislike = (id: string) => {
+    setReactions((prev) => {
+      const current = prev[id] || { liked: false, disliked: false };
+      return {
+        ...prev,
+        [id]: {
+          liked: current.disliked ? current.liked : false,
+          disliked: !current.disliked,
+        },
+      };
+    });
+  };
 
   useEffect(() => {
     fetchBlog();
@@ -105,56 +132,75 @@ const Comments = ({ postId }: { postId: string }) => {
       </Title>
 
       <Stack className={styles.commentStack}>
-        {comments?.map((item, id) => (
-          <Flex key={id} className={styles.commentFlex}>
-            <Stack className={styles.imageBox}>
-              <Image
-                src={item?.author.profileImage}
-                alt="user image"
-                width={50}
-                height={50}
-                className={styles.image}
-              />
-            </Stack>
+        {comments?.map((item, id) => {
+          const reaction = reactions[item.id] || {
+            liked: false,
+            disliked: false,
+          };
 
-            <Stack className={styles.itemBox}>
-              <Flex className={styles.authorBox}>
-                <Title className={styles.author}>{item.author.fullName}</Title>
-                <Text>•</Text>
-                <Text className={styles.create}>
-                  {formatCreatedAt(item.createdAt)}
-                </Text>
-              </Flex>
+          const likeImage = reaction.liked
+            ? "/icons/like.svg"
+            : "/icons/like.svg";
 
-              <Text className={styles.bodyText}>{item.body}</Text>
+          const dislikeImage = reaction.disliked
+            ? "/icons/dislike2.svg"
+            : "/icons/dislike.svg";
 
-              <Flex className={styles.reactionBox}>
-                <Flex className={styles.likeFlex}>
-                  <Image
-                    src="/icons/like.svg"
-                    alt="Like icon"
-                    width={18}
-                    height={18}
-                    className={styles.likeIcon}
-                  />
+          return (
+            <Flex key={id} className={styles.commentFlex}>
+              <Stack className={styles.imageBox}>
+                <Image
+                  src={item?.author.profileImage}
+                  alt="user image"
+                  width={50}
+                  height={50}
+                  className={styles.image}
+                />
+              </Stack>
 
-                  <Text className={styles.likeText}>23</Text>
+              <Stack className={styles.itemBox}>
+                <Flex className={styles.authorBox}>
+                  <Title className={styles.author}>
+                    {item.author.fullName}
+                  </Title>
+                  <Text>•</Text>
+                  <Text className={styles.create}>
+                    {formatCreatedAt(item.createdAt)}
+                  </Text>
                 </Flex>
-                <Flex className={styles.likeFlex}>
-                  <Image
-                    src="/icons/dislike.svg"
-                    alt="Dislike icon"
-                    width={18}
-                    height={18}
-                    className={styles.likeIcon}
-                  />
 
-                  <Text className={styles.likeText}>23</Text>
+                <Text className={styles.bodyText}>{item.body}</Text>
+
+                <Flex className={styles.reactionBox}>
+                  <Flex className={styles.likeFlex}>
+                    <Image
+                      src={likeImage}
+                      alt="Like icon"
+                      width={18}
+                      height={18}
+                      className={styles.likeIcon}
+                      onClick={() => handleLike(item.id)}
+                    />
+
+                    <Text className={styles.likeText}>23</Text>
+                  </Flex>
+                  <Flex className={styles.likeFlex}>
+                    <Image
+                      src={dislikeImage}
+                      alt="Dislike icon"
+                      width={18}
+                      height={18}
+                      className={styles.likeIcon}
+                      onClick={() => handleDislike(item.id)}
+                    />
+
+                    <Text className={styles.likeText}>2</Text>
+                  </Flex>
                 </Flex>
-              </Flex>
-            </Stack>
-          </Flex>
-        ))}
+              </Stack>
+            </Flex>
+          );
+        })}
       </Stack>
     </Stack>
   );
