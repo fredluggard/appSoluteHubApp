@@ -24,6 +24,18 @@ const Navbar = () => {
     "/recover",
     "/reset-password/",
     "/dashboard",
+    "/admin/dashboard",
+    "/admin/tasks",
+    "/admin/tasks/new-task",
+    "/admin/tasks/edit-task",
+    "/admin/posts",
+    "/admin/posts/new-post",
+    "/admin/posts/edit-post",
+    "/admin/categories",
+    "/admin/tags",
+    "/admin/roles",
+    "/admin/users",
+    "/admin/comments",
   ];
 
   return (
@@ -57,7 +69,14 @@ const Navbar = () => {
                         currentUrl === link.href ? styles.active : ""
                       }`}
                     >
-                      <Link href={link.href}>{link.label}</Link>
+                      <Link
+                        href={link.href}
+                        className={`${styles.links} ${
+                          currentUrl === link.href ? styles.active : ""
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -112,7 +131,11 @@ const Navbar = () => {
                     { href: "/contact", label: "Contact" },
                   ].map((link) => (
                     <li key={link.href}>
-                      <Link href={link.href} onClick={() => setMobile(false)}>
+                      <Link
+                        href={link.href}
+                        className={styles.links}
+                        onClick={() => setMobile(false)}
+                      >
                         {link.label}
                       </Link>
                     </li>

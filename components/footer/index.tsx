@@ -17,6 +17,18 @@ const Footer = () => {
     "/recover",
     "/reset-password/",
     "/dashboard",
+    "/admin/dashboard",
+    "/admin/tasks",
+    "/admin/tasks/new-task",
+    "/admin/tasks/edit-task",
+    "/admin/posts",
+    "/admin/posts/new-post",
+    "/admin/posts/edit-post",
+    "/admin/categories",
+    "/admin/tags",
+    "/admin/roles",
+    "/admin/users",
+    "/admin/comments",
   ];
 
   const year = new Date().getFullYear().toString();

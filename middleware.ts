@@ -9,10 +9,17 @@ export function middleware(req: NextRequest) {
   //   return NextResponse.redirect(loginUrl);
   // }
 
+  const { pathname } = req.nextUrl;
+
+  if (pathname === "/admin" || pathname === "/admin/") {
+    const url = req.nextUrl.clone();
+    url.pathname = "/admin/dashboard";
+    return NextResponse.redirect(url);
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  // matcher: ["/dashboard/:path*"],
-  matcher: [],
+  matcher: ["/admin"],
 };

@@ -1,0 +1,125 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  gap: 40px;
+  background-color: #dadadc;
+  justify-content: center;
+  align-items: center;
+}
+
+.logFlex {
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.logBox {
+  width: 40%;
+  max-width: 750x;
+  height: 450px;
+  border-radius: 20px;
+  background-color: #fff;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.signText {
+  font-family: "Sen", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.signBox {
+  width: 100%;
+}
+
+.inputGroup {
+  width: 85%;
+  gap: 20px;
+  justify-content: center;
+}
+
+.emailGroup {
+  gap: 5px;
+  justify-content: center;
+}
+
+.label {
+  font-family: "Sen", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.input {
+  width: 100%;
+  height: 55px;
+  outline: #d0d0d1;
+  border: 1px solid #d0d0d1;
+  border-radius: 200px;
+  background: url("/icons/icon_mail.svg") no-repeat left 10px center;
+  background-size: 20px;
+  padding-left: 35px;
+}
+
+.input2 {
+  width: 100%;
+  height: 55px;
+  outline: #d0d0d1;
+  border: 1px solid #d0d0d1;
+  border-radius: 200px;
+  background: url("/icons/icon_lock.svg") no-repeat left 10px center;
+  background-size: 20px;
+  padding-left: 35px;
+}
+
+.input:focus {
+  border: 2px solid #000000;
+}
+
+.input2:focus {
+  border: 2px solid #000000;
+}
+
+.remBox {
+  width: 100%;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.forget {
+  color: #37459c;
+  font-family: "Sen", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.signinlogButton {
+  background-color: #37459c;
+  margin-top: 20px;
+  width: 100%;
+  height: 55px;
+  border-radius: 200px;
+}
+
+.signBox {
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+}
+
+.signText {
+  color: #121517;
+  font-family: "Sen", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.signLink {
+  color: #37459c;
+  font-family: "Sen", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}

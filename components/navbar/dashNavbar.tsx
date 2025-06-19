@@ -2,7 +2,7 @@
 
 import { useDisclosure } from "@mantine/hooks";
 import { Button, Drawer, Flex, Stack, Text } from "@mantine/core";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./dashNav.module.css";
 import AppSoluteLogo from "../logo";
 import Link from "next/link";

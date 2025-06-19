@@ -1,0 +1,192 @@
+.bodyBox {
+  height: fit-content;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.siteFlex {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.siteBox {
+  align-items: start;
+  justify-content: center;
+  gap: 4px;
+}
+
+.siteText {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0%;
+  color: #6d6e76;
+}
+
+.siteTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0px;
+  color: #000000;
+}
+
+.customSelectWrapper {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid #6d6e76;
+  border-radius: 8px;
+}
+
+.customSelectDisplay {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
+}
+
+.customSelectOptions {
+  position: absolute;
+  width: 100%;
+  background: white;
+  border: 1px solid #6d6e76;
+  border-radius: 6px;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+}
+
+.customSelectOption {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.customSelectOption:hover {
+  background: #f5f5f5;
+}
+
+.label {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 10px;
+  letter-spacing: 0px;
+  color: #6d6e76;
+}
+
+.articleFlex {
+  width: 100%;
+  min-height: 30vh;
+  gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.articleBox {
+  width: 70%;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.tableRow {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+.tableTitle {
+  width: 50%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0.88px;
+  color: #6d6e76;
+}
+.tableDate {
+  width: 15%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0.88px;
+  color: #6d6e76;
+}
+.tableCategory {
+  width: 15%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0.88px;
+  color: #6d6e76;
+}
+.tableComment {
+  width: 18%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0.88px;
+  color: #6d6e76;
+}
+
+.textTitle,
+.textDate,
+.textCategory,
+.textComment {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.88px;
+  color: #6d6e76;
+}
+
+.deviceBox {
+  width: 30%;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.deviceText {
+  margin-bottom: 20px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 11.63px;
+  line-height: 100%;
+  letter-spacing: 0.73px;
+  text-align: center;
+  color: #2f3f67;
+}
