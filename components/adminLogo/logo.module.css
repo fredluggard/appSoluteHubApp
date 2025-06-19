@@ -1,0 +1,10 @@
+.logo {
+  width: 3.125rem;
+  height: 3.0625rem;
+}
+
+.text {
+  font-size: 1.75rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+}

@@ -16,6 +16,9 @@ export interface Comment {
     fullName: string;
     profileImage: string;
   };
+  numberOfLikes: number;
+  countUnlike: number;
+  unlikes: any[];
 }
 
 const Comments = ({ postId }: { postId: string }) => {
@@ -29,7 +32,7 @@ const Comments = ({ postId }: { postId: string }) => {
       const response = await fetch(`${url}/api/v1/coments/${postId}`);
       const data = await response.json();
       console.log("Posts:", data);
-      setComments(data.rawComments || null);
+      setComments(data.comments || null);
     } catch (error) {
       console.error("Error fetching recent blog:", error);
     }
@@ -52,10 +55,44 @@ const Comments = ({ postId }: { postId: string }) => {
         console.log(data);
         fetchBlog();
       } catch (error) {
-        console.error("Error fetching blog data:", error);
+        console.error("Error fetching comment data:", error);
       } finally {
         setInput("");
       }
+    }
+  };
+
+  const likeComment = async (id: string) => {
+    try {
+      const response = await fetch(`${url}/api/v1/likes/${id}/like`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await response.json();
+      console.log(data);
+      fetchBlog();
+    } catch (error) {
+      console.error("Error fetching comment data:", error);
+    }
+  };
+
+  const dislikeComment = async (id: string) => {
+    try {
+      const response = await fetch(`${url}/api/v1/likes/${id}/unlike`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await response.json();
+      console.log(data);
+      fetchBlog();
+    } catch (error) {
+      console.error("Error fetching comment data:", error);
     }
   };
 
@@ -94,6 +131,7 @@ const Comments = ({ postId }: { postId: string }) => {
         },
       };
     });
+    likeComment(id);
   };
 
   const handleDislike = (id: string) => {
@@ -107,6 +145,7 @@ const Comments = ({ postId }: { postId: string }) => {
         },
       };
     });
+    dislikeComment(id);
   };
 
   useEffect(() => {
@@ -182,7 +221,9 @@ const Comments = ({ postId }: { postId: string }) => {
                       onClick={() => handleLike(item.id)}
                     />
 
-                    <Text className={styles.likeText}>23</Text>
+                    <Text className={styles.likeText}>
+                      {item.numberOfLikes}
+                    </Text>
                   </Flex>
                   <Flex className={styles.likeFlex}>
                     <Image
@@ -194,7 +235,9 @@ const Comments = ({ postId }: { postId: string }) => {
                       onClick={() => handleDislike(item.id)}
                     />
 
-                    <Text className={styles.likeText}>2</Text>
+                    <Text className={styles.likeText}>
+                      {item.unlikes.length}
+                    </Text>
                   </Flex>
                 </Flex>
               </Stack>

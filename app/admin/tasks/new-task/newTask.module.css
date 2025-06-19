@@ -1,0 +1,260 @@
+.headContainer {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headTitle {
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.headFlex {
+  gap: 10px;
+  align-items: center;
+}
+
+.backLink {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  text-decoration: none;
+  color: #0043f1;
+  font-size: 12px;
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+}
+
+.link {
+  display: flex;
+  /* align-items: center; */
+  gap: 5px;
+  text-decoration: none;
+}
+
+.headText {
+  color: #6d6e76 !important;
+  font-family: "Sen", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.text {
+  color: #35353a !important;
+  font-family: "Sen", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.title {
+  width: 100%;
+  height: 51px;
+  padding: 3px 20px;
+  border: 1px solid #8c8f94;
+  border-radius: 20px;
+  background-color: #ffffff;
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #000000;
+}
+
+.editorBoxSide {
+  width: 75%;
+  height: auto;
+  gap: 36px;
+  justify-content: space-between;
+  align-items: start;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.subTaskHead {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.label {
+  color: #b7b7b7;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 3%;
+  vertical-align: middle;
+}
+
+.select {
+  width: 50%;
+  height: 50px !important;
+}
+
+.ansInput {
+  width: 100%;
+  height: 45px;
+  padding: 3px 20px;
+  border: 1px solid #8c8f94;
+  border-radius: 20px;
+  background-color: #ffffff;
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #000000;
+}
+
+.previewBtn {
+  width: 140px;
+  height: 35px;
+  border: 1px solid #f28520;
+  border-radius: 100px;
+  padding: 5px 16px;
+  color: #f28520;
+  background-color: #ffffff;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Sen", sans-serif;
+  cursor: pointer;
+}
+
+.publishBtn {
+  width: 140px;
+  height: 35px;
+  border-radius: 100px;
+  padding: 5px 16px;
+  color: #ffffff;
+  background-color: #f28520;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Sen", sans-serif;
+  cursor: pointer;
+}
+
+.desBox {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.des {
+  font-family: "Sen", sans-serif;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.editFlex {
+  gap: 10px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.sideBar {
+  width: 25%;
+  height: auto;
+  gap: 10px;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.btnStack {
+  width: 100%;
+  height: auto;
+  min-height: 110px;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: start;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.tagHead {
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.tagAction {
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #f28520;
+  cursor: pointer;
+}
+
+.checkbox {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #6d6e76;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+.checkbox:checked {
+  background-color: #f28520;
+  border-color: #f28520;
+}
+
+.checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 3px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.addTagFlex {
+  width: 100%;
+  height: auto;
+  gap: 0px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.addTagInput {
+  width: 70%;
+  height: 40px;
+  padding: 5px 10px;
+  border: 1px solid #eef5fe;
+  border-radius: 100px 0 0 100px;
+  outline: none;
+  background-color: #eef5fe;
+}
+
+.addTagBtn {
+  width: 30%;
+  height: 40px;
+  border-radius: 0 100px 100px 0;
+  padding: 5px 10px;
+  color: #ffffff;
+  background-color: #f28520;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Sen", sans-serif;
+  cursor: pointer;
+}
+
+.nextBtn {
+  width: 140px;
+  height: 40px;
+  border-radius: 100px;
+  padding: 5px 16px;
+  color: #ffffff;
+  background-color: #f28520;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Sen", sans-serif;
+  cursor: pointer;
+}

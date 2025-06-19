@@ -1,0 +1,110 @@
+.sideBar {
+  width: 100%;
+  height: 100vh;
+  gap: 0 !important;
+  color: #fff;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.sideBarHeader {
+  width: 100%;
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #34449c;
+  color: #ffffff;
+  padding: 2px 8px;
+  margin: 0;
+}
+
+.sideBarHeaderLeft {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.sideBarHeaderLogo {
+  gap: 10px;
+  align-items: center;
+}
+
+.sideBarHeaderText {
+  color: #f28520 !important;
+}
+
+.sideBarHeaderSpan {
+  color: #ffffff;
+}
+
+.sideBarMess,
+.sideBarNew {
+  gap: 5px;
+  cursor: pointer;
+}
+
+.sideBarHeaderRight {
+  gap: 6px;
+}
+
+.mainSideBar {
+  width: 15vw;
+  max-width: 240px;
+  min-width: 120px;
+  height: 100vh;
+  /* justify-content: start; */
+  align-items: center;
+  color: #ffffff;
+  background-color: #1d2327;
+  padding-top: 30px;
+}
+
+.navLinkBox {
+  background-color: #f0f0f1;
+  width: 100%;
+  height: 35px;
+  padding: 0;
+  margin: 0;
+}
+
+.navLinkBlank {
+  width: 100%;
+  height: 35px;
+  padding: 0;
+  margin: 0;
+}
+
+.navLink {
+  gap: 10px;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.active {
+  clip-path: polygon(
+    100% 0,
+    100% 25%,
+    95% 50%,
+    100% 75%,
+    100% 100%,
+    0 100%,
+    0 0
+  );
+  height: 100%;
+  background-color: rgb(52, 68, 156, 0.9);
+}
+
+.linkText {
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+}
+
+.mainContent {
+  height: 100vh;
+  width: 85vw;
+  overflow-y: scroll;
+  color: #000000;
+  background-color: #f0f0f1;
+  padding: 15px 10px;
+}

@@ -55,7 +55,11 @@ const MobileNavbar = () => {
                 { href: "/contact", label: "Contact" },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} onClick={() => setMobile(false)}>
+                  <Link
+                    href={link.href}
+                    className={styles.links}
+                    onClick={() => setMobile(false)}
+                  >
                     {link.label}
                   </Link>
                 </li>

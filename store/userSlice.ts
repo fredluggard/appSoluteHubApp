@@ -14,7 +14,11 @@ interface UserState {
     gender?: string | null;
     nickName?: string | null;
     phone?: string | null;
+    verified?: boolean | null;
+    answered?: number | null;
     totalScore?: number | null;
+    resetToken?: string | number | null;
+    resetTokenExpires?: string | number | null;
   };
 }
 
@@ -31,7 +35,11 @@ const initialState: UserState = {
     gender: null,
     nickName: null,
     phone: null,
+    verified: null,
+    answered: null,
     totalScore: null,
+    resetToken: null,
+    resetTokenExpires: null,
   },
 };
 
@@ -64,6 +72,15 @@ const userSlice = createSlice({
         email: "",
         profileImage: "",
         role: "",
+        country: null,
+        gender: null,
+        nickName: null,
+        phone: null,
+        verified: null,
+        answered: null,
+        totalScore: null,
+        resetToken: null,
+        resetTokenExpires: null,
       };
     },
   },
