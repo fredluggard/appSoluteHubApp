@@ -93,7 +93,7 @@ const SideBar = ({ children }: any) => {
                   width={20}
                   height={20}
                 />
-                <Text>2</Text>
+                {/* <Text>2</Text> */}
               </Flex>
               <Flex className={styles.sideBarNew}>
                 <Image
@@ -102,9 +102,9 @@ const SideBar = ({ children }: any) => {
                   width={20}
                   height={20}
                 />
-                <Link href="/posts/new-post">New</Link>
+                <Link href="/admin/posts/new-post">New</Link>
               </Flex>
-              <Link href="#">View blog</Link>
+              <Link href="/blog">View blog</Link>
             </Flex>
 
             <Flex className={styles.sideBarHeaderRight}>

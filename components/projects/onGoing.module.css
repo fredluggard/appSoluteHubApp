@@ -46,7 +46,7 @@
   height: 100%;
   border-radius: 0 100px 100px 0;
   border-style: solid;
-  border-color: black;
+  border-color: #592ea9;
   background-color: #592ea9;
 }
 
@@ -89,6 +89,7 @@
   font-family: "Sen", sans-serif;
   font-size: 18px;
   font-weight: 700;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 768px) {

@@ -72,6 +72,7 @@ const RecentBlog = () => {
       try {
         const response = await fetch(`${url}/api/v1/posts/`);
         const data = await response.json();
+        console.log("Fetched recent blogs:", data);
         setBlog(data.data?.[0] || null);
         setBlog2(data.data?.[1] || null);
         setBlog3(data.data?.[2] || null);
@@ -132,7 +133,7 @@ const RecentBlog = () => {
             />
             <Stack className={styles.rightBox}>
               <Text className={styles.postWriter}>
-                {blog2?.author?.fullName || "Unknown Author"} | 1 Jan 2023
+                {blog2?.author?.fullName || "Unknown Author"} | 5 May 2025
               </Text>
               <Title className={styles.rightTitle}>{blog2?.title}</Title>
               <Text className={styles.rightText} lineClamp={3}>

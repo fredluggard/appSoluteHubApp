@@ -16,6 +16,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./settings.module.css";
 import Image from "next/image";
 import Cookies from "js-cookie";
+import { getCountries } from "@yusifaliyevpro/countries";
 
 const Settings = () => {
   interface User {
@@ -65,7 +66,12 @@ const Settings = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${url}/api/v1/userPage/${userId}`);
+      const response = await fetch(`${url}/api/v1/userPage/${userId}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -86,6 +92,7 @@ const Settings = () => {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           fullName,
@@ -122,20 +129,32 @@ const Settings = () => {
 
   useEffect(() => {
     const fetchCountries = async () => {
-      try {
-        const response = await fetch("https://restcountries.com/v3.1/all");
-        const data = await response.json();
-        const countryNames: string[] = data.map(
-          (country: { name: { common: string } }) => country.name.common
-        );
-        setCountries(countryNames);
-      } catch (error) {
-        console.error("Error fetching countries:", error);
-      }
+      const countriesData = await getCountries({
+        independent: true,
+        fields: ["name"],
+      });
+      const countryNames =
+        countriesData
+          ?.map((c: { name: { common: string } }) => c.name.common)
+          ?.sort((a: string, b: string) => a.localeCompare(b)) ?? [];
+      setCountries(countryNames);
+      console.log(countryNames);
+
+      // try {
+      //   const response = await fetch("https://restcountries.com/v3.1/all");
+      //   const data = await response.json();
+      //   console.log("Fetched countries:", data);
+      //   const countryNames: string[] = data.map(
+      //     (country: { name: { common: string } }) => country.name.common
+      //   );
+      //   setCountries(countryNames);
+      // } catch (error) {
+      //   console.error("Error fetching countries:", error);
+      // }
     };
 
     fetchCountries();
-  });
+  }, []);
 
   return (
     <Stack className={styles.setContainer}>
@@ -284,7 +303,7 @@ const Settings = () => {
                   >
                     {countries.map((country, index) => (
                       <option key={index} value={country}>
-                        {country}
+                        {user.country}
                       </option>
                     ))}
                   </Input>

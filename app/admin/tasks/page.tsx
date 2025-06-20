@@ -111,7 +111,7 @@ const Tasks = () => {
 
                   <button
                     className={styles.taskEditBtn}
-                    onClick={() => router.push(`${url}/dashboard`)}
+                    onClick={() => router.push(`/dashboard/tasks}`)}
                   >
                     View
                   </button>

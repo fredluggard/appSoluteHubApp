@@ -108,6 +108,7 @@ const TaskID = () => {
       }
 
       const data = await response.json();
+      console.log("Score submitted successfully:", data);
     } catch (error) {
       console.error("Error submitting score:", error);
     }
@@ -181,7 +182,12 @@ const TaskID = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch(`${url}/api/v1/userPage/${userId}`);
+        const response = await fetch(`${url}/api/v1/userPage/${userId}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
         const data = await response.json();
         setUser(data?.data);
       } catch (error) {

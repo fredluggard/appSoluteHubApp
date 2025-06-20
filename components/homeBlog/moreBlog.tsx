@@ -37,7 +37,6 @@ const MoreBlog = () => {
 
   const router = useRouter();
   const handleClick = (url: string) => {
-    // router.push(url);
     router.push(`/blog/${url}`);
   };
 

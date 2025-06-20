@@ -28,6 +28,7 @@ const SideBar = () => {
       });
 
       const data = await response.json();
+      console.log("Logout response:", data);
       dispatch(clearUser());
 
       if (!response.ok) {

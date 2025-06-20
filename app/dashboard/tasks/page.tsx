@@ -155,6 +155,7 @@ const Tasks = () => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
+        console.log("Fetched tasks:", data);
         setTask(data);
       } catch (error) {
         console.error("Error fetching task:", error);
@@ -170,8 +171,14 @@ const Tasks = () => {
     const fetchUser = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${url}/api/v1/userPage/${userId}`);
+        const response = await fetch(`${url}/api/v1/userPage/${userId}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
         const data = await response.json();
+        console.log("Fetched user data:", data);
         setUser(data?.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -257,7 +264,7 @@ const Tasks = () => {
                     </Text>
                     <Text className={styles.taskDate}>
                       {/* {task.tags.join(", ")} */}
-                      {task.tags[0]}
+                      {/* {task.tags[0]} */}
                     </Text>
                   </Flex>
                   <Title

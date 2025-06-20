@@ -43,7 +43,7 @@ const KidsCarousel = () => {
       >
         {tutorials.map((tutorial) => (
           <Carousel.Slide key={tutorial.title}>
-            <Link href={tutorial.url}>
+            <Link href={tutorial.url} className={styles.link}>
               <Stack className={styles.card}>
                 <Image
                   src={tutorial.src}

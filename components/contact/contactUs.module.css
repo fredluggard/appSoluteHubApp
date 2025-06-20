@@ -65,6 +65,7 @@
   height: 54px;
   padding: 15px;
   background-color: #ffffff;
+  border: none;
 }
 
 .email {
@@ -72,6 +73,7 @@
   height: 54px;
   padding: 15px;
   background-color: #ffffff;
+  border: none;
 }
 
 .message {
@@ -79,6 +81,7 @@
   height: 365px;
   padding: 15px;
   background-color: #ffffff;
+  border: none;
 }
 
 .submitButton {
@@ -92,6 +95,7 @@
   font-size: 1.125rem;
   font-weight: 700;
   padding: 0.5rem 1rem;
+  border: none;
   border-radius: 6.25rem;
   text-decoration: none;
 }

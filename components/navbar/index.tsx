@@ -130,7 +130,7 @@ const Navbar = () => {
                     { href: "/about", label: "About" },
                     { href: "/contact", label: "Contact" },
                   ].map((link) => (
-                    <li key={link.href}>
+                    <li className={styles.lis} key={link.href}>
                       <Link
                         href={link.href}
                         className={styles.links}

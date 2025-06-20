@@ -17,6 +17,8 @@
   font-weight: 700;
 }
 .moreBlog {
+  width: 100%;
+  justify-content: start;
   gap: 2.5rem;
 }
 

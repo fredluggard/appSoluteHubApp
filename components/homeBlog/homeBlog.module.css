@@ -64,13 +64,16 @@
 }
 
 .postTitle {
+  color: #232536;
   font-weight: 700;
   font-size: 28px;
   font-family: "Sen", sans-serif;
   text-align: start;
+  text-decoration: none;
 }
 
 .postText {
+  color: #6d6e76;
   font-weight: 400;
   font-size: 16px;
   font-family: "Inter", sans-serif;
@@ -86,6 +89,7 @@
 }
 
 .title {
+  color: #000000;
   width: 350px;
   font-weight: 700;
   font-size: 36px;
@@ -94,6 +98,7 @@
 }
 
 .text {
+  color: #6d6e76;
   width: 440px;
   font-weight: 400;
   font-size: 16px;

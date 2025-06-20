@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 import styles from "./homeBlog.module.css";
 import Image from "next/image";
 import LinkButton from "../button";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const HomeBlog = () => {
@@ -72,7 +71,7 @@ const HomeBlog = () => {
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
       });
-  }, []);
+  }, [baseUrl]);
 
   return (
     <Flex className={styles.homeBlog}>
@@ -95,9 +94,7 @@ const HomeBlog = () => {
                   width={85}
                   height={85}
                 />
-                <Link href={"#"} className={styles.postTitle}>
-                  {post.title}
-                </Link>
+                <Text className={styles.postTitle}>{post.title}</Text>
                 <Text className={styles.postText}>{post.description}</Text>
               </Stack>
             );
@@ -116,9 +113,7 @@ const HomeBlog = () => {
                     width={85}
                     height={85}
                   />
-                  <Link href={"#"} className={styles.postTitle}>
-                    {post.title}
-                  </Link>
+                  <Text className={styles.postTitle}>{post.title}</Text>
                   <Text className={styles.postText}>{post.description}</Text>
                 </Stack>
               </Stack>
@@ -138,9 +133,7 @@ const HomeBlog = () => {
                     width={85}
                     height={85}
                   />
-                  <Link href={"#"} className={styles.postTitle}>
-                    {post.title}
-                  </Link>
+                  <Text className={styles.postTitle}>{post.title}</Text>
                   <Text className={styles.postText}>{post.description}</Text>
                 </Stack>
               </Stack>

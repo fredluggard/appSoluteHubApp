@@ -9,6 +9,7 @@
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 24px;
+  color: #1a1a1a;
 }
 
 .flex {
@@ -22,6 +23,7 @@
   gap: 12px;
   display: flex;
   flex-direction: column;
+  text-decoration: none;
 }
 
 .leftImage {
@@ -47,6 +49,7 @@
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 24px;
+  color: #1a1a1a;
 }
 
 .arrow {
@@ -100,6 +103,7 @@
   width: 100%;
   height: 50%;
   display: flex;
+  text-decoration: none;
 }
 
 .rightImage {
@@ -131,4 +135,93 @@
   width: 100%;
   height: 240px;
   display: flex;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  .recentContainer {
+    width: 100%;
+    gap: 32px;
+    padding: 20px;
+  }
+
+  .flex {
+    width: 100%;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .leftPost {
+    width: 100%;
+    height: auto;
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+
+  .leftImage {
+    width: 100%;
+    height: 250px;
+  }
+
+  .titleFlex {
+    width: 100%;
+    justify-content: space-between;
+    align-items: start;
+    gap: 16px;
+  }
+
+  .arrow {
+    width: 10px;
+    height: 10px;
+  }
+
+  .rightPost {
+    width: 100%;
+    height: auto;
+    gap: 32px;
+  }
+
+  .rightFlex {
+    gap: 24px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+
+  .rightImage {
+    width: 100%;
+    height: 250px;
+  }
+
+  .rightBox {
+    width: 100%;
+    height: auto;
+  }
+
+  .rightTitle {
+    color: #1a1a1a;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+  }
+
+  .rightText {
+    color: #667085;
+    font-weight: 400;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+  }
+
+  .bottomFlex {
+    gap: 24px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
 }

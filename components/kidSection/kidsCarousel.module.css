@@ -4,6 +4,11 @@
   gap: 20px;
 }
 
+.link {
+  text-decoration: none;
+  color: #1d242a;
+}
+
 .text {
   font-family: "Sen", sans-serif;
   font-size: 20px;
