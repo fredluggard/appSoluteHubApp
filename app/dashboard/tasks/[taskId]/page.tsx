@@ -42,10 +42,6 @@ const TaskID = () => {
     userAnswer: string;
   }
 
-  interface AnswersPayload {
-    answers: Answer[];
-  }
-
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<any | null>(null);
   const [hide, setHide] = useState(true);
@@ -89,7 +85,7 @@ const TaskID = () => {
 
   const submitScore = async () => {
     try {
-      const response = await fetch(`${url}/api/v1/tasks/answer/${taskId}`, {
+      const response = await fetch(`${url}/api/v1/doTasks/answer/${taskId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

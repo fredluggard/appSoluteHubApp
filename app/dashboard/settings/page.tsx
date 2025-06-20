@@ -50,7 +50,7 @@ const Settings = () => {
     day: "numeric",
   });
 
-  const notitications = [1, 2];
+  const notitications = [];
 
   const handleEdit = () => {
     setActiveForm(!activeForm);
@@ -85,6 +85,39 @@ const Settings = () => {
     }
   };
 
+  const handleProfileImageChange = async (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setImage(URL.createObjectURL(file));
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await fetch(`${url}/api/v1/userPage/profile/${userId}`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        console.error(`Error ${response.status}:`, errorMessage);
+        throw new Error(`Network response was not ok: ${errorMessage}`);
+      }
+
+      const data = await response.json();
+      console.log("Profile image updated:", data);
+
+      await fetchData();
+    } catch (error) {
+      console.error("Error updating profile image:", error);
+    }
+  };
+
   const updateUser = async () => {
     setLoading(true);
     try {
@@ -111,7 +144,6 @@ const Settings = () => {
         throw new Error(`Network response was not ok: ${errorMessage}`);
       }
       const data = await response.json();
-      console.log(data);
       setUser(data.data);
       await fetchData();
     } catch (error) {
@@ -138,19 +170,6 @@ const Settings = () => {
           ?.map((c: { name: { common: string } }) => c.name.common)
           ?.sort((a: string, b: string) => a.localeCompare(b)) ?? [];
       setCountries(countryNames);
-      console.log(countryNames);
-
-      // try {
-      //   const response = await fetch("https://restcountries.com/v3.1/all");
-      //   const data = await response.json();
-      //   console.log("Fetched countries:", data);
-      //   const countryNames: string[] = data.map(
-      //     (country: { name: { common: string } }) => country.name.common
-      //   );
-      //   setCountries(countryNames);
-      // } catch (error) {
-      //   console.error("Error fetching countries:", error);
-      // }
     };
 
     fetchCountries();
@@ -212,12 +231,7 @@ const Settings = () => {
                     id="fileInput"
                     style={{ display: "none" }}
                     accept="image/*"
-                    onChange={(e) => {
-                      const file = e.target.files?.[0];
-                      if (file) {
-                        setImage(URL.createObjectURL(file));
-                      }
-                    }}
+                    onChange={handleProfileImageChange}
                   />
                 </Box>
               </Stack>

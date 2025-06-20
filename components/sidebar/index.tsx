@@ -9,6 +9,8 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { clearUser } from "@/store/userSlice";
+import Cookies from "js-cookie";
+
 const SideBar = () => {
   const dispatch = useDispatch();
   const pathname = usePathname();
@@ -16,7 +18,8 @@ const SideBar = () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const logOut = async (): Promise<void> => {
-    const token = localStorage.getItem("token");
+    const token = Cookies.get("token");
+    console.log("Logging out with token:", token);
     try {
       const response = await fetch(`${baseUrl}/api/v1/users/logout`, {
         method: "POST",
@@ -25,6 +28,7 @@ const SideBar = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
+        body: JSON.stringify({ token }),
       });
 
       const data = await response.json();
