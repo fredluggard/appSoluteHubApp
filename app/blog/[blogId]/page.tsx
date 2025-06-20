@@ -288,7 +288,10 @@ const BlogContents = () => {
                     className={styles.writerImg}
                   />
                   <Stack className={styles.nameGroup}>
-                    <Link href={`/blog/${item.id}`}>
+                    <Link
+                      className={styles.writerLink}
+                      href={`/blog/${item.id}`}
+                    >
                       <Text className={styles.writerName} lineClamp={2}>
                         {item.title}
                       </Text>

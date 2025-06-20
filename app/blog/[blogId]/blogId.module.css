@@ -135,6 +135,10 @@
   gap: 0.3125rem;
 }
 
+.writerLink {
+  text-decoration: none;
+}
+
 .writerName {
   color: #000000;
   font-family: "Sen", sans-serif;
@@ -194,6 +198,7 @@
   font-weight: 700;
   font-size: 1.125rem;
   text-align: center;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -228,10 +233,11 @@
 
   .blogGroup {
     width: 100%;
+    height: auto;
     flex-direction: column;
     align-items: start;
-    justify-content: center;
-    gap: 10px;
+    justify-content: start;
+    gap: 10px !important;
   }
 
   .blogPack {
@@ -241,6 +247,7 @@
     align-items: center;
     justify-content: start;
     padding: 0;
+    margin: 0;
     gap: 0.625rem;
   }
 

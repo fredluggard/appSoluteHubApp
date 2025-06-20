@@ -50,6 +50,7 @@ const KidsCarousel = () => {
                   alt={tutorial.title}
                   width={370}
                   height={300}
+                  className={styles.cardImage}
                 />
                 <Text className={styles.text}>{tutorial.title}</Text>
               </Stack>
