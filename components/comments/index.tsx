@@ -5,6 +5,9 @@ import React, { useCallback, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import styles from "./comment.module.css";
 import Image from "next/image";
+import { useSelector } from "react-redux";
+import { getUser } from "@/store/userSlice";
+import { useRouter } from "next/navigation";
 
 export interface Comment {
   id: string;
@@ -22,8 +25,10 @@ export interface Comment {
 }
 
 const Comments = ({ postId }: { postId: string }) => {
+  const user = useSelector(getUser);
   const [comments, setComments] = useState<Comment[] | null>(null);
   const [input, setInput] = useState<string>("");
+  const router = useRouter();
   const url = process.env.NEXT_PUBLIC_BASE_URL;
   const token = Cookies.get("token");
 
@@ -37,6 +42,10 @@ const Comments = ({ postId }: { postId: string }) => {
       console.error("Error fetching recent blog:", error);
     }
   }, [url, postId]);
+
+  const login = () => {
+    router.push(`/login?redirectTo=/blog/${postId}`);
+  };
 
   const postComment = async () => {
     if (input === "") {
@@ -161,9 +170,16 @@ const Comments = ({ postId }: { postId: string }) => {
           onChange={(e) => setInput(e.target.value)}
           className={styles.input}
         />
-        <Button className={styles.btn} onClick={postComment}>
-          Post Comment
-        </Button>
+
+        {user.email ? (
+          <Button className={styles.btn} onClick={postComment}>
+            Post Comment
+          </Button>
+        ) : (
+          <Button className={styles.btn} onClick={login}>
+            Login
+          </Button>
+        )}
       </Stack>
 
       <Title className={styles.title}>
@@ -238,6 +254,16 @@ const Comments = ({ postId }: { postId: string }) => {
                     <Text className={styles.likeText}>
                       {item.unlikes.length}
                     </Text>
+                  </Flex>
+                  <Flex className={styles.likeFlex}>
+                    <Image
+                      src={"/icons/delete.png"}
+                      alt="Dislike icon"
+                      width={18}
+                      height={18}
+                      className={styles.likeIcon}
+                      onClick={() => handleDislike(item.id)}
+                    />
                   </Flex>
                 </Flex>
               </Stack>

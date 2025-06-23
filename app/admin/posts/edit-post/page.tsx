@@ -3,8 +3,14 @@
 import { Flex, Stack, Text, Title } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import styles from "./editPost.module.css";
-import { EditorState, ContentState, convertFromRaw } from "draft-js";
+import {
+  EditorState,
+  ContentState,
+  convertToRaw,
+  convertFromRaw,
+} from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
+import draftToMarkdown from "draftjs-to-markdown";
 import "draft-js/dist/Draft.css";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Link from "next/link";
@@ -164,16 +170,37 @@ const EditPosts = () => {
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
+  const uploadImageCallBack = async (file: File) => {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    // Replace with your actual API endpoint for image upload from Uche
+    const response = await fetch(`${baseUrl}/upload-image`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`, // if required
+      },
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    // The returned object must match this shape:
+    return { data: { link: data.imageUrl } };
+  };
+
   async function editBlogPost(postId: string) {
-    const description = editorState.getCurrentContent().getPlainText();
+    const description = convertToRaw(editorState.getCurrentContent());
+    const markdown = draftToMarkdown(description);
+    console.log("Markdown text:", markdown);
     const formData = new FormData();
 
     if (title.trim()) {
       formData.append("title", title);
     }
 
-    if (description.trim()) {
-      formData.append("description", description);
+    if (markdown.trim()) {
+      formData.append("description", markdown);
     }
 
     if (selectedCategories.length > 0) {

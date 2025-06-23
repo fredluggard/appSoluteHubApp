@@ -34,6 +34,8 @@ const SideBar = () => {
       const data = await response.json();
       console.log("Logout response:", data);
       dispatch(clearUser());
+      Cookies.remove("token");
+      Cookies.remove("userId");
 
       if (!response.ok) {
         throw new Error(

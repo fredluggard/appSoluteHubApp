@@ -3,8 +3,9 @@
 import { Flex, Stack, Text, Title } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import styles from "./newPost.module.css";
-import { EditorState } from "draft-js";
+import { EditorState, convertToRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
+import draftToMarkdown from "draftjs-to-markdown";
 import "draft-js/dist/Draft.css";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Link from "next/link";
@@ -140,9 +141,30 @@ const NewPosts = () => {
     }
   };
 
+  const uploadImageCallBack = async (file: File) => {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch(`${baseUrl}/api/v1/posts/image-upload`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    const data = await response.json();
+    console.log("Image upload response:", data);
+
+    // The returned object must match this shape:
+    return { data: { link: data.data.imageUrl } };
+  };
+
   async function createBlogPost() {
-    const description = editorState.getCurrentContent().getPlainText();
-    if (!title || !imageFile || description === "") {
+    const description = convertToRaw(editorState.getCurrentContent());
+    const markdown = draftToMarkdown(description);
+    console.log("Markdown text:", markdown);
+    if (!title || !imageFile || markdown === "") {
       alert("Please fill in all fields");
       return;
     }
@@ -159,7 +181,7 @@ const NewPosts = () => {
     const formData = new FormData();
 
     formData.append("title", title);
-    formData.append("description", description);
+    formData.append("description", markdown);
     formData.append("categories", JSON.stringify(selectedCategories));
     formData.append("file", imageFile as Blob);
     formData.append("contributors", JSON.stringify([user.email]));
@@ -306,6 +328,21 @@ const NewPosts = () => {
               },
               history: {
                 options: ["undo", "redo"],
+              },
+              image: {
+                icon: image,
+                urlEnabled: true,
+                uploadEnabled: true,
+                alignmentEnabled: true,
+                uploadCallback: uploadImageCallBack,
+                previewImage: false,
+                inputAccept:
+                  "image/gif,image/jpeg,image/jpg,image/png,image/svg",
+                alt: { present: false, mandatory: false },
+                defaultSize: {
+                  height: "auto",
+                  width: "auto",
+                },
               },
             }}
             hashtag={{
