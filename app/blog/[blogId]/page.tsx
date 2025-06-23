@@ -4,6 +4,8 @@ import { Flex, Popover, Stack, Text, Title } from "@mantine/core";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import styles from "./blogId.module.css";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import { useParams } from "next/navigation";
 import Comments from "@/components/comments";
 import JoinUs from "@/components/joinUs";
@@ -187,19 +189,12 @@ const BlogContents = () => {
             <Text className={styles.paraText}>Conclusion</Text>
           </Stack>
 
-          <Text className={styles.mainText}>{blog?.description}</Text>
+          {/* <Text className={styles.mainText}>{blog?.description}</Text> */}
+          <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+            {blog?.description}
+          </ReactMarkdown>
 
-          <Image
-            src={blog?.imageUrl || ""}
-            alt="post image"
-            width={100}
-            height={100}
-            className={styles.mainImg}
-          />
-
-          <Text className={styles.mainText}>{blog?.description}</Text>
-
-          {/* Comment */}
+          {/* Comments */}
           <Comments postId={Array.isArray(blogId) ? blogId[0] : blogId || ""} />
 
           {/* For mobile only */}

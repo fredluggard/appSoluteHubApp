@@ -16,13 +16,15 @@ import styles from "./login.module.css";
 import Link from "next/link";
 import { setUser } from "@/store/userSlice";
 import { useDispatch } from "react-redux";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Cookies from "js-cookie";
 import MobileNavbar from "@/components/navbar/mobileNavbar";
 import MobileFooter from "@/components/footer/mobileFooter";
 
 const Login = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -55,8 +57,15 @@ const Login = () => {
       .then((data) => {
         Cookies.set("token", data.token, { expires: 7 });
         Cookies.set("userId", data.user.id, { expires: 7 });
+        Cookies.set("role", data.user.role, { expires: 7 });
         dispatch(setUser(data));
-        router.push("/dashboard");
+        const redirectTo = searchParams.get("redirectTo");
+        if (redirectTo === "/") {
+          router.push("/dashboard");
+        } else {
+          router.push(redirectTo || "/dashboard");
+        }
+
         setLoading(false);
       })
       .catch((error) => {
