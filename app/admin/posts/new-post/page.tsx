@@ -330,12 +330,11 @@ const NewPosts = () => {
                 options: ["undo", "redo"],
               },
               image: {
-                icon: image,
                 urlEnabled: true,
                 uploadEnabled: true,
                 alignmentEnabled: true,
                 uploadCallback: uploadImageCallBack,
-                previewImage: false,
+                previewImage: true,
                 inputAccept:
                   "image/gif,image/jpeg,image/jpg,image/png,image/svg",
                 alt: { present: false, mandatory: false },
