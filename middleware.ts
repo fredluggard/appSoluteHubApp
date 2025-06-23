@@ -8,7 +8,7 @@ export function middleware(req: NextRequest) {
 
   const { pathname } = req.nextUrl;
 
-  if (pathname === "/admin" || pathname === "/admin/") {
+  if (pathname.startsWith("/admin")) {
     if (!token || !userId) {
       const loginUrl = req.nextUrl.clone();
       loginUrl.pathname = "/admin/login";
@@ -22,9 +22,11 @@ export function middleware(req: NextRequest) {
       return NextResponse.redirect(homeUrl);
     }
 
-    const url = req.nextUrl.clone();
-    url.pathname = "/admin/dashboard";
-    return NextResponse.redirect(url);
+    if (pathname === "/admin" || pathname === "/admin/") {
+      const url = req.nextUrl.clone();
+      url.pathname = "/admin/dashboard";
+      return NextResponse.redirect(url);
+    }
   }
 
   if (pathname === "/dashboard" && !token && !userId) {
