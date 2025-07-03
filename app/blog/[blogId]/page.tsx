@@ -354,7 +354,7 @@ const BlogContents = () => {
               </Text>
               <Flex className={styles.youtubeFlex}>
                 <Image
-                  src={"/images/hero1.png"}
+                  src={"/images/logo.svg"}
                   alt="author profile picture"
                   width={56}
                   height={56}
