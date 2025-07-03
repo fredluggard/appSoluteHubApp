@@ -254,7 +254,7 @@ const BlogContents = () => {
               </Title>
               <Flex className={styles.writerProfile}>
                 <Image
-                  src={"/images/hero1.png"}
+                  src={"/images/userLogo.png"}
                   alt="author profile picture"
                   width={56}
                   height={56}
@@ -354,7 +354,7 @@ const BlogContents = () => {
               </Text>
               <Flex className={styles.youtubeFlex}>
                 <Image
-                  src={"/images/logo.svg"}
+                  src={"/icons/logo.svg"}
                   alt="author profile picture"
                   width={56}
                   height={56}
@@ -394,7 +394,7 @@ const BlogContents = () => {
               </Title>
               <Flex className={styles.writerProfile}>
                 <Image
-                  src={"/images/hero1.png"}
+                  src={"/images/userLogo.png"}
                   alt="author profile picture"
                   width={56}
                   height={56}
@@ -491,7 +491,7 @@ const BlogContents = () => {
               </Text>
               <Flex className={styles.youtubeFlex}>
                 <Image
-                  src={"/images/hero1.png"}
+                  src={"/icons/logo.svg"}
                   alt="author profile picture"
                   width={56}
                   height={56}
