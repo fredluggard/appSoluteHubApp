@@ -18,7 +18,7 @@
 }
 
 .logoBox {
-  width: 20%;
+  min-width: 20%;
   justify-content: start;
   align-items: start;
 }

@@ -23,13 +23,13 @@ const MobileFooter = () => {
               COMPANY
             </Title>
             <Stack>
-              <Link href="#" className={styles.text}>
+              <Link href="/about" className={styles.text}>
                 Mission
               </Link>
-              <Link href="#" className={styles.text}>
+              <Link href="/about" className={styles.text}>
                 Vision
               </Link>
-              <Link href="#" className={styles.text}>
+              <Link href="/about" className={styles.text}>
                 Explore
               </Link>
             </Stack>
@@ -40,13 +40,13 @@ const MobileFooter = () => {
               SUPPORT
             </Title>
             <Stack>
-              <Link href="#" className={styles.text}>
+              <Link href="/contact" className={styles.text}>
                 Help
               </Link>
-              <Link href="#" className={styles.text}>
+              <Link href="/contact" className={styles.text}>
                 Privacy
               </Link>
-              <Link href="#" className={styles.text}>
+              <Link href="/contact" className={styles.text}>
                 Terms
               </Link>
             </Stack>
@@ -57,7 +57,11 @@ const MobileFooter = () => {
               SOCIALS
             </Title>
             <Flex className={styles.groupLink}>
-              <Link href="https://www.facebook.com/share/14N6e7xVyM/?mibextid=LQQJ4d">
+              <Link
+                href="https://www.facebook.com/share/14N6e7xVyM/?mibextid=LQQJ4d"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Image
                   src={"/icons/facebook.svg"}
                   alt="facebook"
@@ -65,7 +69,11 @@ const MobileFooter = () => {
                   height={20}
                 />
               </Link>
-              <Link href="https://x.com/appsolutehub?s=21">
+              <Link
+                href="https://x.com/appsolutehub?s=21"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Image
                   src={"/icons/twitter.svg"}
                   alt="twitter"
@@ -73,7 +81,11 @@ const MobileFooter = () => {
                   height={20}
                 />
               </Link>
-              <Link href="https://www.instagram.com/appsolutehub?igsh=MWR3d3lnOHBzOXF0Zg==">
+              <Link
+                href="https://www.instagram.com/appsolutehub?igsh=MWR3d3lnOHBzOXF0Zg=="
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Image
                   src={"/icons/instagram.svg"}
                   alt="instagram"
@@ -81,7 +93,11 @@ const MobileFooter = () => {
                   height={20}
                 />
               </Link>
-              <Link href="https://www.tiktok.com/@appsolutehub?_t=ZM-8uB70uxmNnR&_r=1">
+              <Link
+                href="https://www.tiktok.com/@appsolutehub?_t=ZM-8uB70uxmNnR&_r=1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Image
                   src={"/icons/tiktok.svg"}
                   alt="tiktok"
@@ -89,7 +105,11 @@ const MobileFooter = () => {
                   height={20}
                 />
               </Link>
-              <Link href="https://youtube.com/@appsolutehub?si=i4tjPWK2JXzxIWZK">
+              <Link
+                href="https://youtube.com/@appsolutehub?si=i4tjPWK2JXzxIWZK"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Image
                   src={"/icons/youtube.svg"}
                   alt="facebook"

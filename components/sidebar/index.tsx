@@ -56,7 +56,9 @@ const SideBar = () => {
   return (
     <Stack visibleFrom="md" className={styles.sideContainer}>
       <Stack className={styles.sideTop}>
-        <AppSoluteLogo color="#ffffff" logoColor="white" />
+        <Stack mb={50}>
+          <AppSoluteLogo color="#ffffff" logoColor="white" />
+        </Stack>
 
         <Link href="/dashboard" className={styles.sideLink}>
           <Image

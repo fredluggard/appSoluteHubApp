@@ -13,15 +13,54 @@ const Tasks = () => {
     profileImage: string;
   }
 
+  interface AnsweredQuestion {
+    id: string;
+    userId: string;
+    taskId: string;
+    questionId: number;
+    userAnswer: string;
+    isCorrect: boolean;
+    scoreEarned: number;
+    answeredAt: string;
+    user: {
+      id: string;
+      fullName: string;
+      nickName: string | null;
+      email: string;
+      profileImage: string;
+      role: string;
+      totalScore: number;
+      answered: number;
+    };
+    task: {
+      id: string;
+      title: string;
+      url: string;
+      imageUrl: string;
+      description: string;
+      points: number;
+      createdAt: string;
+      updatedAt: string;
+    };
+    question: {
+      id: number;
+      questionText: string;
+      options: string[];
+      correctAnswer: string;
+    };
+  }
+
   interface TaskType {
     id: string;
     question: string;
     correctAnswer: string;
     options: string[];
     points: number;
+    isAnsweredByUser: boolean;
     tags: { tag?: { name?: string } }[];
     title: string;
     url: string;
+    userTask: AnsweredQuestion[];
     createdAt: string;
     updatedAt: string;
   }
@@ -59,6 +98,9 @@ const Tasks = () => {
   const handleTask = (taskId: string) => {
     router.push(`/dashboard/tasks/${taskId}`);
   };
+  const handleDoneTask = (taskId: string) => {
+    router.push(`/dashboard/tasks/completed/${taskId}`);
+  };
 
   const token = Cookies.get("token");
   const userId = Cookies.get("userId");
@@ -67,7 +109,8 @@ const Tasks = () => {
     const fetchTasks = async () => {
       try {
         const response = await fetch(
-          `${url}/api/v1/tasks/undoneTasks/${userId}`,
+          // `${url}/api/v1/tasks/undoneTasks/${userId}`,
+          `${url}/api/v1/tasks`,
           {
             method: "GET",
             credentials: "include",
@@ -82,7 +125,7 @@ const Tasks = () => {
         }
         const data = await response.json();
         console.log("Fetched tasks:", data);
-        setTask(data);
+        setTask(data.data || []);
       } catch (error) {
         console.error("Error fetching task:", error);
       }
@@ -130,7 +173,7 @@ const Tasks = () => {
       fetchtaskDetails();
       fetchStat();
     }
-  }, [token]);
+  }, [token, url, userId]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -155,7 +198,7 @@ const Tasks = () => {
     if (token) {
       fetchUser();
     }
-  }, [token]);
+  }, [token, url, userId]);
 
   return (
     <Stack className={styles.taskContainer}>
@@ -200,7 +243,7 @@ const Tasks = () => {
               {leaderboardStatus?.peopleToBypass > 0 ? (
                 <Text className={styles.morePoints}>
                   Earn more {leaderboardStatus?.pointsToBypass} points to bypass{" "}
-                  {leaderboardStatus?.peopleToBypass} people
+                  {leaderboardStatus?.peopleToBypass} person&#40;s&#41;
                 </Text>
               ) : (
                 <Text className={styles.morePoints}>
@@ -222,37 +265,74 @@ const Tasks = () => {
             <Title className={styles.availTitle}>Available Tasks</Title>
 
             <Flex className={styles.taskFlex}>
-              {task?.map((task, index: any) => (
-                <Stack key={index} className={styles.taskBox}>
-                  <Stack
-                    className={styles.imageBox}
-                    onClick={() => handleTask(task.id)}
-                  >
-                    <Image
-                      src={task.url}
-                      alt="task image"
-                      width={240}
-                      height={150}
-                      className={styles.taskImg}
-                    />
-                    <p className={styles.taskPnt}>{task.points} points</p>
-                  </Stack>
-                  <Flex className={styles.flexSpace}>
-                    <Text className={styles.taskDate}>
-                      {new Date(task.createdAt).toLocaleDateString("en-GB")}
-                    </Text>
-                    <Text className={styles.taskDate}>
-                      {task.tags[0]?.tag?.name || "No Tags"}
-                    </Text>
-                  </Flex>
-                  <Title
-                    className={styles.taskTitle}
-                    onClick={() => handleTask(task.id)}
-                  >
-                    {task.title}
-                  </Title>
-                </Stack>
-              ))}
+              {task?.map((task, index: number) => {
+                if (task.isAnsweredByUser) {
+                  return (
+                    <Stack key={index} className={styles.taskBox}>
+                      <Stack
+                        className={styles.imageBox}
+                        style={{ opacity: "0.6" }}
+                        onClick={() => handleDoneTask(task.id)}
+                      >
+                        <Image
+                          src={task.url}
+                          alt="task image"
+                          width={240}
+                          height={150}
+                          className={styles.taskImg}
+                        />
+                        <p className={styles.taskPnt}>Completed</p>
+                      </Stack>
+                      <Flex className={styles.flexSpace}>
+                        <Text className={styles.taskDate}>
+                          {new Date(task.createdAt).toLocaleDateString("en-GB")}
+                        </Text>
+                        <Text className={styles.taskDate}>
+                          {task.tags[0]?.tag?.name || "No Tags"}
+                        </Text>
+                      </Flex>
+                      <Title
+                        className={styles.taskTitle}
+                        onClick={() => handleDoneTask(task.id)}
+                      >
+                        {task.title}
+                      </Title>
+                    </Stack>
+                  );
+                } else {
+                  return (
+                    <Stack key={index} className={styles.taskBox}>
+                      <Stack
+                        className={styles.imageBox}
+                        onClick={() => handleTask(task.id)}
+                      >
+                        <Image
+                          src={task.url}
+                          alt="task image"
+                          width={240}
+                          height={150}
+                          className={styles.taskImg}
+                        />
+                        <p className={styles.taskPnt}>{task.points} points</p>
+                      </Stack>
+                      <Flex className={styles.flexSpace}>
+                        <Text className={styles.taskDate}>
+                          {new Date(task.createdAt).toLocaleDateString("en-GB")}
+                        </Text>
+                        <Text className={styles.taskDate}>
+                          {task.tags[0]?.tag?.name || "No Tags"}
+                        </Text>
+                      </Flex>
+                      <Title
+                        className={styles.taskTitle}
+                        onClick={() => handleTask(task.id)}
+                      >
+                        {task.title}
+                      </Title>
+                    </Stack>
+                  );
+                }
+              })}
             </Flex>
           </Stack>
         </Stack>

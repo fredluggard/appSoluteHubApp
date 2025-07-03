@@ -32,6 +32,7 @@ const TaskID = () => {
     id: string;
     title: string;
     tags: string[];
+    imageUrl: string;
     url: string;
     points: number;
     questions: Question[];
@@ -42,8 +43,33 @@ const TaskID = () => {
     userAnswer: string;
   }
 
+  interface TaskProgress {
+    completedTasks: number;
+    totalTasks: number;
+    progressPercent: number;
+  }
+
+  interface LeaderboardStatus {
+    message: string;
+    peopleToBypass: number;
+    pointsToBypass: number;
+  }
+
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<any | null>(null);
+  const [taskProgress, setTaskProgress] = useState<TaskProgress>({
+    completedTasks: 0,
+    totalTasks: 0,
+    progressPercent: 0,
+  });
+  const [leaderboardStatus, setLeaderboardStatus] = useState<LeaderboardStatus>(
+    {
+      message: "",
+      peopleToBypass: 0,
+      pointsToBypass: 0,
+    }
+  );
+  const [progress, setProgress] = useState<number>(0);
   const [hide, setHide] = useState(true);
   const [task, setTask] = useState<TaskType | null>(null);
   const [quizQuestions, setQuizQuestions] = useState<Question[]>([]);
@@ -161,6 +187,7 @@ const TaskID = () => {
         },
       });
       if (!response.ok) throw new Error("Network response was not ok");
+      console.log("Response status:", response);
       const data = await response.json();
       setTask(data?.Task);
       setQuizQuestions(data?.Task.questions || []);
@@ -194,7 +221,53 @@ const TaskID = () => {
     if (token) {
       fetchUser();
     }
-  }, [token, userId]);
+  }, [token, userId, url]);
+
+  const fetchtaskDetails = async () => {
+    if (!token) return;
+
+    try {
+      const response = await fetch(`${url}/api/v1/tasks/task-progress`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const data = await response.json();
+      setTaskProgress({
+        completedTasks: data.data.completedTasks || 0,
+        totalTasks: data.data.totalTasks || 0,
+        progressPercent: data.data.progressPercent || 0,
+      });
+      setProgress(data.data.progressPercent || 0);
+    } catch (error) {
+      console.error("Error fetching task details data:", error);
+    }
+  };
+
+  const fetchStat = async () => {
+    if (!token) return;
+
+    try {
+      const response = await fetch(
+        `${url}/api/v1/tasks/leaderboard-progress `,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      const data = await response.json();
+      console.log("Stat data:", data);
+      setLeaderboardStatus({
+        message: data.data.message || "",
+        peopleToBypass: data.data.peopleToBypass || 0,
+        pointsToBypass: data.data.pointsToBypass || 0,
+      });
+    } catch (error) {
+      console.error("Error fetching stats data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchtaskDetails();
+    fetchStat();
+  }, [token, url]);
 
   return (
     <Stack className={styles.tasksContainer}>
@@ -227,24 +300,29 @@ const TaskID = () => {
             <Stack className={styles.downStack}>
               <Title className={styles.userName}>{user?.fullName}</Title>
               <Stack className={styles.progressBox}>
-                <Progress w={"90%"} color="#f28520" value={30} />
-                <Text className={styles.completed}>158/500</Text>
+                <Progress w={"90%"} color="#f28520" value={progress} />
+                <Text className={styles.completed}>
+                  {taskProgress?.completedTasks}/{taskProgress?.totalTasks}
+                </Text>
               </Stack>
-              <Text className={styles.morePoints}>
-                Earn more 332 more points to bypass 50 people
-              </Text>
-            </Stack>
 
-            <Flex visibleFrom="md">
-              <p className={styles.todoTask}>
-                2/55 {""} <span className={styles.todoSpan}>tasks</span>
-              </p>
-            </Flex>
+              {leaderboardStatus?.peopleToBypass > 0 ? (
+                <Text className={styles.morePoints}>
+                  Earn more {leaderboardStatus?.pointsToBypass} points to bypass{" "}
+                  {leaderboardStatus?.peopleToBypass} person&#40;s&#41;
+                </Text>
+              ) : (
+                <Text className={styles.morePoints}>
+                  {leaderboardStatus?.message ||
+                    "Keep up the good work this month!"}
+                </Text>
+              )}
+            </Stack>
           </Flex>
 
           <Stack className={styles.questStack}>
             <Image
-              src={task?.url || "/images/dashBlog.png"}
+              src={task?.imageUrl || "/images/dashBlog.png"}
               alt="task"
               width={405}
               height={260}
@@ -252,7 +330,11 @@ const TaskID = () => {
             />
             <Flex className={styles.questFlex}>
               <Text className={styles.questTitle}>{task?.title}</Text>
-              <Link href={"#"} target="_blank" className={styles.questLink}>
+              <Link
+                href={task?.url ?? "#"}
+                target="_blank"
+                className={styles.questLink}
+              >
                 <Image
                   src={"/icons/linkOut.svg"}
                   alt="task"

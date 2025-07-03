@@ -34,8 +34,8 @@ const GetIn = () => {
               <Image
                 src={"/images/ceo.png"}
                 alt=""
-                width={600}
-                height={600}
+                width={100}
+                height={100}
                 className={styles.ceo}
               />
             </Box>

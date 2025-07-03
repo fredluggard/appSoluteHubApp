@@ -1,3 +1,7 @@
+.logoLink {
+  text-decoration: none;
+}
+
 .logo {
   width: 3.125rem;
   height: 3.0625rem;

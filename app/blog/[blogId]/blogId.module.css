@@ -238,6 +238,8 @@
     align-items: start;
     justify-content: start;
     gap: 10px !important;
+    padding: 0;
+    margin: 0;
   }
 
   .blogPack {
@@ -246,8 +248,9 @@
     flex-direction: row;
     align-items: center;
     justify-content: start;
-    padding: 0;
-    margin: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+    padding-inline-start: 0px !important;
     gap: 0.625rem;
   }
 

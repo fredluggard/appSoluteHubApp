@@ -34,14 +34,20 @@ const Comments = ({ postId }: { postId: string }) => {
 
   const fetchBlog = useCallback(async () => {
     try {
-      const response = await fetch(`${url}/api/v1/coments/${postId}`);
+      const response = await fetch(`${url}/api/v1/coments/${postId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const data = await response.json();
-      console.log("Posts:", data);
+      console.log("Comments:", data);
       setComments(data.comments || null);
     } catch (error) {
-      console.error("Error fetching recent blog:", error);
+      console.error("Error fetching recent comments:", error);
     }
-  }, [url, postId]);
+  }, [url, postId, token]);
 
   const login = () => {
     router.push(`/login?redirectTo=/blog/${postId}`);
@@ -182,9 +188,11 @@ const Comments = ({ postId }: { postId: string }) => {
         )}
       </Stack>
 
-      <Title className={styles.title}>
-        Comments &#40;{comments?.length}&#41;
-      </Title>
+      {comments && comments.length > 0 && (
+        <Title className={styles.title}>
+          Comments &#40;{comments.length}&#41;
+        </Title>
+      )}
 
       <Stack className={styles.commentStack}>
         {comments?.map((item, id) => {
@@ -256,14 +264,16 @@ const Comments = ({ postId }: { postId: string }) => {
                     </Text>
                   </Flex>
                   <Flex className={styles.likeFlex}>
-                    <Image
-                      src={"/icons/delete.png"}
-                      alt="Dislike icon"
-                      width={18}
-                      height={18}
-                      className={styles.likeIcon}
-                      onClick={() => handleDislike(item.id)}
-                    />
+                    {user.id === item.authorId && (
+                      <Image
+                        src={"/icons/delete.png"}
+                        alt="Dislike icon"
+                        width={18}
+                        height={18}
+                        className={styles.likeIcon}
+                        onClick={() => handleDislike(item.id)}
+                      />
+                    )}
                   </Flex>
                 </Flex>
               </Stack>
