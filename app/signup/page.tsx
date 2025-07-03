@@ -4,7 +4,6 @@ import AppSoluteLogo from "@/components/logo";
 import {
   Box,
   Button,
-  Checkbox,
   Divider,
   Flex,
   Notification,
@@ -12,17 +11,15 @@ import {
   Text,
   Title,
 } from "@mantine/core";
-import { IconX, IconCheck } from "@tabler/icons-react";
+import { IconX } from "@tabler/icons-react";
 import Image from "next/image";
 import React, { useState } from "react";
 import styles from "./signup.module.css";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import MobileNavbar from "@/components/navbar/mobileNavbar";
 import MobileFooter from "@/components/footer/mobileFooter";
 
 const SignUp = () => {
-  const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,46 +27,52 @@ const SignUp = () => {
   const [success, setSuccess] = useState(false);
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const handleGoogle = () => {
     window.location.href = "https://appsolute-api-1.onrender.com/auth/google";
   };
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
+    if (!name || !email || !password) {
+      setError("Please fill in all fields.");
+      return;
+    }
     setLoading(true);
-    fetch(`${baseUrl}/api/v1/users/register`, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        fullName: name,
-        email,
-        password,
-      }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setSent(false);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("There was a problem with the fetch operation:", error);
-        setShow(true);
-        setSuccess(true);
-        setLoading(false);
+    try {
+      const response = await fetch(`${baseUrl}/api/v1/users/register`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: name,
+          email,
+          password,
+        }),
       });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      await response.json();
+      setSent(false);
+      setLoading(false);
+      setName("");
+      setEmail("");
+      setPassword("");
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+      setShow(true);
+      setSuccess(true);
+      setLoading(false);
+    }
   };
 
   const xIcon = <IconX size={20} />;
-  const checkIcon = <IconCheck size={20} />;
 
   return (
     <Stack className={styles.userContainer}>
@@ -86,8 +89,8 @@ const SignUp = () => {
                 <Image
                   src={"/icons/google_Icon.svg"}
                   alt="google icon"
-                  width={30}
-                  height={30}
+                  width={25}
+                  height={25}
                   className={styles.googleIcon}
                 />
                 <Text className={styles.googleText}>Sign Up with Google</Text>
@@ -144,6 +147,8 @@ const SignUp = () => {
                   />
                 </Stack>
               </Stack>
+
+              {error && <Text c="red">{error}</Text>}
 
               <Button
                 variant="filled"

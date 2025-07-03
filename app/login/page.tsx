@@ -28,6 +28,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const dispatch = useDispatch();
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -36,41 +38,46 @@ const Login = () => {
     window.location.href = "https://appsolute-api-1.onrender.com/auth/google";
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
+    if (!email || !password) {
+      setError("Please fill in all fields.");
+      return;
+    }
+    setError("");
     setLoading(true);
-    fetch(`${baseUrl}/api/v1/users/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        Cookies.set("token", data.token, { expires: 7 });
-        Cookies.set("userId", data.user.id, { expires: 7 });
-        Cookies.set("role", data.user.role, { expires: 7 });
-        dispatch(setUser(data));
-        const redirectTo = searchParams.get("redirectTo");
-        if (redirectTo === "/") {
-          router.push("/dashboard");
-        } else {
-          router.push(redirectTo || "/dashboard");
-        }
-
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("There was a problem with the fetch operation:", error);
+    try {
+      const response = await fetch(`${baseUrl}/api/v1/users/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
       });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      Cookies.set("token", data.token, { expires: 7 });
+      Cookies.set("userId", data.user.id, { expires: 7 });
+      Cookies.set("role", data.user.role, { expires: 7 });
+      dispatch(setUser(data));
+      const redirectTo = searchParams.get("redirectTo");
+      if (redirectTo === "/") {
+        router.push("/dashboard");
+      } else {
+        router.push(redirectTo || "/dashboard");
+      }
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+      setError("Login failed. Please check your credentials and try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -141,6 +148,8 @@ const Login = () => {
                 </Link>
               </Flex>
             </Stack>
+
+            {error && <Text c="red">{error}</Text>}
 
             <Button
               variant="filled"

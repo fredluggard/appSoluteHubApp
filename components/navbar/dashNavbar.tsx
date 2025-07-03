@@ -109,7 +109,11 @@ const DashNavbar = () => {
               },
             ].map((link) => (
               <li key={link.href}>
-                <Link href={link.href} onClick={removeMobile}>
+                <Link
+                  href={link.href}
+                  onClick={removeMobile}
+                  className={styles.links}
+                >
                   <Flex className={styles.flexMenu}>
                     <Image src={link.icon} alt="" width={25} height={25} />
                     {link.label}

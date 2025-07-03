@@ -1,6 +1,7 @@
 "use client";
 
 import { Box, Flex, Loader, Progress, Stack, Text, Title } from "@mantine/core";
+import "@mantine/core/styles.css";
 import React, { useEffect, useState } from "react";
 import styles from "./dash.module.css";
 import Image from "next/image";
@@ -229,7 +230,7 @@ const Dashboard = () => {
               {leaderboardStatus?.peopleToBypass > 0 ? (
                 <Text className={styles.morePoints}>
                   Earn more {leaderboardStatus?.pointsToBypass} points to bypass{" "}
-                  {leaderboardStatus?.peopleToBypass} people
+                  {leaderboardStatus?.peopleToBypass} person&#40;s&#41;
                 </Text>
               ) : (
                 <Text className={styles.morePoints}>

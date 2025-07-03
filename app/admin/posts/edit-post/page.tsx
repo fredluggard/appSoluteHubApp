@@ -174,19 +174,19 @@ const EditPosts = () => {
     const formData = new FormData();
     formData.append("file", file);
 
-    // Replace with your actual API endpoint for image upload from Uche
-    const response = await fetch(`${baseUrl}/upload-image`, {
+    const response = await fetch(`${baseUrl}/api/v1/posts/image-upload`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`, // if required
+        Authorization: `Bearer ${token}`,
       },
       body: formData,
     });
 
     const data = await response.json();
+    console.log("Image upload response:", data);
 
     // The returned object must match this shape:
-    return { data: { link: data.imageUrl } };
+    return { data: { link: data.data.imageUrl } };
   };
 
   async function editBlogPost(postId: string) {
@@ -403,6 +403,20 @@ const EditPosts = () => {
               },
               history: {
                 options: ["undo", "redo"],
+              },
+              image: {
+                urlEnabled: true,
+                uploadEnabled: true,
+                alignmentEnabled: true,
+                uploadCallback: uploadImageCallBack,
+                previewImage: true,
+                inputAccept:
+                  "image/gif,image/jpeg,image/jpg,image/png,image/svg",
+                alt: { present: false, mandatory: false },
+                defaultSize: {
+                  height: "auto",
+                  width: "auto",
+                },
               },
             }}
             hashtag={{
