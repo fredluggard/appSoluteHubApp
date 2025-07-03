@@ -6,8 +6,22 @@ import styles from "./recent.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
+interface PostTag {
+  id: string;
+  postId: string;
+  tagId: string;
+  tag: {
+    id: string;
+    name: string;
+  };
+}
+
 const RecentBlog = () => {
   const url = process.env.NEXT_PUBLIC_BASE_URL;
+  const [tags, setTags] = useState<PostTag[]>([]);
+  const [tags2, setTags2] = useState<PostTag[]>([]);
+  const [tags3, setTags3] = useState<PostTag[]>([]);
+  const [tags4, setTags4] = useState<PostTag[]>([]);
   const [blog, setBlog] = useState<{
     id?: string;
     imageUrl: string;
@@ -21,6 +35,7 @@ const RecentBlog = () => {
       fullName?: string;
       id?: string;
     };
+    createdAt?: string;
   } | null>(null);
 
   const [blog2, setBlog2] = useState<{
@@ -36,6 +51,7 @@ const RecentBlog = () => {
       fullName?: string;
       id?: string;
     };
+    createdAt?: string;
   } | null>(null);
 
   const [blog4, setBlog4] = useState<{
@@ -51,6 +67,7 @@ const RecentBlog = () => {
       fullName?: string;
       id?: string;
     };
+    createdAt?: string;
   } | null>(null);
   const [blog3, setBlog3] = useState<{
     id?: string;
@@ -65,6 +82,7 @@ const RecentBlog = () => {
       fullName?: string;
       id?: string;
     };
+    createdAt?: string;
   } | null>(null);
 
   useEffect(() => {
@@ -76,7 +94,11 @@ const RecentBlog = () => {
         setBlog(data.data?.[0] || null);
         setBlog2(data.data?.[1] || null);
         setBlog3(data.data?.[2] || null);
-        setBlog4(data.data?.[4] || null);
+        setBlog4(data.data?.[3] || null);
+        setTags(data.data?.[0]?.tags || []);
+        setTags2(data.data?.[1]?.tags || []);
+        setTags3(data.data?.[2]?.tags || []);
+        setTags4(data.data?.[3]?.tags || []);
       } catch (error) {
         console.error("Error fetching recent blog:", error);
       }
@@ -99,7 +121,12 @@ const RecentBlog = () => {
             className={styles.leftImage}
           />
           <Text className={styles.postWriter}>
-            {blog?.author?.fullName || "Unknown Author"} | 1 Jan 2023
+            {blog?.author?.fullName || "Unknown Author"} |{" "}
+            {new Date(blog?.createdAt || "").toLocaleDateString("en-GB", {
+              day: "2-digit",
+              month: "short",
+              year: "numeric",
+            })}
           </Text>
           <Flex className={styles.titleFlex}>
             <Title className={styles.postTitle}>{blog.title}</Title>
@@ -115,9 +142,9 @@ const RecentBlog = () => {
             {blog.description || "No description available."}
           </Text>
           <Flex className={styles.tagGroup}>
-            <li className={styles.tag}>Design</li>
-            <li className={styles.tag2}>Research</li>
-            <li className={styles.tag3}>Presentation</li>
+            <li className={styles.tag}>{tags[0]?.tag.name}</li>
+            <li className={styles.tag2}>{tags[1]?.tag.name}</li>
+            <li className={styles.tag3}>{tags[2]?.tag.name}</li>
           </Flex>
         </Link>
 
@@ -133,15 +160,21 @@ const RecentBlog = () => {
             />
             <Stack className={styles.rightBox}>
               <Text className={styles.postWriter}>
-                {blog2?.author?.fullName || "Unknown Author"} | 5 May 2025
+                {blog2?.author?.fullName || "Unknown Author"} |{" "}
+                {new Date(blog?.createdAt || "").toLocaleDateString("en-GB", {
+                  day: "2-digit",
+                  month: "short",
+                  year: "numeric",
+                })}
               </Text>
               <Title className={styles.rightTitle}>{blog2?.title}</Title>
               <Text className={styles.rightText} lineClamp={3}>
                 {blog2?.description || "No description available."}
               </Text>
               <Flex className={styles.tagGroup}>
-                <li className={styles.tag}>Design</li>
-                <li className={styles.tag2}>Research</li>
+                <li className={styles.tag}>{tags2[0]?.tag.name}</li>
+                <li className={styles.tag2}>{tags2[1]?.tag.name}</li>
+                <li className={styles.tag3}>{tags2[2]?.tag.name}</li>
               </Flex>
             </Stack>
           </Link>
@@ -157,15 +190,21 @@ const RecentBlog = () => {
             />
             <Stack className={styles.rightBox}>
               <Text className={styles.postWriter}>
-                {blog3?.author?.fullName || "Unknown Author"} | 1 Jan 2023
+                {blog3?.author?.fullName || "Unknown Author"} |{" "}
+                {new Date(blog?.createdAt || "").toLocaleDateString("en-GB", {
+                  day: "2-digit",
+                  month: "short",
+                  year: "numeric",
+                })}
               </Text>
               <Title className={styles.rightTitle}>{blog3?.title}</Title>
               <Text className={styles.rightText} lineClamp={3}>
                 {blog3?.description || "No description available."}
               </Text>
               <Flex className={styles.tagGroup}>
-                <li className={styles.tag3}>Design</li>
-                <li className={styles.tag2}>Research</li>
+                <li className={styles.tag}>{tags3[0]?.tag.name}</li>
+                <li className={styles.tag2}>{tags3[1]?.tag.name}</li>
+                <li className={styles.tag3}>{tags3[2]?.tag.name}</li>
               </Flex>
             </Stack>
           </Link>
@@ -183,15 +222,21 @@ const RecentBlog = () => {
         />
         <Stack className={styles.rightBox}>
           <Text className={styles.postWriter}>
-            {blog4?.author?.fullName || "Unknown Author"} | 1 Jan 2023
+            {blog4?.author?.fullName || "Unknown Author"} |{" "}
+            {new Date(blog?.createdAt || "").toLocaleDateString("en-GB", {
+              day: "2-digit",
+              month: "short",
+              year: "numeric",
+            })}
           </Text>
           <Title className={styles.rightTitle}>{blog4?.title}</Title>
           <Text className={styles.rightText} lineClamp={5}>
             {blog4?.description || "No description available."}
           </Text>
           <Flex className={styles.tagGroup}>
-            <li className={styles.tag}>Design</li>
-            <li className={styles.tag3}>Interface</li>
+            <li className={styles.tag}>{tags4[0]?.tag.name}</li>
+            <li className={styles.tag2}>{tags4[1]?.tag.name}</li>
+            <li className={styles.tag3}>{tags4[2]?.tag.name}</li>
           </Flex>
         </Stack>
       </Link>

@@ -6,6 +6,16 @@ import styles from "./allBlog.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
+interface PostTag {
+  id: string;
+  postId: string;
+  tagId: string;
+  tag: {
+    id: string;
+    name: string;
+  };
+}
+
 const AllBlog = () => {
   const [blog, setBlog] = useState<
     {
@@ -15,12 +25,14 @@ const AllBlog = () => {
       description?: string;
       contributor?: string;
       category?: string;
+      tags?: PostTag[];
       authorId?: string;
       author?: {
         email?: string;
         fullName?: string;
         id?: string;
       };
+      createdAt?: string;
     }[]
   >();
   const url = process.env.NEXT_PUBLIC_BASE_URL;
@@ -58,7 +70,12 @@ const AllBlog = () => {
               className={styles.leftImage}
             />
             <Text className={styles.postWriter}>
-              {post?.author?.fullName || "Unknown Author"} | 1 Jan 2023
+              {post?.author?.fullName || "Unknown Author"} |{" "}
+              {new Date(post?.createdAt || "").toLocaleDateString("en-GB", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+              })}
             </Text>
             <Flex className={styles.titleFlex}>
               <Title className={styles.postTitle} lineClamp={2}>
@@ -76,9 +93,11 @@ const AllBlog = () => {
               {post.description || "No description available."}
             </Text>
             <Flex className={styles.tagGroup}>
-              <li className={styles.tag}>Design</li>
-              <li className={styles.tag2}>Research</li>
-              <li className={styles.tag3}>Presentation</li>
+              {post.tags?.slice(0, 3).map((tag, tagIndex) => (
+                <p key={tagIndex} className={styles[`tag${tagIndex + 1}`]}>
+                  {tag.tag.name}
+                </p>
+              ))}
             </Flex>
           </Link>
         ))}
