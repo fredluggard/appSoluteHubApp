@@ -16,6 +16,9 @@ import AnalyticsTracker from "@/components/analytics/analytics";
 export const metadata: Metadata = {
   title: "AppSolute",
   description: "Innovating the Future, One Solution at a Time",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 const theme = createTheme({
