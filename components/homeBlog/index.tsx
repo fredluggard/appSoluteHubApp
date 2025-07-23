@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 import styles from "./homeBlog.module.css";
 import Image from "next/image";
 import LinkButton from "../button";
-import { useRouter } from "next/navigation";
 
 const HomeBlog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -14,7 +13,7 @@ const HomeBlog = () => {
       id: "1",
       title: "Innovation Pipeline",
       description:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore e",
+        "Got an idea? We'll help it grow. Our pipeline takes raw concepts, polishes them, and transforms them into innovations that actually make a difference.",
       image: "/icons/pipeline.svg",
       url: "/",
     },
@@ -22,7 +21,7 @@ const HomeBlog = () => {
       id: "2",
       title: "Emerging Technologies",
       description:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+        "The future doesn't wait, and neither do we. We explore, test, and deploy next-gen technologies that change how we live, work, and play.",
       image: "/icons/rocket.svg",
       url: "/",
     },
@@ -30,7 +29,7 @@ const HomeBlog = () => {
       id: "3",
       title: "Market Insights",
       description:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore e",
+        "What's trending? What's next? We're always digging into the data so you can stay informed, stay ready, and stay ahead.",
       image: "/icons/insight.svg",
       url: "/",
     },
@@ -38,17 +37,11 @@ const HomeBlog = () => {
       id: "4",
       title: "Technology Advancement",
       description:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+        "Great tech doesn't stop evolving, and neither do we. We upgrade, advance, and rethink what's possible with every breakthrough we make.",
       image: "/icons/robotics.svg",
       url: "/",
     },
   ];
-
-  const router = useRouter();
-  const handleClick = (url: string) => {
-    // router.push(url);
-    router.push(`/blog/${url}`);
-  };
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -82,12 +75,7 @@ const HomeBlog = () => {
         {blogPosts.map((post) => {
           if (parseInt(post.id) % 2 === 0) {
             return (
-              <Stack
-                gap={5}
-                key={post.id}
-                className={styles.blogPost1}
-                onClick={() => handleClick(post.id)}
-              >
+              <Stack gap={5} key={post.id} className={styles.blogPost1}>
                 <Image
                   src={post.image}
                   alt={post.title}
@@ -101,12 +89,7 @@ const HomeBlog = () => {
           } else if (post.id === "1") {
             return (
               <Stack key={post.id} className={styles.blogAdjust1}>
-                <Stack
-                  gap={5}
-                  key={post.id}
-                  className={styles.blogPost2}
-                  onClick={() => handleClick(post.id)}
-                >
+                <Stack gap={5} key={post.id} className={styles.blogPost2}>
                   <Image
                     src={post.image}
                     alt={post.title}
@@ -121,12 +104,7 @@ const HomeBlog = () => {
           } else {
             return (
               <Stack key={post.id} className={styles.blogAdjust2}>
-                <Stack
-                  gap={5}
-                  key={post.id}
-                  className={styles.blogPost2}
-                  onClick={() => handleClick(post.id)}
-                >
+                <Stack gap={5} key={post.id} className={styles.blogPost2}>
                   <Image
                     src={post.image}
                     alt={post.title}
@@ -144,12 +122,12 @@ const HomeBlog = () => {
       <Stack className={styles.rightBox}>
         <Title className={styles.title}>Our Research and Development</Title>
         <Text className={styles.text}>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident.
+          We don&apos;t just research, we reinvent. Our R&D team is always
+          cooking up something fresh, from emerging tech to smarter solutions
+          that keep you ahead of the curve.
         </Text>
         <Stack visibleFrom="md">
-          <LinkButton url="/blog" text="Learn More &#62;" />
+          <LinkButton url="/research-development" text="Learn More &#62;" />
         </Stack>
       </Stack>
     </Flex>

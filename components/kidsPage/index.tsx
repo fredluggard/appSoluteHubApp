@@ -13,9 +13,9 @@ const KidsHero = () => {
             Our videos teaches your kids about AI and Software
           </Title>
           <Text className={styles.heroText}>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident.
+            We teach kids about tech, one fun video at a time. From AI to
+            software, our videos break down big tech ideas into bite-sized fun
+            for curious young minds.
           </Text>
           <CustomBtn
             url="#"

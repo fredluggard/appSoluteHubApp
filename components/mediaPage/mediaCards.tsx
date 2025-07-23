@@ -7,25 +7,25 @@ const contents = [
   {
     id: 1,
     title: "Marketing",
-    text: "ubiquitous models rather than parallel initiatives. Seamlessly reinvent success.",
+    text: "Discover tools and platforms that automate campaigns, analyze performance, and amplify your reach. ",
     img: "/icons/marketing.svg",
   },
   {
     id: 2,
     title: "Business",
-    text: "ubiquitous models rather than parallel initiatives. Seamlessly reinvent success.",
+    text: "Explore innovative business solutions that streamline operations, enhance productivity, and drive growth.",
     img: "/icons/business.svg",
   },
   {
     id: 3,
     title: "Social Media",
-    text: "ubiquitous models rather than parallel initiatives. Seamlessly reinvent success.",
+    text: "Find the perfect social media tools and apps that simplify content creation, scheduling, and engagement.",
     img: "/icons/social.svg",
   },
   {
     id: 4,
     title: "Research",
-    text: "ubiquitous models rather than parallel initiatives. Seamlessly reinvent success.",
+    text: "Uncover research tools and AI solutions that transform how you gather, analyze, and present information.",
     img: "/icons/research.svg",
   },
 ];
@@ -38,9 +38,10 @@ const MediaCards = () => {
           Empowering tech professionals with AI tools and resources.
         </Title>
         <Text className={styles.mediaText}>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident.
+          At AppSolute, we believe there&apos;s a tech solution for every
+          challenge you face. Our platform is your gateway to discovering
+          cutting-edge apps, software, AI solutions, and hardware that can solve
+          your specific problems and elevate your professional game.
         </Text>
       </Stack>
 
