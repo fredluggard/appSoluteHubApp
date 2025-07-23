@@ -11,15 +11,13 @@ const About = () => {
           <Stack className={styles.aboutLeft}>
             <Text className={styles.subTitle}>WHO WE ARE</Text>
             <Title className={styles.title}>
-              We Lorem ipsum dolor sit amet, consectetur adipiscing elit
+              Appsolute - Innovating the future one solution at a time.
             </Title>
           </Stack>
           <Stack className={styles.aboutRight}>
             <Text className={styles.text}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              We are a creative tech brand helping people understand, explore,
+              and use technology with confidence.
             </Text>
           </Stack>
         </Flex>
@@ -36,15 +34,18 @@ const About = () => {
         <Stack className={styles.handsBox}>
           <Title className={styles.handsTitle}>Our Mission</Title>
           <Title order={4} className={styles.handsSubTitle}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor
+            Make technology accessible to everyone by designing people-first
+            experiences, building discovery tools, and creating educational
+            content that actually makes sense.
           </Title>
           <Text className={styles.handsText}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+            AppSoluteHub is our platform for discovering cutting-edge apps,
+            software, AI solutions, and hardware tailored to solve real problems
+            and elevate your professional edge. Appsolute R&D is our innovation
+            lab where we explore new tools and technologies to create
+            forward-thinking solutions for real-world challenges. Finally,
+            Appsolute Kids brings technology to young minds through fun,
+            engaging experiences that make learning practical and exciting.
           </Text>
         </Stack>
 
@@ -61,15 +62,11 @@ const About = () => {
         <Stack className={styles.handsBox}>
           <Title className={styles.handsTitle}>Our Vision</Title>
           <Title order={4} className={styles.handsSubTitle}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor
+            A world where technology is for everyone.
           </Title>
           <Text className={styles.handsText}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+            To create a world where everyone regardless of age, background, or
+            skill can use technology with confidence.
           </Text>
         </Stack>
 

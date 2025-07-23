@@ -47,11 +47,12 @@ const Contacts = () => {
         <Stack className={styles.reach}>
           <Title className={styles.title}>Reach out to us</Title>
           <Text className={styles.text}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+            Have questions or ready to take the next step? Whether you&apos;re
+            exploring our educational programs, curious about our latest
+            innovations, or searching for the right tech solution, we&apos;re
+            here for you. Let&apos;s connect and explore how we can help bridge
+            the gap between you and technology. Your journey toward smarter
+            solutions starts with a simple conversation.
           </Text>
           <Flex className={styles.linkGroup}>
             <Link href="https://www.facebook.com/share/14N6e7xVyM/?mibextid=LQQJ4d">

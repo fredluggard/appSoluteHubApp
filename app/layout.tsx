@@ -14,7 +14,7 @@ import Footer from "@/components/footer";
 import AnalyticsTracker from "@/components/analytics/analytics";
 
 export const metadata: Metadata = {
-  title: "AppSolute",
+  title: "AppSolute - Innovating the Future, One Solution at a Time",
   description: "Innovating the Future, One Solution at a Time",
   icons: {
     icon: "/logo.svg",
