@@ -2,7 +2,7 @@
 
 import { Button, Flex, Notification, Stack, Text, Title } from "@mantine/core";
 import React, { useState } from "react";
-import { IconX, IconCheck } from "@tabler/icons-react";
+import { IconCheck } from "@tabler/icons-react";
 import styles from "./joinUs.module.css";
 
 const JoinUs = () => {
@@ -43,7 +43,7 @@ const JoinUs = () => {
           }
           return response.json();
         })
-        .then((data) => {
+        .then(() => {
           handleNotification();
           setEmail("");
         })
@@ -56,7 +56,6 @@ const JoinUs = () => {
   };
 
   const icon = <IconCheck size={20} />;
-  const fail = <IconX size={20} />;
 
   return (
     <Stack className={styles.joinUs}>

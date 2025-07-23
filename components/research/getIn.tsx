@@ -27,7 +27,7 @@ const GetIn = () => {
         </Stack>
       </Flex>
 
-      <Stack className={styles.midStack}>
+      {/* <Stack className={styles.midStack}>
         <Stack className={styles.midBox}>
           <Flex className={styles.midFlex}>
             <Box className={styles.box}>
@@ -52,7 +52,7 @@ const GetIn = () => {
             </Stack>
           </Flex>
         </Stack>
-      </Stack>
+      </Stack> */}
 
       <Flex className={styles.getInFlex2}>
         <Stack className={styles.getRight}>

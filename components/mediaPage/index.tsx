@@ -14,9 +14,10 @@ const MediaHero = () => {
             How DeepSeek is taking over the world
           </Title>
           <Text className={styles.heroText}>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident.
+            Discover the Perfect Tech Solution for Every Challenge Every problem
+            has a tech solution: we help you find it. Watch our latest showcase
+            of innovative tools, apps, and solutions that are transforming how
+            professionals work and succeed.
           </Text>
           <CustomBtn
             url="#"

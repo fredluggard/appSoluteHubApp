@@ -30,8 +30,8 @@ const SignUp = () => {
   const [error, setError] = useState("");
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-  const handleGoogle = () => {
-    window.location.href = "https://appsolute-api-1.onrender.com/auth/google";
+  const handleGoogle = async () => {
+    window.location.href = "https://appsolutehub.com/auth/google";
   };
 
   const handleSignUp = async () => {

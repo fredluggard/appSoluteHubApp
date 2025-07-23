@@ -87,9 +87,11 @@ const MediaContents = () => {
       <Stack className={styles.mediaStack}>
         <Title className={styles.mediaTitle}>From Our Media</Title>
         <Text className={styles.mediaText}>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident.
+          Stay ahead of the curve with our curated content that highlights
+          breakthrough solutions, in-depth reviews, and expert insights. We
+          scour the tech landscape to bring you the most innovative tools and
+          platforms that can transform your work and solve your biggest
+          challenges.
         </Text>
       </Stack>
 
@@ -304,7 +306,7 @@ const MediaContents = () => {
         </Tabs.Panel>
       </Tabs>
 
-      <Flex pt={50} className={styles.taskFlex}>
+      {/* <Flex pt={50} className={styles.taskFlex}>
         {tasks.map((task, index) => (
           <Stack key={index} className={styles.taskBox}>
             <Stack
@@ -328,7 +330,7 @@ const MediaContents = () => {
             </Title>
           </Stack>
         ))}
-      </Flex>
+      </Flex> */}
     </Stack>
   );
 };

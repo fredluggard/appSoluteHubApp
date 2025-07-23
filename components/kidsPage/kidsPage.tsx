@@ -9,25 +9,25 @@ const contents = [
   {
     id: 1,
     title: "Software",
-    text: "ubiquitous models rather than parallel initiatives. Seamlessly reinvent success.",
+    text: "From games to apps, we show kids how software powers their world and how they can be part of creating it.",
     img: "/icons/marketing.svg",
   },
   {
     id: 2,
     title: "Business",
-    text: "ubiquitous models rather than parallel initiatives. Seamlessly reinvent success.",
+    text: "We introduce kids to how tech is used in business, problem-solving, creativity, and smart thinking all rolled into one.",
     img: "/icons/business.svg",
   },
   {
     id: 3,
     title: "Science",
-    text: "ubiquitous models rather than parallel initiatives. Seamlessly reinvent success.",
+    text: "Kids discover how tech and science work together. From AI-powered tools to cool inventions that change the world.",
     img: "/icons/social.svg",
   },
   {
     id: 4,
     title: "Academics",
-    text: "ubiquitous models rather than parallel initiatives. Seamlessly reinvent success.",
+    text: "We turn traditional subjects into tech-powered adventures that boost learning and curiosity in school and beyond.",
     img: "/icons/research.svg",
   },
 ];
@@ -40,9 +40,9 @@ const KidsImageCard = () => {
           Why our videos are so important to your kids
         </Title>
         <Text className={styles.mediaText}>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident.
+          Tech is everywhere but understanding it shouldn&apos;t be confusing.
+          Our content helps kids explore, question, and grow their digital
+          confidence.
         </Text>
       </Stack>
 

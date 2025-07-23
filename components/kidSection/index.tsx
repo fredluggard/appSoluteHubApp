@@ -17,9 +17,9 @@ const KidSection = () => {
               Our videos will make your kids fall in love with Tech
             </Title>
             <Text className={styles.text}>
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident.
+              Imagine your kids having fun while learning about AI, coding, and
+              all things tech. That&apos;s what our videos do, sparking
+              curiosity, creativity, and confidence.
             </Text>
             <LinkButton url="kids" text="Learn More &#62;" />
           </Stack>
@@ -37,7 +37,7 @@ const KidSection = () => {
           <Stack w={"100%"}>
             <Title className={styles.videoTitle}>Video Tutorials</Title>
             <Text className={styles.videoText}>
-              Educating your kids about ai and software with our video tutorial
+              Educating your kids about AI and software with our video tutorial
               is one of the best things you can do for them.
             </Text>
           </Stack>
@@ -56,9 +56,8 @@ const KidSection = () => {
               ai and software videos
             </Title>
             <Text className={styles.text}>
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident.
+              We make tech learning fun! Our tutorials guide your kids through
+              the wonders of AI, software, and digital creativity, step by step.
             </Text>
             <LinkButton url="/media" text="Learn More &#62;" />
           </Stack>
@@ -76,7 +75,7 @@ const KidSection = () => {
           <Stack w={"100%"}>
             <Title className={styles.videoTitle}>Video Tutorials</Title>
             <Text className={styles.videoText}>
-              Educating your kids about ai and software with our video tutorial
+              Educating your kids about AI and software with our video tutorial
               is one of the best things you can do for them.
             </Text>
           </Stack>

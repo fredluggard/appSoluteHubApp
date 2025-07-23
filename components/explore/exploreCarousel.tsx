@@ -18,7 +18,7 @@ const ExploreCarousel = () => {
       title: "Explore our Research and Development center",
       writer: "Uche",
       src: "/images/exploreCard.png",
-      url: "/research",
+      url: "/research-development",
     },
     {
       tag: "MEDIA",
