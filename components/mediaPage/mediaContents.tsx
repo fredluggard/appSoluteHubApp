@@ -11,63 +11,16 @@ import {
 import Image from "next/image";
 import React, { useState } from "react";
 import styles from "./mediaContents.module.css";
-import { useRouter } from "next/navigation";
 import CustomBtn from "../button/customBtn";
+import { EducationalVideo } from "@/types/commonTypes";
+import Link from "next/link";
 
-const tasks = [
-  {
-    id: "1",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task1.png",
-  },
-  {
-    id: "2",
-    title:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillumdolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat noproident.",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task2.png",
-  },
-  {
-    id: "3",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task3.png",
-  },
-  {
-    id: "4",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task1.png",
-  },
-  {
-    id: "5",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task4.png",
-  },
-  {
-    id: "6",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task5.png",
-  },
-];
+interface contentProps {
+  content: EducationalVideo[];
+}
 
-const MediaContents = () => {
-  const router = useRouter();
+const MediaContents = ({ content }: contentProps) => {
+  const tasks = content;
   const [rootRef, setRootRef] = useState<HTMLDivElement | null>(null);
   const [value, setValue] = useState<string | null>("email");
   const [controlsRefs, setControlsRefs] = useState<
@@ -76,10 +29,6 @@ const MediaContents = () => {
   const setControlRef = (val: string) => (node: HTMLButtonElement) => {
     controlsRefs[val] = node;
     setControlsRefs(controlsRefs);
-  };
-
-  const handleTask = (taskId: string) => {
-    router.push(`/dashboard/tasks/${taskId}`);
   };
 
   return (
@@ -147,190 +96,228 @@ const MediaContents = () => {
 
         <Tabs.Panel value="email" className={styles.week}>
           <Flex pt={50} className={styles.taskFlex}>
-            {tasks.map((task, index) => (
+            {tasks.slice(0, 9).map((task, index) => (
               <Stack key={index} className={styles.taskBox}>
-                <Stack
+                <Link
+                  href={task.url}
                   className={styles.imageBox}
-                  onClick={() => handleTask(task.id)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Image
-                    src={task.image}
+                    src={task.thumbnail}
                     alt="task image"
                     width={240}
                     height={150}
                     className={styles.taskImg}
                   />
-                </Stack>
-                <Title
+                </Link>
+                <Link
+                  href={task.url}
                   className={styles.taskTitle}
-                  lineClamp={2}
-                  onClick={() => handleTask(task.id)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {task.title}
-                </Title>
+                </Link>
               </Stack>
             ))}
           </Flex>
 
           <Stack mt={50} justify="center">
-            <CustomBtn url="#" text="See more videos" bgColor="#ff1709" />
+            <CustomBtn
+              url="https://www.youtube.com/@appsolutehub"
+              text="See more videos"
+              bgColor="#ff1709"
+            />
           </Stack>
         </Tabs.Panel>
 
         <Tabs.Panel value="content" className={styles.week}>
           <Flex pt={50} className={styles.taskFlex}>
-            {tasks.map((task, index) => (
+            {tasks.slice(0, 9).map((task, index) => (
               <Stack key={index} className={styles.taskBox}>
-                <Stack
+                <Link
+                  href={task.url}
                   className={styles.imageBox}
-                  onClick={() => handleTask(task.id)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Image
-                    src={task.image}
+                    src={task.thumbnail}
                     alt="task image"
                     width={240}
                     height={150}
                     className={styles.taskImg}
                   />
-                </Stack>
-                <Title
+                </Link>
+                <Link
+                  href={task.url}
                   className={styles.taskTitle}
-                  lineClamp={2}
-                  onClick={() => handleTask(task.id)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {task.title}
-                </Title>
+                </Link>
               </Stack>
             ))}
           </Flex>
 
           <Stack mt={50} justify="center">
-            <CustomBtn url="#" text="See more videos" bgColor="#ff1709" />
+            <CustomBtn
+              url="https://www.youtube.com/@appsolutehub"
+              text="See more videos"
+              bgColor="#ff1709"
+            />
           </Stack>
         </Tabs.Panel>
 
         <Tabs.Panel value="writing" className={styles.week}>
           <Flex pt={50} className={styles.taskFlex}>
-            {tasks.map((task, index) => (
+            {tasks.slice(0, 9).map((task, index) => (
               <Stack key={index} className={styles.taskBox}>
-                <Stack
+                <Link
+                  href={task.url}
                   className={styles.imageBox}
-                  onClick={() => handleTask(task.id)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Image
-                    src={task.image}
+                    src={task.thumbnail}
                     alt="task image"
                     width={240}
                     height={150}
                     className={styles.taskImg}
                   />
-                </Stack>
-                <Title
+                </Link>
+                <Link
+                  href={task.url}
                   className={styles.taskTitle}
-                  lineClamp={2}
-                  onClick={() => handleTask(task.id)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {task.title}
-                </Title>
+                </Link>
               </Stack>
             ))}
           </Flex>
 
           <Stack mt={50} justify="center">
-            <CustomBtn url="#" text="See more videos" bgColor="#ff1709" />
+            <CustomBtn
+              url="https://www.youtube.com/@appsolutehub"
+              text="See more videos"
+              bgColor="#ff1709"
+            />
           </Stack>
         </Tabs.Panel>
 
         <Tabs.Panel value="agents" className={styles.week}>
           <Flex pt={50} className={styles.taskFlex}>
-            {tasks.map((task, index) => (
+            {tasks.slice(1, 10).map((task, index) => (
               <Stack key={index} className={styles.taskBox}>
-                <Stack
+                <Link
+                  href={task.url}
                   className={styles.imageBox}
-                  onClick={() => handleTask(task.id)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Image
-                    src={task.image}
+                    src={task.thumbnail}
                     alt="task image"
                     width={240}
                     height={150}
                     className={styles.taskImg}
                   />
-                </Stack>
-                <Title
+                </Link>
+                <Link
+                  href={task.url}
                   className={styles.taskTitle}
-                  lineClamp={2}
-                  onClick={() => handleTask(task.id)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {task.title}
-                </Title>
+                </Link>
               </Stack>
             ))}
           </Flex>
 
           <Stack mt={50} justify="center">
-            <CustomBtn url="#" text="See more videos" bgColor="#ff1709" />
+            <CustomBtn
+              url="https://www.youtube.com/@appsolutehub"
+              text="See more videos"
+              bgColor="#ff1709"
+            />
           </Stack>
         </Tabs.Panel>
 
         <Tabs.Panel value="graphic" className={styles.week}>
           <Flex pt={50} className={styles.taskFlex}>
-            {tasks.map((task, index) => (
+            {tasks.slice(0, 9).map((task, index) => (
               <Stack key={index} className={styles.taskBox}>
-                <Stack
+                <Link
+                  href={task.url}
                   className={styles.imageBox}
-                  onClick={() => handleTask(task.id)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Image
-                    src={task.image}
+                    src={task.thumbnail}
                     alt="task image"
                     width={240}
                     height={150}
                     className={styles.taskImg}
                   />
-                </Stack>
-                <Title
+                </Link>
+                <Link
+                  href={task.url}
                   className={styles.taskTitle}
-                  lineClamp={2}
-                  onClick={() => handleTask(task.id)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {task.title}
-                </Title>
+                </Link>
               </Stack>
             ))}
           </Flex>
 
           <Stack mt={50} justify="center">
-            <CustomBtn url="#" text="See more videos" bgColor="#ff1709" />
+            <CustomBtn
+              url="https://www.youtube.com/@appsolutehub"
+              text="See more videos"
+              bgColor="#ff1709"
+            />
           </Stack>
         </Tabs.Panel>
       </Tabs>
 
-      {/* <Flex pt={50} className={styles.taskFlex}>
-        {tasks.map((task, index) => (
+      <Flex hiddenFrom="md" pt={50} className={styles.taskFlex}>
+        {tasks.slice(0, 9).map((task, index) => (
           <Stack key={index} className={styles.taskBox}>
-            <Stack
+            <Link
+              href={task.url}
               className={styles.imageBox}
-              onClick={() => handleTask(task.id)}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <Image
-                src={task.image}
+                src={task.thumbnail}
                 alt="task image"
                 width={240}
                 height={150}
                 className={styles.taskImg}
               />
-            </Stack>
-            <Title
+            </Link>
+            <Link
+              href={task.url}
               className={styles.taskTitle}
-              lineClamp={2}
-              onClick={() => handleTask(task.id)}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               {task.title}
-            </Title>
+            </Link>
           </Stack>
         ))}
-      </Flex> */}
+      </Flex>
     </Stack>
   );
 };

@@ -18,7 +18,7 @@ const KidsHero = () => {
             for curious young minds.
           </Text>
           <CustomBtn
-            url="#"
+            url="https://www.youtube.com/@appsolute_kids"
             text="Watch Now >"
             bgColor="#ff1709"
             img="/icons/mdi_youtube.svg"
