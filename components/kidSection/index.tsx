@@ -1,13 +1,34 @@
 "use client";
 
 import { Stack, Text, Title } from "@mantine/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./kidSection.module.css";
 import LinkButton from "../button";
 import Image from "next/image";
 import KidsCarousel from "./kidsCarousel";
+import { EducationalVideo } from "@/types/commonTypes";
 
 const KidSection = () => {
+  const [kidsContent, setKidsContent] = useState<EducationalVideo[]>([]);
+  const [mediaContent, setMediaContent] = useState<EducationalVideo[]>([]);
+
+  const url = process.env.NEXT_PUBLIC_BASE_URL;
+  const fetchContent = async () => {
+    try {
+      const response = await fetch(`${url}/api/v1/contents/kidsVideos `);
+      const response2 = await fetch(`${url}/api/v1/contents/videos `);
+      const data = await response.json();
+      const data2 = await response2.json();
+      setKidsContent(data?.data || []);
+      setMediaContent(data2?.data || []);
+    } catch (error) {
+      console.error("Error fetching content data:", error);
+    }
+  };
+  useEffect(() => {
+    fetchContent();
+  }, []);
+
   return (
     <Stack className={styles.container}>
       <Stack className={styles.kidSection}>
@@ -43,7 +64,7 @@ const KidSection = () => {
           </Stack>
 
           <Stack w={"100%"}>
-            <KidsCarousel />
+            <KidsCarousel content={kidsContent} />
           </Stack>
         </Stack>
       </Stack>
@@ -75,13 +96,16 @@ const KidSection = () => {
           <Stack w={"100%"}>
             <Title className={styles.videoTitle}>Video Tutorials</Title>
             <Text className={styles.videoText}>
-              Educating your kids about AI and software with our video tutorial
-              is one of the best things you can do for them.
+              Learning shouldn&apos;t feel like a chore. That&apos;s why we
+              created AppSolute Media, a library of educational videos designed
+              to help you learn faster, smarter, and in ways that actually
+              stick. From tech guides to creative hacks, there&apos;s always
+              something worth watching.
             </Text>
           </Stack>
 
           <Stack w={"100%"}>
-            <KidsCarousel />
+            <KidsCarousel content={mediaContent} />
           </Stack>
         </Stack>
       </Stack>

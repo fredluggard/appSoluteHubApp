@@ -9,7 +9,7 @@ const MediaHero = () => {
     <Stack className={styles.heroContent}>
       <Flex className={styles.heroFlex}>
         <Stack className={styles.heroStack}>
-          <Text className={styles.heroLittle}>Uploaded - 5 mins ago</Text>
+          <Text className={styles.heroLittle}>Updated - 5 mins ago</Text>
           <Title className={styles.heroTitle}>
             How DeepSeek is taking over the world
           </Title>
@@ -20,7 +20,7 @@ const MediaHero = () => {
             professionals work and succeed.
           </Text>
           <CustomBtn
-            url="#"
+            url="https://www.youtube.com/@appsolutehub"
             text="Watch Now >"
             bgColor="#ff1709"
             img="/icons/mdi_youtube.svg"

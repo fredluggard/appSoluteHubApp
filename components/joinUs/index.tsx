@@ -63,8 +63,9 @@ const JoinUs = () => {
         Join us today to be a part of our story
       </Title>
       <Text className={styles.text}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt.
+        Be the first to hear about our latest updates, exclusive content, and
+        exciting opportunities. Sign up and let&apos;s shape the future
+        together, one step at a time.
       </Text>
       <Flex className={styles.inputGroup}>
         <input
