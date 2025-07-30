@@ -330,7 +330,7 @@ const EditTask = () => {
       return;
     }
 
-    setActive((current) => (current < 4 ? current + 1 : current));
+    setActive((prev) => prev + 1);
     const newTask = {
       questionText: title,
       options: questionOptions,
@@ -451,11 +451,12 @@ const EditTask = () => {
             </Flex>
 
             <Box w="70%">
-              <Stepper active={active} onStepClick={setActive}>
-                <Stepper.Step />
-                <Stepper.Step />
-                <Stepper.Step />
-                <Stepper.Step />
+              <Stepper active={active}>
+                {Array.from({ length: questionStructure.length + 1 }).map(
+                  (_, index) => (
+                    <Stepper.Step key={index} />
+                  )
+                )}
               </Stepper>
             </Box>
 
