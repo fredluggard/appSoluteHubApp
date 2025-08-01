@@ -8,6 +8,7 @@ import Header from "@/components/pageHeader";
 import DashStat from "@/components/pageHeader/dashStat";
 import TrafficChart from "@/components/charts/trafficChart";
 import LoadingBar from "../loading";
+import Cookies from "js-cookie";
 
 interface DashboardData {
   metrics: {
@@ -108,11 +109,13 @@ const Dashboard = () => {
   const COLORS = ["#34449C", "#D8DEFF"];
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-  // const token = useSelector(getUserToken);
+  const token = Cookies.get("token");
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`${baseUrl}/api/v1/dashboard/summary`);
+      const response = await fetch(`${baseUrl}/api/v1/dashboard/summary`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       console.log("Response:", response);
 
       if (!response.ok) {
