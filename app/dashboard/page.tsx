@@ -8,7 +8,7 @@ import Image from "next/image";
 import Cookies from "js-cookie";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getUser, setUser } from "@/store/userSlice";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 interface TaskProgress {
   completedTasks: number;
@@ -56,10 +56,10 @@ const Dashboard = () => {
     }
   );
   const [progress, setProgress] = useState<number>(0);
-  // const [user, setUser] = useState<any | null>(null);
   const user = useSelector(getUser);
   const [loading, setLoading] = useState(false);
 
+  const dispatch = useDispatch();
   const router = useRouter();
   const searchParams = useSearchParams();
   const url = process.env.NEXT_PUBLIC_BASE_URL;
@@ -177,7 +177,7 @@ const Dashboard = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
-        setUser(data?.data);
+        dispatch(setUser(data?.data));
         console.log(data);
         Cookies.set("role", data?.data.role, { expires: 7 });
       } catch (error) {
