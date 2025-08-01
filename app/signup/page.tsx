@@ -83,6 +83,8 @@ const SignUp = () => {
   useEffect(() => {
     const token = searchParams.get("token") ?? "";
     const userId = searchParams.get("userId") ?? "";
+    if (!token || !userId) return;
+
     const handleGoogleAuth = async () => {
       try {
         const response = await fetch(`${baseUrl}/api/v1/userPage/${userId}`, {
@@ -112,7 +114,7 @@ const SignUp = () => {
     };
 
     handleGoogleAuth();
-  });
+  }, [searchParams]);
 
   const xIcon = <IconX size={20} />;
 
