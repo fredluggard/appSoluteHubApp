@@ -177,9 +177,9 @@ const Dashboard = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
-        setUser(data?.data.user);
-        Cookies.set("role", data?.data.user.role, { expires: 7 });
+        setUser(data?.data);
         console.log(data);
+        Cookies.set("role", data?.data.role, { expires: 7 });
       } catch (error) {
         console.error("Error fetching user data:", error);
       } finally {
