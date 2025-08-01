@@ -11,9 +11,14 @@ const Team = () => {
       img: "/images/team.png",
     },
     {
-      name: "Floyd Miles",
-      role: "Content Writer @Company",
-      img: "/images/team.png",
+      name: "Awele Offor",
+      role: "Social media manager for Appsolute kids",
+      img: "/images/awele_offor.jpg",
+    },
+    {
+      name: "Akpa Victor",
+      role: "Video Editor",
+      img: "/images/akpaVictor.jpg",
     },
     {
       name: "Floyd Miles",
@@ -26,14 +31,9 @@ const Team = () => {
       img: "/images/team.png",
     },
     {
-      name: "Floyd Miles",
-      role: "Content Writer @Company",
-      img: "/images/team.png",
-    },
-    {
-      name: "Floyd Miles",
-      role: "Content Writer @Company",
-      img: "/images/team.png",
+      name: "Fredrick Aniebonam",
+      role: "Frontend Engineer",
+      img: "/images/fred.jpg",
     },
     {
       name: "Floyd Miles",
