@@ -26,8 +26,8 @@ const Team = () => {
       img: "/images/team.png",
     },
     {
-      name: "Floyd Miles",
-      role: "Content Writer @Company",
+      name: "Sochima Onah",
+      role: "Product Designer",
       img: "/images/team.png",
     },
     {
@@ -36,9 +36,9 @@ const Team = () => {
       img: "/images/fred.jpg",
     },
     {
-      name: "Floyd Miles",
-      role: "Content Writer @Company",
-      img: "/images/team.png",
+      name: "Solomon Ali",
+      role: "Backend Engineer",
+      img: "/images/solomon.jpg",
     },
     {
       name: "Floyd Miles",
