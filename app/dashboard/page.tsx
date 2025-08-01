@@ -6,10 +6,26 @@ import React, { useEffect, useState } from "react";
 import styles from "./dash.module.css";
 import Image from "next/image";
 import Cookies from "js-cookie";
-import { useRouter, useSearchParams } from "next/navigation";
-import { getUser, setUser } from "@/store/userSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+import { setUser } from "@/store/userSlice";
+import { useDispatch } from "react-redux";
 
+interface UserState {
+  id: string;
+  fullName: string;
+  email: string;
+  profileImage?: string;
+  role?: string;
+  country?: string | null;
+  gender?: string | null;
+  nickName?: string | null;
+  phone?: string | null;
+  verified?: boolean | null;
+  answered?: number | null;
+  totalScore?: number | null;
+  resetToken?: string | number | null;
+  resetTokenExpires?: string | number | null;
+}
 interface TaskProgress {
   completedTasks: number;
   totalTasks: number;
@@ -56,7 +72,22 @@ const Dashboard = () => {
     }
   );
   const [progress, setProgress] = useState<number>(0);
-  const user = useSelector(getUser);
+  const [user, setTheUser] = useState<UserState>({
+    id: "",
+    fullName: "",
+    email: "",
+    profileImage: "",
+    role: "",
+    country: null,
+    gender: null,
+    nickName: null,
+    phone: null,
+    verified: null,
+    answered: null,
+    totalScore: null,
+    resetToken: null,
+    resetTokenExpires: null,
+  });
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
@@ -164,7 +195,8 @@ const Dashboard = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
-        dispatch(setUser(data?.data));
+        dispatch(setUser(data.data));
+        setTheUser(data.data);
         console.log(data);
         Cookies.set("role", data?.data.role, { expires: 7 });
       } catch (error) {
@@ -175,7 +207,7 @@ const Dashboard = () => {
     };
 
     fetchUser();
-  });
+  }, []);
 
   return (
     <Stack className={styles.dashContainer}>
