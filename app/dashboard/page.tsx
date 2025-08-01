@@ -175,6 +175,7 @@ const Dashboard = () => {
         });
         const data = await response.json();
         setUser(data?.data || null);
+        Cookies.set("role", data?.data.user.role, { expires: 7 });
         console.log(data);
       } catch (error) {
         console.error("Error fetching user data:", error);
