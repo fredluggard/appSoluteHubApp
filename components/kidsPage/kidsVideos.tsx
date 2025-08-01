@@ -2,69 +2,28 @@
 
 import { Flex, Stack, Text, Title } from "@mantine/core";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./kidsVideos.module.css";
-import { useRouter } from "next/navigation";
 import CustomBtn from "../button/customBtn";
-
-const tasks = [
-  {
-    id: "1",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task1.png",
-  },
-  {
-    id: "2",
-    title:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillumdolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat noproident.",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task2.png",
-  },
-  {
-    id: "3",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task3.png",
-  },
-  {
-    id: "4",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task1.png",
-  },
-  {
-    id: "5",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task4.png",
-  },
-  {
-    id: "6",
-    title: "How to open a stock account on Tradient?",
-    points: "200",
-    date: "2/3/2025",
-    tags: "YouTube, AI",
-    image: "/images/task5.png",
-  },
-];
+import { EducationalVideo } from "@/types/commonTypes";
+import Link from "next/link";
 
 const KidsVideos = () => {
-  const router = useRouter();
+  const [kidsContent, setKidsContent] = useState<EducationalVideo[]>([]);
 
-  const handleTask = (taskId: string) => {
-    router.push(`/dashboard/tasks/${taskId}`);
+  const url = process.env.NEXT_PUBLIC_BASE_URL;
+  const fetchContent = async () => {
+    try {
+      const response = await fetch(`${url}/api/v1/contents/kidsVideos `);
+      const data = await response.json();
+      setKidsContent(data?.data || []);
+    } catch (error) {
+      console.error("Error fetching content data:", error);
+    }
   };
+  useEffect(() => {
+    fetchContent();
+  }, []);
 
   return (
     <Stack className={styles.mediaContainer}>
@@ -73,41 +32,48 @@ const KidsVideos = () => {
           Our videos teaches your kids about modern Tech
         </Title>
         <Text className={styles.mediaText}>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident.
+          We teach kids about tech, one fun video at a time. From AI to
+          software, our videos break down big tech ideas into bite-sized fun for
+          curious young minds.
         </Text>
       </Stack>
 
       <Stack className={styles.week}>
         <Flex className={styles.taskFlex}>
-          {tasks.map((task, index) => (
+          {kidsContent?.slice(0, 9).map((task, index) => (
             <Stack key={index} className={styles.taskBox}>
-              <Stack
+              <Link
+                href={task.url}
                 className={styles.imageBox}
-                onClick={() => handleTask(task.id)}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Image
-                  src={task.image}
+                  src={task.thumbnail}
                   alt="task image"
                   width={240}
                   height={150}
                   className={styles.taskImg}
                 />
-              </Stack>
-              <Title
+              </Link>
+              <Link
+                href={task.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={styles.taskTitle}
-                lineClamp={2}
-                onClick={() => handleTask(task.id)}
               >
                 {task.title}
-              </Title>
+              </Link>
             </Stack>
           ))}
         </Flex>
 
         <Stack mt={50} justify="center">
-          <CustomBtn url="#" text="See more videos" bgColor="#ff1709" />
+          <CustomBtn
+            url="https://www.youtube.com/@appsolute_kids"
+            text="See more videos"
+            bgColor="#ff1709"
+          />
         </Stack>
       </Stack>
 

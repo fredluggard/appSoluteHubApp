@@ -35,6 +35,7 @@ const VerifySignUp = () => {
       setSuccess(true);
     } catch (error) {
       console.error("Error authenticating user:", error);
+      setSuccess(false);
     } finally {
       setLoading(false);
     }
@@ -49,9 +50,9 @@ const VerifySignUp = () => {
   }, [token]);
 
   return (
-    success && (
-      <Stack className={styles.signUserContainer}>
-        <Stack className={styles.darkLayout}>
+    <Stack className={styles.signUserContainer}>
+      <Stack className={styles.darkLayout}>
+        {success ? (
           <Stack className={styles.recoverLink}>
             <Image
               src={"/icons/check.svg"}
@@ -67,9 +68,16 @@ const VerifySignUp = () => {
 
             <CustomBtn text="Login" url="/login" bgColor="#34449C" />
           </Stack>
-        </Stack>
+        ) : (
+          <Stack className={styles.recoverLink}>
+            <Title className={styles.successTitle}>Verification Failed!</Title>
+            <Text className={styles.successText}>
+              An error occured during verification.
+            </Text>
+          </Stack>
+        )}
       </Stack>
-    )
+    </Stack>
   );
 };
 

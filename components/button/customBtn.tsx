@@ -29,7 +29,13 @@ const CustomBtn = ({ url, bgColor, text, img }: ButtonProps) => {
 
   return (
     <>
-      <Link href={url} className={styles.learn} style={style}>
+      <Link
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.learn}
+        style={style}
+      >
         {img && <Image src={img} alt="" width={30} height={30} />}
         <span>{text}</span>
       </Link>
