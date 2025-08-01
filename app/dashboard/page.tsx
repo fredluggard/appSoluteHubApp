@@ -164,7 +164,7 @@ const Dashboard = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
-        dispatch(setUser(data.data));
+        dispatch(setUser(data?.data));
         console.log(data);
         Cookies.set("role", data?.data.role, { expires: 7 });
       } catch (error) {
@@ -175,7 +175,7 @@ const Dashboard = () => {
     };
 
     fetchUser();
-  }, [token, userId]);
+  });
 
   return (
     <Stack className={styles.dashContainer}>
