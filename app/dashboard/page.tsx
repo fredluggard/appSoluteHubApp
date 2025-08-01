@@ -7,6 +7,8 @@ import styles from "./dash.module.css";
 import Image from "next/image";
 import Cookies from "js-cookie";
 import { useRouter, useSearchParams } from "next/navigation";
+import { getUser, setUser } from "@/store/userSlice";
+import { useSelector } from "react-redux";
 
 interface TaskProgress {
   completedTasks: number;
@@ -54,7 +56,8 @@ const Dashboard = () => {
     }
   );
   const [progress, setProgress] = useState<number>(0);
-  const [user, setUser] = useState<any | null>(null);
+  // const [user, setUser] = useState<any | null>(null);
+  const user = useSelector(getUser);
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
@@ -175,6 +178,7 @@ const Dashboard = () => {
         });
         const data = await response.json();
         setUser(data?.data || null);
+        Cookies.set("role", data?.data.user.role, { expires: 7 });
         console.log(data);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -197,7 +201,7 @@ const Dashboard = () => {
           <Flex className={styles.topFlex}>
             <Stack className={styles.topStack}>
               <Image
-                src={user ? user?.profileImage : "/images/userProfile.png"}
+                src={user?.profileImage ?? "/images/userProfile.png"}
                 alt="user profile"
                 width={50}
                 height={50}

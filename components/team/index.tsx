@@ -28,7 +28,7 @@ const Team = () => {
     {
       name: "Sochima Onah",
       role: "Product Designer",
-      img: "/images/team.png",
+      img: "/images/sochima.jpg",
     },
     {
       name: "Fredrick Aniebonam",
