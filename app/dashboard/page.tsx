@@ -61,20 +61,7 @@ const Dashboard = () => {
 
   const dispatch = useDispatch();
   const router = useRouter();
-  const searchParams = useSearchParams();
   const url = process.env.NEXT_PUBLIC_BASE_URL;
-
-  useEffect(() => {
-    const token = searchParams.get("token");
-    const userId = searchParams.get("userId");
-
-    if (token && userId) {
-      Cookies.set("token", token, { expires: 7 });
-      Cookies.set("userId", userId, { expires: 7 });
-
-      router.replace("/dashboard");
-    }
-  }, [searchParams, router]);
 
   const token = Cookies.get("token");
   const userId = Cookies.get("userId");
@@ -177,7 +164,7 @@ const Dashboard = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
-        dispatch(setUser(data?.data));
+        dispatch(setUser(data.data));
         console.log(data);
         Cookies.set("role", data?.data.role, { expires: 7 });
       } catch (error) {
