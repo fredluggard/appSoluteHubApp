@@ -81,7 +81,7 @@ const SignUp = () => {
   useEffect(() => {
     const token = searchParams.get("token");
     const userId = searchParams.get("userId");
-    if (!token || userId) return;
+    if (!token || !userId) return;
 
     Cookies.set("token", token, { expires: 7 });
     Cookies.set("userId", userId ?? "", { expires: 7 });
